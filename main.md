@@ -189,6 +189,12 @@ linestretch: 1.5
 \widowpenalties 1 10000
 \raggedbottom
 
+<!--\includepdf[pages=-]{titlepage.pdf}-->
+
+```{.include}
+chapters/abstract.md
+```
+
 <!-- Table of contents -->
 \toc
 \newpage
@@ -199,7 +205,14 @@ linestretch: 1.5
 \parskip 12pt
 \setcounter{page}{1}
 
-``` {.include}
+```{.include}
+chapters/uvod.md
+chapters/teoreticka_cast/teoreticka_cast.md
+chapters/analyza_pozadavku/analyza_pozadavku.md
+chapters/navrh/navrh.md
+chapters/implementace/implementace.md
+chapters/vyhodnoceni_a_experimenty/vyhodnoceni_a_experimenty.md
+chapters/zaver.md
 ```
 
 # Seznam použité literatury
