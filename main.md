@@ -1,14 +1,33 @@
 ---
 papersize: a4
-author: ""
+author:
+  - Jan Najman
 # open bookmarks tab
 bookmarksopen: true
 # bookmarks tab expand level
 bookmarkopenlevel: 6
 pdfcreator: LaTeX via pandoc, made with care and extra sugar on top
-title-meta: ""
-keywords: []
-subject: ""
+title-meta: Návrh a implementace asynchronní knihovny pro tvorbu toků dat
+keywords:
+  - rust
+  - tok
+  - toky
+  - flow
+  - composition
+  - composable
+  - inspectable
+  - visualizable
+  - asynchronous
+  - async
+  - node
+  - pipeline
+  - workflow
+  - runtime
+  - framework
+  - crate
+  - library
+  - type-safe
+subject: Diplomová práce na téma Návrh a implementace asynchronní knihovny pro tvorbu toků dat
 colorlinks: true
 # default: Maroon
 linkcolor: Maroon
