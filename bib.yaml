@@ -36,3 +36,70 @@ references:
           day: 20
       lang: "en"
 
+    - type: article
+      id: async_programming_techniques
+      title: "Optimizing High-Load Systems with Asynchronous Programming Techniques"
+      container-title: "Modeling, Control and Information Technologies: Proceedings of International scientific and practical conference"
+      URL: "https://doi.org/10.31713/MCIT.2024.036"
+      pages: 130-131
+      volume: 7
+      author:
+          - family: Самойдюк
+            given: Андрій
+          - family: Остапчук
+            given: Оксана
+      issued:
+          year: 2025
+          month: 4
+          day: 25
+      accessed:
+          year: 2025
+          month: 11
+          day: 20
+      lang: "en"
+
+    - type: article
+      id: async_iot_embedded
+      title: "A Survey of Asynchronous Programming Using Coroutines in the Internet of Things and Embedded Systems"
+      container-title: "ACM Transactions on Embedded Computing Systems"
+      publisher: "Association for Computing Machinery (ACM)"
+      URL: "http://dx.doi.org/10.1145/3319618"
+      ISSN: "1558-3465"
+      pages: 1-21
+      volume: 18
+      number: 3
+      author:
+          - family: Belson
+            given: Bruce
+          - family: Holdsworth
+            given: Jason
+          - family: Xiang
+            given: Wei
+          - family: Philippa
+            given: Bronson
+      issued:
+          year: 2019
+          month: 5
+      accessed:
+          year: 2025
+          month: 11
+          day: 20
+      lang: "en"
+
+    - type: article
+      id: async_picture
+      title: "Unlocking Performance: A Guide to Async Support in Django"
+      URL: "https://dev.to/pragativerma18/unlocking-performance-a-guide-to-async-support-in-django-2jdj"
+      author:
+          - family: Verma
+            given: Pragati
+      issued:
+          year: 2023
+          month: 6
+          day: 25
+      accessed:
+          year: 2025
+          month: 11
+          day: 20
+      lang: "en"
+
