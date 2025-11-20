@@ -1,3 +1,38 @@
 ---
-references: []
+references:
+    - type: article
+      id: utility_of_dataflow_computing
+      title: "The Remarkable Utility of Dataflow Computing"
+      URL: "https://www.sigops.org/2020/the-remarkable-utility-of-dataflow-computing/"
+      publisher: "ACM SIGOPS"
+      author:
+          - family: Schwarzkopf
+            given: Malte
+      issued:
+          year: 2020
+          month: 3
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 20
+      lang: "en"
+
+    - type: article
+      id: concepts_of_distributed_programming
+      title: "Control Flow and Data Flow: Concepts of Distributed Programming"
+      URL: "https://doi.org/10.1007/978-3-642-82921-5_8"
+      publisher: "Springer Berlin Heidelberg"
+      pages: 345-398
+      volume: 14
+      author:
+          - family: Dennis
+            given: Jack
+      issued:
+          year: 1986
+      accessed:
+          year: 2025
+          month: 11
+          day: 20
+      lang: "en"
 
