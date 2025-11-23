@@ -103,3 +103,87 @@ references:
           day: 20
       lang: "en"
 
+    - type: article
+      id: what_is_polymorphism
+      title: "What is polymorphism, what is it for, and how is it used?"
+      URL: "https://stackoverflow.com/a/1031385"
+      publisher: "Stack Overflow"
+      author:
+          - family: paxdiablo
+      issued:
+          year: 2009
+          month: 6
+          day: 23
+      accessed:
+          year: 2025
+          month: 11
+          day: 21
+      lang: "en"
+
+    - type: article
+      id: rust_book_oop
+      title: "Object-Oriented Programming Features of Rust"
+      URL: "https://doc.rust-lang.org/book/ch18-00-oop.html"
+      container-title: "The Rust Programming Language"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2024
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 21
+      lang: "en"
+
+    - type: article
+      id: rust_for_c_programmers_trait_features
+      title: "Further Trait Features - Rust for C-Programmers"
+      URL: "https://rust-for-c-programmers.com/ch11/11_4_further_trait_features.html"
+      container-title: "Rust for C-Programmers"
+      author:
+          - family: Salewski
+            given: S.
+      issued:
+          year: 2025
+      accessed:
+          year: 2025
+          month: 11
+          day: 21
+      lang: "en"
+
+    - type: article
+      id: polymorphism_in_rust_brandon
+      title: "Three Kinds of Polymorphism in Rust"
+      URL: "https://www.brandons.me/blog/polymorphism-in-rust"
+      author:
+          - family: Smith
+            given: Brandon
+      issued:
+          year: 2022
+          month: 1
+          day: 5
+      accessed:
+          year: 2025
+          month: 11
+          day: 21
+      lang: "en"
+
+    - type: article
+      id: polymorphism_in_rust_oswalt
+      title: "Polymorphism in Rust"
+      URL: "https://oswalt.dev/2021/06/polymorphism-in-rust/"
+      author:
+          - family: Oswalt
+            given: Matt
+      issued:
+          year: 2021
+          month: 6
+          day: 22
+      accessed:
+          year: 2025
+          month: 11
+          day: 21
+      lang: "en"
+
