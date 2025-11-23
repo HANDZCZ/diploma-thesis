@@ -51,7 +51,7 @@ které musí implementovat `Update` trait.
 V tomto případě by za pomocí monomorfizace ([@sec:monomorfizace]) byla vygenerována funkce pro každý konkrétní typ.
 
 
-### Dynamic dispatch
+### Dynamic dispatch {#sec:dynamic_dispatch}
 
 Druhý způsob je tzv. "dynamický výběr", který používá "trait objekty" k tomu,
 aby odložil rozhodnutí o tom, který typ je potřebný k vyhovění nějakého polymorfního rozhraní na běh samotného programu.

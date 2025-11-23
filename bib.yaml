@@ -187,3 +187,54 @@ references:
           day: 21
       lang: "en"
 
+    - type: article
+      id: rust_compiler_book_monomorphization
+      title: "Monomorphization - Rust Compiler Development Guide"
+      URL: "https://rustc-dev-guide.rust-lang.org/backend/monomorph.html"
+      container-title: "Rust Compiler Development Guide"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 7
+          day: 28
+      accessed:
+          year: 2025
+          month: 11
+          day: 23
+      lang: "en"
+
+    - type: article
+      id: rust_book_monomorphization
+      title: "Generic Data Types: Performance of Code Using Generics - The Rust Programming Language"
+      URL: "https://doc.rust-lang.org/book/ch10-01-syntax.html#performance-of-code-using-generics"
+      container-title: "The Rust Programming Language"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2024
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 23
+      lang: "en"
+
+    - type: article
+      id: what_is_monomorphization
+      title: "\\emoji{🦀} Rust Tips: What is Monomorphization?"
+      URL: "https://medium.com/@lightworld/rust-tips-what-is-monomorphization-49b5840778fe"
+      author:
+          - family: Allred
+            given: Robert
+      issued:
+          year: 2024
+          month: 5
+          day: 31
+      accessed:
+          year: 2025
+          month: 11
+          day: 23
+      lang: "en"
+
