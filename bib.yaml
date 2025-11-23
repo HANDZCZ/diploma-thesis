@@ -238,3 +238,38 @@ references:
           day: 23
       lang: "en"
 
+    - type: article
+      id: inlining_rust_perf_book
+      title: "Inlining - The Rust Performance Book"
+      URL: "https://nnethercote.github.io/perf-book/inlining.html"
+      container-title: "The Rust Performance Book"
+      author:
+          - family: Nethercote
+            given: Nicholas
+      issued:
+          year: 2025
+          month: 9
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 23
+      lang: "en"
+
+    - type: article
+      id: inlining_in_rust_medium
+      title: "Inlining in Rust: Understanding the Compiler’s Role"
+      URL: "https://drashti-shah.medium.com/inlining-in-rust-understanding-the-compilers-role-e171600614d1"
+      author:
+          - family: Shah
+            given: Drashti
+      issued:
+          year: 2023
+          month: 4
+          day: 10
+      accessed:
+          year: 2025
+          month: 11
+          day: 23
+      lang: "en"
+
