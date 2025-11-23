@@ -536,6 +536,14 @@ $if(listings)$
     position=top
 }
 $else$
+% reserves space for 1-5 lines on the current page or end the page and continue on the next one
+% this prevents the caption from staying on the same page and the code being the next one
+% it also has the side effect of breaking the code more nicely (it won't leave only a single line of code on the page)
+\usepackage{needspace}
+\AtBeginEnvironment{codelisting}{
+    \pretocmd{\caption}{\Needspace{5\baselineskip}}{}{}
+}
+
 % change codelisting to not use float
 \renewenvironment{codelisting}{
     % set codelisting type and fix listings caption formating
