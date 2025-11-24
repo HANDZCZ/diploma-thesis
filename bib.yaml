@@ -273,3 +273,54 @@ references:
           day: 23
       lang: "en"
 
+    - type: article
+      id: rust_docs_any_module
+      title: "Module any - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/any/index.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 24
+      lang: "en"
+
+    - type: article
+      id: rust_docs_typeid
+      title: "Struct TypeId - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/any/struct.TypeId.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 24
+      lang: "en"
+
+    - type: article
+      id: rust_docs_any_trait
+      title: "Trait Any - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/any/trait.Any.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 24
+      lang: "en"
+
