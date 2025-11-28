@@ -15,12 +15,6 @@ Dokumentace a chybová hlášení musí být srozumitelná.
 Dokumentace prvků knihovny musí vysvětlovat k čemu slouží a jak fungují.
 Design API knihovny by měl být snadno pochopitelný a intuitivní.
 
-### Definice základních toků
-
-Knihovna by měla obsahovat základní typy toků,
-jako je sekvenční, paralelní a fallback tok.
-Pomocí těchto základních toků je poté možno vytvořit prakticky cokoliv.
-
 ### Struktura kódu
 
 Kód knihovny by měl být modulární, dobře strukturovaný a obsahovat testy.
