@@ -324,3 +324,20 @@ references:
           day: 24
       lang: "en"
 
+    - type: article
+      id: rust_reference_dyn_compatibility
+      title: "Dyn compatibility - The Rust Reference"
+      URL: "https://doc.rust-lang.org/reference/items/traits.html#dyn-compatibility"
+      container-title: "The Rust Reference"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 8
+          day: 18
+      accessed:
+          year: 2025
+          month: 11
+          day: 28
+      lang: "en"
+

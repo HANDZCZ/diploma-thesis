@@ -11,6 +11,7 @@ polymorphism.md
 monomorphization.md
 inlining.md
 downcasting.md
+dyn_compatibility.md
 ```
 
 \newpage
