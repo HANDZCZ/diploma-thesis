@@ -13,6 +13,7 @@ inlining.md
 downcasting.md
 dyn_compatibility.md
 smart_pointers.md
+tuple_lists.md
 ```
 
 \newpage
