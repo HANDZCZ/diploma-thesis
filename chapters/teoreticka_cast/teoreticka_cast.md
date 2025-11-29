@@ -12,6 +12,7 @@ monomorphization.md
 inlining.md
 downcasting.md
 dyn_compatibility.md
+smart_pointers.md
 ```
 
 \newpage

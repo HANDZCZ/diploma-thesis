@@ -341,3 +341,71 @@ references:
           day: 28
       lang: "en"
 
+    - type: article
+      id: smart_pointers_devto
+      title: "Smart Pointers in Rust: What, why and how?"
+      URL: "https://dev.to/rogertorres/smart-pointers-in-rust-what-why-and-how-oma"
+      author:
+          - family: Torres
+            given: Roger
+      issued:
+          year: 2021
+          month: 7
+          day: 19
+      accessed:
+          year: 2025
+          month: 11
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: smart_pointers_codecamp
+      title: "What are Smart Pointers in Rust? Explained with Code Examples"
+      URL: "https://www.freecodecamp.org/news/smart-pointers-in-rust-with-code-examples/"
+      author:
+          - family: Chigozie
+            given: Oduah
+      issued:
+          year: 2024
+          month: 11
+          day: 30
+      accessed:
+          year: 2025
+          month: 11
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: smart_pointers_medium
+      title: "Understanding Smart Pointers in Rust: A Comprehensive Guide"
+      URL: "https://perelyn-sama.medium.com/understanding-smart-pointers-in-rust-a-comprehensive-guide-cc06eb94a147"
+      author:
+          - family: Okoh
+            given: Ebina
+      issued:
+          year: 2023
+          month: 11
+          day: 6
+      accessed:
+          year: 2025
+          month: 11
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: rust_book_smart_pointers
+      title: "Smart Pointers - The Rust Programming Language"
+      URL: "https://doc.rust-lang.org/book/ch15-00-smart-pointers.html"
+      container-title: "The Rust Programming Language"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2024
+          month: 11
+          day: 7
+      accessed:
+          year: 2025
+          month: 11
+          day: 29
+      lang: "en"
+
