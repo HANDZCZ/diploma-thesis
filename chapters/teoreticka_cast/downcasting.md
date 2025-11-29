@@ -1,5 +1,5 @@
 
-## Trait Any, downcasting a TypeId
+## Trait Any, downcasting a TypeId {#sec:any_chapter}
 
 Trait objekty `dyn Any` slouží hlavně k odstínění konkrétního datového typu.
 Tímto umožňují například vytvoření heterogenních kolekcí a reflexi za běhu programu.
@@ -52,7 +52,7 @@ assert_eq!(is_string(&"cookie monster".to_string()), true);
 : Příklad použítí traitu `Any` [@rust_docs_any_trait] {#lst:any_trait_example}
 
 
-### Downcast metody
+### Downcast metody {#sec:downcast_methods}
 
 Downcast metody slouží k získání reference či instance konkretního datového typu z `dyn Any` trait objektu nebo `Box<dyn Any>`.
 [@rust_docs_any_trait]
