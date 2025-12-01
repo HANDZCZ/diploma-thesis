@@ -101,10 +101,59 @@ fn main() {
         // aniž by zbytečně držel zámek
     }
 
-    let mut guard = sdilena_hodnota.lock().unwrap();
+    let guard = sdilena_hodnota.lock().unwrap();
     assert_eq!(*guard, 26);
 }
 ```
 
 : Příklad použití smart pointeru `Mutex<T>` {#lst:mutex_example}
+
+### RwLock\<T\> {#sec:rwlock}
+
+RwLock je zámek používaný pro sdílená data.
+Tento zámek umožňuje držet libovolní počet referencí pro čtení sdílené hodnoty,
+nebo maximálně jednu měnitelnou referenci pro úpravu sdílené hodnoty.
+[@smart_pointers_devto; @smart_pointers_codecamp; @smart_pointers_medium]
+
+Ve srovnání Mutex nerozlišuje mezi čtenáři a zapisovateli,
+kteří zámek získávají a blokuje tak všechna vlákna čekající na uvolnění zámku.
+RwLock umožňuje libovolnému počtu čtenářů získat zámek, pokud zámek již nedrží zapisovatel.
+[@smart_pointers_devto; @smart_pointers_codecamp; @smart_pointers_medium]
+
+```{.rust .linenos}
+use std::sync::RwLock;
+
+fn main() {
+    let sdilena_hodnota = RwLock::new(5u8);
+
+    {
+        // získání zámků pro čtení
+        let guard1 = sdilena_hodnota.read().unwrap();
+        let guard2 = sdilena_hodnota.read().unwrap();
+        let guard3 = sdilena_hodnota.read().unwrap();
+        // derefence zámků na reference
+        // a kontrola, že je součet správný
+        assert_eq!(*guard1 + *guard2 + *guard3, 15);
+        // zámky jsou na konci tohoto bloku odemčeny
+    }
+
+    {
+        // získání zámku pro zápis
+        let mut guard = sdilena_hodnota.write().unwrap();
+        // derefence zámku na měnitelnou referenci
+        // a přidání 25 k existující hodnotě
+        *guard += 25;
+        // zámek je odemčen zde ručně
+        drop(guard);
+        // tento blok poté může pokračovat dále,
+        // aniž by zbytečně držel zámek
+        // a blokoval čtenáře či zapisovatele
+    }
+
+    let guard = sdilena_hodnota.read().unwrap();
+    assert_eq!(*guard, 30);
+}
+```
+
+: Příklad použití smart pointeru `RwLock<T>` {#lst:rwlock_example}
 
