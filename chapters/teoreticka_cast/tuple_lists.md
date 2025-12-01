@@ -28,7 +28,7 @@ let tuple_list = (((((), D), C), B), A);
 
 : Tuple listy reprezentované kódem {#lst:tuple_lists_represented_in_code}
 
-```{.rust .lines}
+```{.rust .linenos}
 // definice traitu pro vytištění sama sebe
 trait Tiskni {
     fn tiskni(&self);
