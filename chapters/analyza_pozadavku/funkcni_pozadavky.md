@@ -1,6 +1,12 @@
 
 ## Funkční požadavky
 
+Tato kapitola popisuje funkční požadavky kladené na knihovnu.
+Popisuje konkrétní funkce a chování,
+které musí knihovna poskytovat pro vytváření asynchronních toků dat.
+Tyto požadavky definují, jaké funkce by měla knihovna uživatelům poskytnout
+a jaké operace by měla být schopna provádět.
+
 ### Definice uzlů a toků
 
 Knihovna musí umožnit definici uzlů a toků, které berou nějaký vstup a vrací nějaký výstup.

@@ -1,6 +1,12 @@
 
 ## Nefunkční požadavky
 
+Tato kapitola se zabývá nefunkčními požadavky,
+které určují kvalitativní vlastnosti navrhované knihovny.
+Tyto požadavky nespecifikují konkrétní funkčnost,
+ale popisují očekávané vlastnosti systému,
+jako je výkon, spolehlivost a použitelnost.
+
 ### Výkon
 
 Režie knihovnou definovaných toku by měla být co nejmenší.
