@@ -9,7 +9,7 @@ K tomuto účelu také slouží `TypeId`, což je identifikátor pro datový typ
 [@rust_docs_any_module; @rust_docs_typeid; @rust_docs_any_trait]
 
 
-### TypeId
+### TypeId {#sec:typeid}
 
 TypeId je globálně unikátní identifikátor datového typu.
 Existuje také funkce `TypeId::of<T>()`, která vrací `TypeId` pro konkrétní datový typ `T`.
@@ -29,7 +29,7 @@ assert_eq!(is_string(&"cookie monster".to_string()), true);
 : Příklad použítí `TypeId::of<T>()` funkce [@rust_docs_typeid] {#lst:typeid_of_example}
 
 
-### Trait `Any`
+### Trait `Any` {#sec:trait_any}
 
 Trait `Any` je jedním z hlavních stavebních bloků pro dynamické typování a runtime reflexi.
 Obsahuje pouze jednu metodu `type_id`, která vrací `TypeId`, konkrétního datového typu.
