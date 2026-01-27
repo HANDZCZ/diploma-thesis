@@ -1,5 +1,5 @@
 
-# Implementace
-
-\newpage
+```{.include}
+node/node.md
+```
 
