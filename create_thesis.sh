@@ -35,11 +35,11 @@ if [ "$wordcount_flag" != "" ]; then
     echo ''
 fi
 
-pandoc --standalone --listings --no-highlight --lua-filter ./filters/include-files.lua --lua-filter ./filters/include-code-files.lua --pdf-engine-opt=--shell-escape --pdf-engine-opt=--output-directory=temp --lua-filter ./filters/linebreaks.lua --filter pandoc-plot --filter pandoc-crossref --lua-filter ./filters/add-links-to-footnotes.lua --lua-filter ./filters/add-missing-source.lua -M wordcount-codeblocks=$codeblocks_flag -M wordcount=$wordcount_flag --lua-filter ./filters/wordcount.lua --lua-filter ./filters/minted.lua --lua-filter ./filters/pandoc-plot-fix-figures.lua --template template.latex --pdf-engine lualatex --bibliography bib.yaml --citeproc --csl iso690-numeric-brackets-cs.csl --lua-filter ./filters/remove-citation-brackets.lua -o 'thesis.pdf' main.md
+mkdir -p /tmp/thesis
+pandoc --standalone --listings --no-highlight --lua-filter ./filters/include-files.lua --lua-filter ./filters/include-code-files.lua --pdf-engine-opt=--shell-escape --pdf-engine-opt=--output-directory=/tmp/thesis --lua-filter ./filters/linebreaks.lua --filter pandoc-plot --filter pandoc-crossref --lua-filter ./filters/add-links-to-footnotes.lua --lua-filter ./filters/add-missing-source.lua -M wordcount-codeblocks=$codeblocks_flag -M wordcount=$wordcount_flag --lua-filter ./filters/wordcount.lua --lua-filter ./filters/minted.lua --lua-filter ./filters/pandoc-plot-fix-figures.lua --template template.latex --pdf-engine lualatex --bibliography bib.yaml --citeproc --csl iso690-numeric-brackets-cs.csl --lua-filter ./filters/remove-citation-brackets.lua -o 'thesis.pdf' main.md
 
 if [ "$wordcount_flag" != "" ]; then
-    mv temp/input.pdf ./thesis.pdf
-    rm -r temp
+    mv /tmp/thesis/input.pdf ./thesis.pdf
 
     echo ''
     echo 'Finished.'

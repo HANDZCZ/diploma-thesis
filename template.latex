@@ -504,7 +504,7 @@ $endif$
 \makeatother
 
 % include the minted package
-\usepackage[outputdir=temp]{minted}
+\usepackage[outputdir=/tmp/thesis]{minted}
 % customize minted
 \setminted{
     breaklines,
