@@ -229,5 +229,5 @@ note: required for `AddNode` to implement `Node<u8, u8, MyContext>`
    |              ------- unsatisfied trait bound introduced here
 ```
 
-: Error, který nastane při kompilaci, když nejsou splněny požadavaky na kontext {#lst:node_trait_with_context_error_in_design}
+: Chyba, která nastane při kompilaci, když nejsou splněny požadavaky na kontext {#lst:node_trait_with_context_error_in_design}
 
