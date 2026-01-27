@@ -5,5 +5,6 @@
 base.md
 output.md
 boxed.md
+macros.md
 ```
 
