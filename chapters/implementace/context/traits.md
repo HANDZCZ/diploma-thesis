@@ -63,3 +63,67 @@ která byla sloučena jako poslední.
 Mnohem lepší přístup je rozlišit tyto případy
 a řešení jak bude slučování probíhat v těchto případech ponechat na uživatele.
 
+# Práce se synchronními a asynchronními úlohami
+
+## Trait Task
+
+```{.rust .linenos}
+pub trait Task<T>: Future<Output = T> {
+    fn is_finished(&self) -> bool;
+    fn cancel(self);
+}
+```
+
+: Implementace traitu `Task` {#lst:task_trait_impl}
+
+Trait `Task` je nástavba nad traitem `Future` (TODO: link future trait),
+která přidává dvě velmi důležité metody a slouží k reprezentaci vzniklé asynchronní úlohy.
+Tento trait hlavně slouží jako abstrakce nad konkrétními implementacemi asynchronních úloh v různých asynchronní runtimech.
+Metoda `is_finished` vrací zda úloha byla dokončena,
+bez ohledu na to jestli úspěšně či neúspěšně.
+Metoda `cancel` konzumuje instanci úlohy a signalizuje úloze,
+že byla zrušena.
+V případě signalizace zrušení úlohy by úloha měla přerušit jakékoli právě běžící úkony a zastavit se.
+
+## Trait SpawnAsync
+
+```{.rust .linenos}
+pub trait SpawnAsync {
+    fn spawn<F>(fut: F) -> impl Task<F::Output>
+    where
+        F: Future + Send + 'static,
+        F::Output: Send + 'static;
+}
+```
+
+: Implementace traitu `SpawnAsync` {#lst:spawn_async_trait_impl}
+
+Trait `SpawnAsync` poskytuje rozhraní pro vytváření asynchronních úloh.
+Tento trait poskytuje abstrakci nad různými asynchronními prostředími pro práci s úlohami.
+Obsahuje pouze jednu metodu `spawn`, která bere asynchronní úlohu
+a vrací nějaký datový typ implementující trait `Task`.
+Tato asynchronní úloha musí být `Send + 'static`,
+aby bylo možno tuto úlohu poslat do jiných vláken pro zpracování.
+
+## Trait SpawnSync
+
+```{.rust .linenos}
+pub trait SpawnSync {
+    fn spawn_blocking<F, O>(func: F) -> impl Task<O>
+    where
+        F: Fn() -> O + Send + 'static,
+        O: Send + 'static;
+}
+```
+
+: Implementace traitu `SpawnSync` {#lst:spawn_sync_trait_impl}
+
+Trait `SpawnSync` poskytuje rozhraní pro vytváření synchronních úloh.
+Tento trait je synchronní verze `SpawnAsync` traitu
+a poskytuje možnost vytváření potenciálně časově či výpočetně náročných úloh,
+bez blokování asynchronních runtimu.
+Stejně jako trait `SpawnAsync` obsahuje pouze jednu metodu se jménem `spawn_blocking`,
+která bere synchronní úlohu a vrací nějaký datový typ implementující trait `Task`.
+Pro tuto synchronní úlohu také platí, že musí být `Send + 'static`,
+aby bylo možno tuto úlohu poslat do jiných vláken.
+
