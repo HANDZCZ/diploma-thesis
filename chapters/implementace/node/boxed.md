@@ -12,7 +12,17 @@ pub trait BoxedNode<Input, Output, Error, Context> {
 
     fn describe(&self) -> Description;
 }
+```
 
+: Implementace traitu `BoxedNode` {#lst:boxed_node_trait_impl}
+
+Trait `BoxedNode` je dyn kompatibilní obal ([@sec:dyn_compatibility]) pro trait `Node`,
+který obsahuje veškeré metody, jako trait `Node`.
+Díky tomuto obalu je možno pracovat s uzly ve stejném stylu, jako kdyby trait `Node` byl dyn kompatibilní.
+Přidává tedy další stupeň volnosti pro uživatele této knihovny.
+Tento obal hlavně existuje proto, aby si uživatel mohl vybrat, zda chce pracovat se statickým výběrem nebo s dynamickým.
+
+```{.rust .linenos}
 impl<Input, Output, Error, Context, T> BoxedNode<Input, Output, Error, Context> for T
 where
     T: Node<Input, Output, Error, Context>,
@@ -36,13 +46,7 @@ where
 }
 ```
 
-: Implementace traitu `BoxedNode` {#lst:boxed_node_trait_impl}
-
-Trait `BoxedNode` je dyn kompatibilní obal ([@sec:dyn_compatibility]) pro trait `Node`,
-který obsahuje veškeré metody, jako trait `Node`.
-Díky tomuto obalu je možno pracovat s uzly ve stejném stylu, jako kdyby trait `Node` byl dyn kompatibilní.
-Přidává tedy další stupeň volnosti pro uživatele této knihovny.
-Tento obal hlavně existuje proto, aby si uživatel mohl vybrat, zda chce pracovat se statickým výběrem nebo s dynamickým.
+: Výchozí implementace traitu `BoxedNode` pro jakýkoli typ implementující `Node` trait {#lst:boxed_node_trait_for_node_impl}
 
 Pro tento obal je také vytvořená výchozí implementace pro jakýkoli typ implementující trait `Node`.
 Metoda `run` vypadá komplikovaně, ale jen obaluje vytvořenou asynchronní úlohu z `Node` traitu do pin-boxu (TODO: pib-box link)
