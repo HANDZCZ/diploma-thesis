@@ -1,6 +1,11 @@
 
 # Základní traity pro práci s kontextem
 
+Tato kapitola obsahuje základní traity,
+které by měly být implementovány pro jakýkoliv datový typ,
+který lze použít jako kontext v uzlu.
+Tyto traity slouží jako základ pro vytváření komplexnějších toků.
+
 ## Trait Fork
 
 ```{.rust .linenos}
