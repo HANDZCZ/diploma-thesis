@@ -47,7 +47,7 @@ Bylo také nutno do tohoto traitu přidat metodu `describe`, která slouží k p
 Vrací informace jak o vstupních a výstupních typech, tak i dodatečné informace jako je popis uzlu.
 Tato metoda se nachází v tomto traitu, protože bylo nutno definovat výchozí implementaci pro všechny uzly.
 Původně tato metoda měla být ve vlastním traitu,
-ale Rust zatím nedovoluje vytvořit výchozí implementaci pro všechny generické typy (TODO: specializace link),
+ale Rust zatím nedovoluje vytvořit výchozí implementaci pro všechny datové typy implementující trait `Node`,
 kterou by poté uživatel mohl přepsat.
 
 Výchozí implementace metody `describe` vrací pouze název typu uzlu,
