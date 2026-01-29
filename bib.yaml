@@ -409,3 +409,69 @@ references:
           day: 29
       lang: "en"
 
+    - type: article
+      id: async_in_rust_book
+      title: "Asynchronous Programming in Rust"
+      URL: "https://rust-lang.github.io/async-book/index.html"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 11
+          day: 02
+      accessed:
+          year: 2026
+          month: 01
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: async_in_rust_book
+      title: "Asynchronous Programming in Rust"
+      URL: "https://rust-lang.github.io/async-book/index.html"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2025
+          month: 11
+          day: 02
+      accessed:
+          year: 2026
+          month: 01
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: rust_docs_poll_enum
+      title: "Enum Poll - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/task/enum.Poll.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2026
+          month: 01
+          day: 19
+      accessed:
+          year: 2026
+          month: 01
+          day: 29
+      lang: "en"
+
+    - type: article
+      id: rust_docs_future_trait
+      title: "Trait Future - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/future/trait.Future.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2026
+          month: 01
+          day: 19
+      accessed:
+          year: 2026
+          month: 01
+          day: 29
+      lang: "en"
+
