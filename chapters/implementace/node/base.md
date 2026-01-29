@@ -38,7 +38,7 @@ Vychází z návrhu pro tento trait s generickým kontextem ([@lst:node_trait_wi
 a rozšiřuje ho o generický parametr `Error` a metodu `describe`.
 
 Dále se liší v definici metody `run` explicitní definicí výstupního typu,
-který musí implementovat trait `Future` (TODO: future trait link)
+který musí implementovat trait `Future` ([@sec:future_trait])
 a tento typ také musí implementovat auto trait `Send`.
 Auto trait `Send` je vyžadován proto, aby bylo možno vzniklou asynchronní úlohu odeslat do jiného vlákna
 a docílit, tak mnohem větší konkurence.

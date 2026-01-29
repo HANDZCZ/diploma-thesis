@@ -76,7 +76,7 @@ pub trait Task<T>: Future<Output = T> {
 
 : Implementace traitu `Task` {#lst:task_trait_impl}
 
-Trait `Task` je nástavba nad traitem `Future` (TODO: link future trait),
+Trait `Task` je nástavba nad traitem `Future` ([@sec:future_trait]),
 která přidává dvě velmi důležité metody a slouží k reprezentaci vzniklé asynchronní úlohy.
 Tento trait hlavně slouží jako abstrakce nad konkrétními implementacemi asynchronních úloh v různých asynchronní runtimech.
 Metoda `is_finished` vrací zda úloha byla dokončena,
