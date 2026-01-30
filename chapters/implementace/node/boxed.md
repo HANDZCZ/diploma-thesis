@@ -49,7 +49,7 @@ where
 : Výchozí implementace traitu `BoxedNode` pro jakýkoli typ implementující `Node` trait {#lst:boxed_node_trait_for_node_impl}
 
 Pro tento obal je také vytvořená výchozí implementace pro jakýkoli typ implementující trait `Node`.
-Metoda `run` vypadá komplikovaně, ale jen obaluje vytvořenou asynchronní úlohu z `Node` traitu do pin-boxu (TODO: pib-box link)
+Metoda `run` vypadá komplikovaně, ale jen obaluje vytvořenou asynchronní úlohu z `Node` traitu do pin-boxu ([@sec:pin; @sec:box])
 a přemění typ této úlohy trait object `dyn Future + Send`.
 Metoda `describe` volá metodu se stejným jménem z `Node` traitu a vrací tuto nepozměněnou hodnotu,
 protože trait `BoxedNode` nemění chování ani vstupy či výstupy uzlu.
