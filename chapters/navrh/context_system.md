@@ -4,7 +4,7 @@
 Hlavní funkcí kontextového systému je poskytnutí prostředků
 pro získání hodnot potřebných pro běh uzlů.
 
-### Úložiště typu klíč-hodnota
+### Úložiště typu klíč-hodnota {#sec:key-val_storage}
 
 Prvním návrhem pro kontext bylo úložiště typu klíč-hodnota.
 Toto úložiště by sloužilo ke sdílení dat mezi uzly
@@ -84,10 +84,10 @@ Poté uživatel narazí na problém, že do tohoto úložiště nejde snadno vlo
 protože ho nelze převést na řetězec.
 
 Tento problém řeší tzv. type mapa, která může být implementována pomocí hašovací tabulky,
-kde klíčem je `TypeId` ([@sec:typeid]) a hodnotou je `Box<dyn Any>` ([@sec:trait_any; @sec:downcast_methods]).
+kde klíčem je `TypeId` ([@sec:typeid]) a hodnotou je `Box<dyn Any>` ([@sec:trait_any]).
 Type mapa řeší tento problém tak, že všechny objekty, které jsou do ní vloženy,
 převádí na trait objekt `Box<dyn Any>` a když uživatel chce tyto data získat zpět z type mapy,
-tak stačí jen znát datový typ těchto dat.
+tak stačí jen znát datový typ těchto dat ([@sec:downcast_methods]).
 Bohužel i toto řešení má své omezení a to, že pro daný datový typ může type mapa obsahovat
 pouze jednu instanci tohoto datového typu.
 
