@@ -29,7 +29,7 @@ assert_eq!(is_string(&"cookie monster".to_string()), true);
 : Příklad použítí `TypeId::of<T>()` funkce [@rust_docs_typeid] {#lst:typeid_of_example}
 
 
-### Trait `Any` {#sec:trait_any}
+### Trait Any {#sec:trait_any}
 
 Trait `Any` je jedním z hlavních stavebních bloků pro dynamické typování a runtime reflexi.
 Obsahuje pouze jednu metodu `type_id`, která vrací `TypeId`, konkrétního datového typu.
