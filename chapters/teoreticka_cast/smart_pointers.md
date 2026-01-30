@@ -39,7 +39,7 @@ ale oproti Boxu tato paměť může být bezpečné sdílena mezi vlákny progra
 use std::sync::Arc;
 
 fn main() {
-    let sdilena_hodnota = Arc::new("Sďílený řetezec".to_string());
+    let sdilena_hodnota = Arc::new("Sdílený řetězec".to_string());
 
     let sdilena_hodnota_pro_vlakno1 = Arc::clone(&sdilena_hodnota);
     let vlakno1 = std::thread::spawn(move || {
@@ -83,7 +83,7 @@ fn main() {
     {
         // získání zámku pro hodnotu
         let mut guard = sdilena_hodnota.lock().unwrap();
-        // derefence zámku na měnitelnou referenci
+        // dereference zámku na měnitelnou referenci
         // a přidání 1 k existující hodnotě
         *guard += 1;
         // zámek je na konci tohoto bloku odemčen
@@ -92,7 +92,7 @@ fn main() {
     {
         // získání zámku pro hodnotu
         let mut guard = sdilena_hodnota.lock().unwrap();
-        // derefence zámku na měnitelnou referenci
+        // dereference zámku na měnitelnou referenci
         // a přidání 25 k existující hodnotě
         *guard += 25;
         // zámek je odemčen zde ručně
@@ -131,7 +131,7 @@ fn main() {
         let guard1 = sdilena_hodnota.read().unwrap();
         let guard2 = sdilena_hodnota.read().unwrap();
         let guard3 = sdilena_hodnota.read().unwrap();
-        // derefence zámků na reference
+        // dereference zámků na reference
         // a kontrola, že je součet správný
         assert_eq!(*guard1 + *guard2 + *guard3, 15);
         // zámky jsou na konci tohoto bloku odemčeny
@@ -140,7 +140,7 @@ fn main() {
     {
         // získání zámku pro zápis
         let mut guard = sdilena_hodnota.write().unwrap();
-        // derefence zámku na měnitelnou referenci
+        // dereference zámku na měnitelnou referenci
         // a přidání 25 k existující hodnotě
         *guard += 25;
         // zámek je odemčen zde ručně
