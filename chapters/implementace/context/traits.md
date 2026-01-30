@@ -83,7 +83,8 @@ pub trait Task<T>: Future<Output = T> {
 
 Trait `Task` je nástavba nad traitem `Future` ([@sec:future_trait]),
 která přidává dvě velmi důležité metody a slouží k reprezentaci vzniklé asynchronní úlohy.
-Tento trait hlavně slouží jako abstrakce nad konkrétními implementacemi asynchronních úloh v různých asynchronní runtimech.
+Tento trait hlavně slouží jako abstrakce nad konkrétními implementacemi asynchronních úloh
+v různých asynchronní runtimech ([@sec:async_runtime]).
 Metoda `is_finished` vrací zda úloha byla dokončena,
 bez ohledu na to jestli úspěšně či neúspěšně.
 Metoda `cancel` konzumuje instanci úlohy a signalizuje úloze,
@@ -104,7 +105,8 @@ pub trait SpawnAsync {
 : Implementace traitu `SpawnAsync` {#lst:spawn_async_trait_impl}
 
 Trait `SpawnAsync` poskytuje rozhraní pro vytváření asynchronních úloh.
-Tento trait poskytuje abstrakci nad různými asynchronními prostředími pro práci s úlohami.
+Tento trait je abstrakcí nad různými asynchronními runtimy ([@sec:async_runtime])
+pro vytváření a práci s asynchronními úlohami.
 Obsahuje pouze jednu metodu `spawn`, která bere asynchronní úlohu
 a vrací nějaký datový typ implementující trait `Task`.
 Tato asynchronní úloha musí být `Send + 'static`,

@@ -67,7 +67,7 @@ Kontext předaný metodě `poll` poskytuje takzvaný `Waker`,
 sloužící k signalizaci, že asynchronní úloha je připravena k probuzení.
 [@rust_docs_future_trait; @async_in_rust_book]
 
-### Runtime
+### Runtime {#sec:async_runtime}
 
 Runtime je systém, který umožňuje uživatelům spouštět asynchronní kód
 a má na starost správu a vykonávání asynchronních úloh.
