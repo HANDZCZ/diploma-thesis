@@ -475,3 +475,20 @@ references:
           day: 29
       lang: "en"
 
+    - type: article
+      id: rust_docs_pin_module
+      title: "Module pin - The Rust Standard Library documentation"
+      URL: "https://doc.rust-lang.org/std/pin/index.html"
+      container-title: "The Rust Standard Library documentation"
+      author:
+          - family: The Rust Team
+      issued:
+          year: 2026
+          month: 01
+          day: 19
+      accessed:
+          year: 2026
+          month: 01
+          day: 30
+      lang: "en"
+
