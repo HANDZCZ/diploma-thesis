@@ -70,6 +70,10 @@ a řešení jak bude slučování probíhat v těchto případech ponechat na u�
 
 # Práce se synchronními a asynchronními úlohami
 
+V této kapitole jsou definovány a popsány traity potřebné pro vytváření
+a práci se synchronními a asynchronními úlohami.
+Tyto traity slouží hlavně k abstrakci konkrétních implementací v asynchronních runtimech ([@sec:async_runtime]).
+
 ## Trait Task
 
 ```{.rust .linenos}
