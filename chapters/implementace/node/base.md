@@ -53,5 +53,6 @@ kterou by poté uživatel mohl přepsat.
 Výchozí implementace metody `describe` vrací pouze název typu uzlu,
 vstupního, výstupního, chybového a kontextového typu.
 Z názvu výstupního typu odstraňuje `NodeOutput<>`, aby výsledný popis byl více přehledný.
-Pro získání takzvané `DescriptionBase` se používá pomocná metoda, která je popsána v vlastní kapitole (TODO: link na description).
+Pro získání takzvané `DescriptionBase` se používá pomocná metoda, která je popsána ve vlastní kapitole
+([@sec:node_describe_chapter; @sec:description_base_struct]).
 
