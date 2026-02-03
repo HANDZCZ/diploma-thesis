@@ -169,6 +169,7 @@ pub struct ExternalResource {
 }
 
 impl ExternalResource {
+    #[must_use]
     pub fn new<ResourceType, Output>() -> Self {
         Self {
             r#type: Type::of::<ResourceType>(),
@@ -177,7 +178,11 @@ impl ExternalResource {
         }
     }
 
-    pub fn with_description(mut self, description: String) -> Self {
+    #[must_use]
+    pub fn with_description(
+        mut self,
+        description: String
+    ) -> Self {
         self.description = Some(description);
         self
     }

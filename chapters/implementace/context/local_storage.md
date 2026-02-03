@@ -243,8 +243,7 @@ impl LocalStorage for LocalStorageImpl {
 
     fn insert<T>(&mut self, val: T) -> Option<T> where T: Merge + Clone + Send + 'static {
         self.changed.insert(TypeId::of::<T>());
-        self.inner
-            .insert(TypeId::of::<T>(), Box::new(val))
+        self.inner.insert(TypeId::of::<T>(), Box::new(val))
             .map(|val| *(val as Box<dyn Any>).downcast::<T>().unwrap())
     }
 
