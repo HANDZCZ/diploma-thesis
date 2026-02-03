@@ -234,3 +234,5 @@ chapters/zaver.md
 
 # Přílohy
 
+![Příklad vytvořené vizualizace pomocí formátovače `D2Describer`](./pictures/d2describer_output_example.png){#fig:d2describer_output_example height=88%}
+

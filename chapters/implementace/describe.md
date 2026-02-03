@@ -195,3 +195,65 @@ která z přijatých generických typů vytváří struct `ExternalResource`.
 Dále je také implementována pomocná metoda `with_description`,
 které nastavuje atribut `description`.
 
+## Privátní funkce remove_generics_from_name
+
+```{.rust .linenos}
+pub(crate) fn remove_generics_from_name(orig_name: &mut String) {
+    let generic_start_idx = orig_name.find('<').unwrap_or(orig_name.len());
+    orig_name.truncate(generic_start_idx);
+}
+```
+
+: Implementace funkce `remove_generics_from_name` {#lst:remove_generics_from_name_impl}
+
+Funkce `remove_generics_from_name` je pomocná privátní funkce,
+která odstraňuje vše za a včetně generických parametrů v řetězci.
+Tohoto je docíleno, tak že se najde první lokace znaku otevírací špičaté závorky (`<`)
+v řetězci a originální řetězec je zkrácen na tento nalezený index.
+Tato funkce je použita při vytváření popisů pro toky.
+Díky této pomocné funkci a pomocné funkci `Description::modify_name`
+je úprava jména datového typu toku výrazně zjednodušena.
+
+## Konfigurovatelný D2 formátovač popisů uzlů a toků
+
+Pro vytváření vizualizací uzlů a toků je implementován konfigurovatelný formátovač popisů.
+Tento formátovač převádí popis uzlu či toku do [D2 jazyka](https://d2lang.com/) pro vytváření grafů.
+Ukázka vygenerované vizualizace ([@fig:d2describer_output_example]) se nachází v přílohách.
+
+```{.rust .linenos}
+#[derive(Debug)]
+pub struct D2Describer {
+    pub simple_type_name: bool,
+    pub show_context_in_node: bool,
+    pub show_description: bool,
+    pub show_externals: bool,
+}
+
+impl D2Describer {
+    #[must_use]
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn modify(&mut self, func: impl FnOnce(&mut Self)) -> &mut Self {
+        func(self);
+        self
+    }
+
+    #[must_use]
+    pub fn format(&self, desc: &Description) -> String { .. }
+}
+```
+
+: Implementace structu `D2Describer` {#lst:struct_d2describer_impl}
+
+Struct `D2Describer` definuje vše potřebné pro převod popisů uzlů
+a toků do D2 jazyka a obsahuje přepínače pro konfiguraci formátovače.
+Atribut `simple_type_name` rozhoduje zda mají mít datové typy zjednodušený název pomocí metody `Type::get_name_simple`
+a atributy `show_context_in_node`, `show_description` a `show_externals` rozhodují o tom,
+jestli výsledný graf má obsahovat datový typ kontextu, textový popis a externí zdroje.
+
+Pro tento struct je implementována funkce `new`, pro vytvoření tohoto structu s výchozím nastavením.
+Dále je implementována metoda `modify`, pro jednoduchou úpravu nastavení,
+a metoda `format`, která převádí popis uzlu či toku do D2 jazyka a vrací výsledný řetězec.
+
