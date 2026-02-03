@@ -132,7 +132,7 @@ pub trait SpawnSync {
 Trait `SpawnSync` poskytuje rozhraní pro vytváření synchronních úloh.
 Tento trait je synchronní verze `SpawnAsync` traitu
 a poskytuje možnost vytváření potenciálně časově či výpočetně náročných úloh,
-bez blokování asynchronních runtimu.
+bez blokování asynchronních runtimu ([@sec:async_runtime]).
 Stejně jako trait `SpawnAsync` obsahuje pouze jednu metodu se jménem `spawn_blocking`,
 která bere synchronní úlohu a vrací nějaký datový typ implementující trait `Task`.
 Pro tuto synchronní úlohu také platí, že musí být `Send + 'static`,

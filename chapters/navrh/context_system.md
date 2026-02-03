@@ -109,7 +109,7 @@ Uloziste: {
 }
 ```
 
-### Kontext za pomocí generického typu
+### Kontext za pomocí generického typu {#sec:generic_type_for_kontext}
 
 Implementace za pomocí type mapy řeší většinu, ne-li všechny, problémy s úložištěm,
 ale neřeší problém kontextu.
