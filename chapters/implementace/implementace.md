@@ -17,3 +17,9 @@ describe.md
 
 \newpage
 
+```{.include}
+flows/flows.md
+```
+
+\newpage
+
