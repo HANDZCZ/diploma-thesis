@@ -1,5 +1,5 @@
 
-# Enum NodeOutput
+# Enum NodeOutput {#sec:enum_node_output}
 
 ```{.rust .linenos}
 #[derive(Debug, PartialEq, Eq)]

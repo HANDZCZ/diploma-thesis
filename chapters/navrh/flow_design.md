@@ -1,5 +1,5 @@
 
-## Konstrukce toku
+## Konstrukce toku {#sec:flow_construction_design}
 
 Při konstrukci toku je nutno zajistit aby uzly na sebe mohly navazovat, bez jakýchkoliv potíží.
 Dále je nutno zajistit, že vstup do toku lze poslat do prvního uzlu
@@ -28,7 +28,7 @@ Builder\<Vstup, Vystup, TypyUzlu\>: {
 }
 ```
 
-## Uložení uzlů v toku
+## Uložení uzlů v toku {#sec:flow_node_store_desing}
 
 Uložení uzlů v toku může být provedeno dvěma hlavními způsoby.
 První z možností je použití homogenních polí, kde každý uzel by musel mít stejný typ.
@@ -67,7 +67,7 @@ struct NazevToku<Vstup, Vystup, TupleListTyp> {
 
 : Návrh struktury objektu toku {#lst:flow_struct_design}
 
-## Definice běhu toku
+## Definice běhu toku {#sec:flow_run_design}
 
 Běh toku lze zhruba rozdělit do čtyř částí.
 První část je vytvoření asynchronních úloh.

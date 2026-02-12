@@ -1,5 +1,5 @@
 
-# Trait Node
+# Trait Node {#sec:trait_node}
 
 ```{.rust .linenos}
 pub trait Node<Input, Output, Error, Context> {

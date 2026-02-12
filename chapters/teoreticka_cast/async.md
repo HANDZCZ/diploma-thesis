@@ -28,7 +28,7 @@ a struktury pro vytvoření runtimů a asynchronních úloh.
 Díky tomuto přístupu si uživatel může vybrat jaký runtime bude používat
 a kdy budou asynchronní úlohy spuštěny.
 
-### Enum Poll
+### Enum Poll {#sec:enum_poll}
 
 ```{.rust .linenos}
 pub enum Poll<T> {
