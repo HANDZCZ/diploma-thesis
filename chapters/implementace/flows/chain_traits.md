@@ -38,3 +38,25 @@ Tento trait má výchozí implementaci pro tuple listy,
 které mají strukturu takovou, že první element je na první pozici a poslední vrstvě
 `((((), A), B), C)` ([@lst:tuple_lists_represented_in_code]).
 
+# Privátní pomocný trait ChainDescribe
+
+```{.rust .linenos}
+pub trait ChainDescribe<Context, T> {
+    const COUNT: usize;
+
+    fn describe(&self, description_acc: &mut Vec<Description>);
+}
+```
+
+: Implementace traitu `ChainDescribe` {#lst:trait_chain_describe_impl}
+
+Trait `ChainDescribe` slouží k získání popisů uzlů obsažených v toku.
+Obsahuje metodu describe, která bere referenci na tuple list
+a měnitelnou referenci na vektor popisů uzlů, do kterého jsou všechny popisy uzlů vloženy.
+Dále také obsahuje konstantu `COUNT`, která vyjadřuje počet elementů v tuple listu.
+Pomocí této konstanty lze vektor pre-alokovat a vyhnout se tak zbytečným re-alokacím.
+
+Tento trait stejně jako trait `ChainDebug` má výchozí implementaci pro tuple listy,
+které mají strukturu takovou, že první element je na první pozici a poslední vrstvě
+`((((), A), B), C)` ([@lst:tuple_lists_represented_in_code]).
+
