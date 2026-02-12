@@ -21,3 +21,20 @@ Typový alias `NodeResult` definuje reprezentaci výstupního a chybového typu 
 Díky tomuto type aliasu je definice výstupu uzlu v tocích výrazně zjednodušena
 a možnost nesprávné definice snížena.
 
+# Privátní pomocná struktura enum SoftFailPoll
+
+```{.rust .linenos}
+#[derive(Debug)]
+pub enum SoftFailPoll<T> {
+    Pending,
+    Ready(T),
+    SoftFail,
+}
+```
+
+: Implementace struktury enum `SoftFailPoll` {#lst:enum_soft_fail_poll_impl}
+
+Enum `SoftFailPoll` složí k zjednodušení reprezentace výstupu z asynchronní úlohy.
+Přidává navíc oproti enumu `Poll` ([@sec:enum_poll]) možnost vrátit `SoftFail`,
+který má stejný význam jako v enumu `NodeOutput` ([@sec:enum_node_output]).
+
