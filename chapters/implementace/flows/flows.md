@@ -19,5 +19,6 @@ nebo nedostatek fyzické paměti.
 ```{.include shift-heading-level-by=1}
 mod_future_utils.md
 chain_traits.md
+generic_defs/generic_defs.md
 ```
 
