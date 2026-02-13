@@ -80,7 +80,7 @@ který komunikuje s operačním systémem,
 a plánovače, který rozhoduje o tom, kdy a kde jsou úlohy prováděny.
 [@async_in_rust_book]
 
-### Syntaxe async/await a asynchronních úloh
+### Syntaxe async/await a asynchronních úloh {#sec:async_await_syntax}
 
 V Rustu je možno definovat asynchronní úlohu či funkci více způsoby.
 Definice asynchronní úlohy může obsahovat klíčové slovo `async`

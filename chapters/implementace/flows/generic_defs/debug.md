@@ -33,7 +33,7 @@ V těle metody volají pomocnou metodu `debug_struct`,
 která je definována standardní knihovnou pro struct `Formatter`,
 jejíž parametr je název datového typu a na vrácené hodnotě volají
 metodu `field`, která přiděluje structu atribut se jménem "nodes"
-a hodnotu získanou z `ChainDebug` traitu.
+a hodnotu získanou z `ChainDebug` traitu ([@sec:chain_debug]).
 Nakonec už je jen volána metoda `finish_non_exhaustive`,
 která říká, že skončila definice, toho co má být vytištěno,
 ale nebyly uvedeny všechny atributy tištěného structu.

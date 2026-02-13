@@ -1,5 +1,5 @@
 
-# Privátní pomocný trait ChainDebug
+# Privátní pomocný trait ChainDebug {#sec:chain_debug}
 
 ```{.rust .linenos}
 pub trait ChainDebug {
