@@ -20,5 +20,6 @@ nebo nedostatek fyzické paměti.
 mod_future_utils.md
 chain_traits.md
 generic_defs/generic_defs.md
+sequential_flow/sequential_flow.md
 ```
 
