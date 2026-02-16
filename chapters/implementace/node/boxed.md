@@ -22,32 +22,6 @@ Díky tomuto obalu je možno pracovat s uzly ve stejném stylu, jako kdyby trait
 Přidává tedy další stupeň volnosti pro uživatele této knihovny.
 Tento obal hlavně existuje proto, aby si uživatel mohl vybrat, zda chce pracovat se statickým výběrem nebo s dynamickým.
 
-```{.rust .linenos}
-impl<Input, Output, Error, Context, T> BoxedNode<Input, Output, Error, Context> for T
-where
-    T: Node<Input, Output, Error, Context>,
-{
-    fn run_boxed<'life0, 'life1, 'async_trait>(
-        &'life0 mut self,
-        input: Input,
-        context: &'life1 mut Context,
-    ) -> Pin<Box<Future<Output = Result<Output, Error>> + Send + 'async_trait>>
-    where
-        Input: 'async_trait, Output: 'async_trait,
-        Error: 'async_trait, 'life0: 'async_trait,
-        'life1: 'async_trait, Self: 'async_trait,
-    {
-        Box::pin(<Self as Node<Input, Output, Error, Context>>::run(self, input, context))
-    }
-
-    fn describe(&self) -> Description {
-        <Self as Node<Input, Output, Error, Context>>::describe(self)
-    }
-}
-```
-
-: Výchozí implementace traitu `BoxedNode` pro jakýkoli typ implementující `Node` trait {#lst:boxed_node_trait_for_node_impl}
-
 Pro tento obal je také vytvořená výchozí implementace pro jakýkoli typ implementující trait `Node`.
 Metoda `run` vypadá komplikovaně, ale jen obaluje vytvořenou asynchronní úlohu z `Node` traitu do pin-boxu ([@sec:pin; @sec:box])
 a přemění typ této úlohy trait object `dyn Future + Send`.

@@ -236,3 +236,37 @@ chapters/zaver.md
 
 ![Příklad vytvořené vizualizace pomocí formátovače `D2Describer`](./pictures/d2describer_output_example.png){#fig:d2describer_output_example height=88%}
 
+```{.rust .linenos}
+impl<..> Builder<
+    Input, Output, Error, Context, NodeTypes,
+    ChainLink<OtherNodeIOETypes, NodeIOE<LastNodeInType, LastNodeOutType, LastNodeErrType>>,
+> where .. {
+    pub fn add_node<NodeType, NodeInput, NodeOutput, NodeError>(self, node: NodeType) -> Builder<
+        Input, Output, Error, Context,
+        ChainLink<NodeTypes, NodeType>,
+        ChainLink<
+            ChainLink<OtherNodeIOETypes, NodeIOE<LastNodeInType, LastNodeOutType, LastNodeErrType>>,
+            NodeIOE<NodeInput, NodeOutput, NodeError>,
+        >,
+    > where
+        LastNodeOutType: Into<NodeInput>,
+        NodeError: Into<Error>,
+        NodeType: Node<NodeInput, NodeOutputStruct<NodeOutput>, NodeError, Context>,
+        ..
+    {
+        Builder { .., nodes: (self.nodes, node) }
+    }
+
+    pub fn build(self) -> SequentialFlow<
+        Input, Output, Error, Context, NodeTypes,
+        ChainLink<OtherNodeIOETypes, NodeIOE<LastNodeInType, LastNodeOutType, LastNodeErrType>>,
+    > where
+        LastNodeOutType: Into<Output>,
+    {
+        Flow { .., nodes: Arc::new(self.nodes) }
+    }
+}
+```
+
+: Implementace toku `SequentialFlow` - definice builderu - metoda `add_node`, pro ostatní uzly, a metoda `build` {#lst:sequential_flow_builder_oadd_node_build_def_impl}
+

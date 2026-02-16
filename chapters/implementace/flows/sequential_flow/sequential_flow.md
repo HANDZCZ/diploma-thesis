@@ -19,20 +19,7 @@ V ostatních případech výstup tohoto toku záleží na výstupu uzlů a zní 
 define_flow!(
     SequentialFlow,
     ChainRunSequential,
-    |self| {
-        let node_count = <NodeTypes as ChainDescribe<Context, NodeIOETypes>>::COUNT;
-        let mut node_descriptions = Vec::with_capacity(node_count);
-        self.nodes.describe(&mut node_descriptions);
-
-        let mut edges = Vec::with_capacity(node_count + 1);
-        edges.push(Edge::flow_to_node(0));
-        for i in 0..node_count - 1 {
-            edges.push(Edge::node_to_node(i, i + 1));
-        }
-        edges.push(Edge::node_to_flow(node_count - 1));
-
-        Description::new_flow(self, node_descriptions, edges).modify_name(remove_generics_from_name)
-    },
+    |self| { .. },
     Input: Send, Error: Send, Context: Send,
     ..
 );
@@ -40,10 +27,35 @@ define_flow!(
 
 : Implementace toku `SequentialFlow` - definice toku {#lst:sequential_flow_def_impl}
 
-Pro definici toku je použito makro `define_flow`,
-ve kterém lze vidět, že běh toku je obstaráván `ChainRunSequential` traitem.
-Dále lze vidět jak je definováno tělo pro metodu `describe`
-a jaké dodatečné požadavky jsou kladeny na generické parametry.
+Pro definici toku je použito makro `define_flow`
+a běh toku je obstaráván `ChainRunSequential` traitem.
+Tělo `describe` metody vytváří acyklický orientovaný graf,
+kde každý uzel má jednu hranu mířící do uzlu a jednu hranu vycházející z uzlu.
+Vycházející hrana je vždy, až na poslední uzel, spojena s následujícím uzlem v toku.
+
+```{.d2 #fig:sequential_flow_visualization caption="Vizializace toku SequentialFlow"}
+vars: {
+  d2-config: {
+    layout-engine: elk
+    pad: 0
+  }
+}
+direction: right
+
+Start: {
+  shape: oval
+  style.stroke-dash: 3
+}
+Konec: {
+  shape: oval
+  style.stroke-dash: 3
+}
+Uzel*: {
+  style.border-radius: 8
+}
+
+Start -> Uzel1 -> Uzel2 -> Uzel3 -> Konec
+```
 
 ```{.include}
 builder.md

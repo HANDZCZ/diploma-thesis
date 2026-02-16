@@ -70,7 +70,6 @@ a budou vracet zámky implementující traity `Deref` nebo `DerefMut` pro dočas
 ```{.rust .linenos}
 type StorageItem = Arc<RwLock<Option<Box<dyn Any + Send + Sync>>>>;
 
-#[derive(Default, Clone)]
 pub struct SharedStorageImpl {
     inner: Arc<Mutex<HashMap<TypeId, StorageItem>>>,
 }
@@ -95,11 +94,6 @@ pub struct ReadGuard<T: 'static> {
     pub _item_type: std::marker::PhantomData<T>,
 }
 
-pub struct WriteGuard<T: 'static> {
-    pub guard: async_lock::RwLockWriteGuardArc<Option<Box<dyn Any + Send + Sync>>>,
-    pub _item_type: std::marker::PhantomData<T>,
-}
-
 impl<T: 'static> Deref for ReadGuard<T> {
     type Target = T;
 
@@ -109,13 +103,9 @@ impl<T: 'static> Deref for ReadGuard<T> {
     }
 }
 
+pub struct WriteGuard<T: 'static> { .. }
 impl<T: 'static> Deref for WriteGuard<T> { .. }
-impl<T: 'static> DerefMut for WriteGuard<T> {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        let any_ref: &mut dyn Any = &mut **self.guard.as_mut().unwrap();
-        any_ref.downcast_mut::<T>().unwrap()
-    }
-}
+impl<T: 'static> DerefMut for WriteGuard<T> { .. }
 ```
 
 : Implementace sdíleného úložiště - implementace dočasných zámku {#lst:shared_storage_impl_guards_impl}
@@ -129,24 +119,6 @@ která je poté vrácena.
 
 ### Implementace základních traitů {.unlisted .unnumbered}
 
-```{.rust .linenos}
-impl Fork for SharedStorageImpl {
-    fn fork(&self) -> Self {
-        self.clone()
-    }
-}
-
-impl Update for SharedStorageImpl {
-    fn update_from(&mut self, _other: Self) {}
-}
-
-impl Join for SharedStorageImpl {
-    fn join(&mut self, _others: Box<[Self]>) {}
-}
-```
-
-: Implementace sdíleného úložiště - implementace základních traitů `Fork`, `Update` a `Join` {#lst:shared_storage_impl_base_traits_impl}
-
 Implementace základních traitů `Update` a `Join` je velmi jednoduchá,
 protože data jsou sdílena mezi instancemi,
 tak není nutno nijak řešit aktualizaci a slučování kontextů.
@@ -155,38 +127,35 @@ protože jen klonuje celou strukturu a vrací ji.
 Při tomto klonování dochází jen k naklonování atomické reference (`Arc` - [@sec:arc]),
 což je velmi rychlé a levné.
 
-### Implementace traitu LocalStorage {.unlisted .unnumbered}
+### Implementace traitu SharedStorage {.unlisted .unnumbered}
 
 ```{.rust .linenos}
-impl SharedStorage for SharedStorageImpl {
-    fn get<T>(&self) -> impl Future<Output = Option<impl Deref<Target = T>>> + Send
-    where
-        T: 'static,
-    {
-        let rw_lock = {
-            let guard = self.inner.lock().unwrap();
-            guard.get(&TypeId::of::<T>()).cloned()
+fn get<T>(&self) -> impl Future<Output = Option<impl Deref<Target = T>>> + Send
+where
+    T: 'static,
+{
+    let rw_lock = {
+        let guard = self.inner.lock().unwrap();
+        guard.get(&TypeId::of::<T>()).cloned()
+    };
+
+    async move {
+        let rw_lock = rw_lock?;
+        let rw_lock_guard = rw_lock.read_arc().await;
+        if rw_lock_guard.is_none() {
+            return None;
+        }
+        let read_guard = guards::ReadGuard {
+            guard: rw_lock_guard,
+            _item_type: std::marker::PhantomData,
         };
 
-        async move {
-            let rw_lock = rw_lock?;
-            let rw_lock_guard = rw_lock.read_arc().await;
-            if rw_lock_guard.is_none() {
-                return None;
-            }
-            let read_guard = guards::ReadGuard {
-                guard: rw_lock_guard,
-                _item_type: std::marker::PhantomData,
-            };
-
-            Some(read_guard)
-        }
+        Some(read_guard)
     }
-    ..
 }
 ```
 
-: Implementace sdíleného úložiště - implementace traitu `SharedStorage` {#lst:shared_storage_impl_trait_shared_storage_impl}
+: Implementace sdíleného úložiště - implementace traitu `SharedStorage` - metoda `get` {#lst:shared_storage_impl_trait_shared_storage_get_impl}
 
 Trait `SharedStorage` je implementován, tak že v každé metodě se nejprve zamkne type mapa
 a získá se hodnota uložená v type mapě pro daný datový typ, tato hodnota se naklonuje

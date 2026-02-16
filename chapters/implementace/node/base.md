@@ -9,25 +9,7 @@ pub trait Node<Input, Output, Error, Context> {
         context: &mut Context,
     ) -> impl Future<Output = Result<Output, Error>> + Send;
 
-    fn describe(&self) -> Description
-    where
-        Self: Sized,
-    {
-        let mut base = DescriptionBase::from::<Self, Input, Output, Error, Context>();
-
-        // remove NodeOutput<> from output name
-        let output_name = &mut base.output.name;
-        if let Some(b_pos) = output_name.find('<')
-            && output_name[..b_pos].contains("NodeOutput")
-        {
-            // remove `..::NodeOutput<`
-            output_name.replace_range(0..=b_pos, "");
-            // remove ending `>`
-            output_name.pop();
-        }
-
-        Description::Node { base }
-    }
+    fn describe(&self) -> Description where Self: Sized { .. }
 }
 ```
 

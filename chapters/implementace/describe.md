@@ -8,7 +8,6 @@ včetně typu kontextu, popisu poskytnutého uživatelem a externích zdrojů po
 ## Enum Description
 
 ```{.rust .linenos}
-#[derive(Debug, Clone)]
 pub enum Description {
     Node {
         base: DescriptionBase,
@@ -43,7 +42,6 @@ což jsou pomocné metody, které jsou zde pro jednodušší úpravu hodnot vno�
 ## Struct DescriptionBase {#sec:description_base_struct}
 
 ```{.rust .linenos}
-#[derive(Debug, Clone)]
 pub struct DescriptionBase {
     pub r#type: Type,
     pub input: Type,
@@ -55,17 +53,7 @@ pub struct DescriptionBase {
 }
 
 impl DescriptionBase {
-    pub fn from<NodeType, Input, Output, Error, Context>() -> Self {
-        Self {
-            r#type: Type::of::<NodeType>(),
-            input: Type::of::<Input>(),
-            output: Type::of::<Output>(),
-            error: Type::of::<Error>(),
-            context: Type::of::<Context>(),
-            description: None,
-            externals: None,
-        }
-    }
+    pub fn from<NodeType, Input, Output, Error, Context>() -> Self { .. }
 
     pub fn from_node<NodeType, Input, Output, Error, Context>(_node: &NodeType) -> Self where NodeType: Node<Input,NodeOutput<Output>, Error, Context> {
         Self::from::<NodeType, Input, Output, Error, Context>()
@@ -90,19 +78,13 @@ které nastavují atributy této struktury.
 ## Struct Type
 
 ```{.rust .linenos}
-#[derive(Debug, Clone)]
 pub struct Type {
     pub name: String,
 }
 
 impl Type {
-    pub fn of<T>() -> Self {
-        Self { name: type_name::<T>().to_owned() }
-    }
-
-    pub fn of_val<T>(_: &T) -> Self {
-        Self::of::<T>()
-    }
+    pub fn of<T>() -> Self { Self { name: type_name::<T>().to_owned() } }
+    pub fn of_val<T>(_: &T) -> Self { Self::of::<T>() }
 
     pub fn get_name_simple(&self) -> String {
         tynm::TypeName::from(self.name.as_str()).as_str()
@@ -126,13 +108,11 @@ a tím docílit vytváření přehlednějších vizualizací.
 ## Stuct Edge a enum EdgeEnding
 
 ```{.rust .linenos}
-#[derive(Debug, Clone)]
 pub struct Edge {
     pub start: EdgeEnding,
     pub end: EdgeEnding,
 }
 
-#[derive(Debug, Clone)]
 pub enum EdgeEnding {
     ToFlow,
     ToNode {
@@ -161,7 +141,6 @@ což jsou indexy uzlů, a získá vytvořenou strukturu.
 ## Struct ExternalResource
 
 ```{.rust .linenos}
-#[derive(Debug, Clone)]
 pub struct ExternalResource {
     pub r#type: Type,
     pub description: Option<String>,
@@ -169,23 +148,8 @@ pub struct ExternalResource {
 }
 
 impl ExternalResource {
-    #[must_use]
-    pub fn new<ResourceType, Output>() -> Self {
-        Self {
-            r#type: Type::of::<ResourceType>(),
-            description: None,
-            output: Type::of::<Output>(),
-        }
-    }
-
-    #[must_use]
-    pub fn with_description(
-        mut self,
-        description: String
-    ) -> Self {
-        self.description = Some(description);
-        self
-    }
+    pub fn new<ResourceType, Output>() -> Self { .. }
+    pub fn with_description(mut self, description: String) -> Self { ..}
 }
 ```
 
@@ -226,7 +190,6 @@ Tento formátovač převádí popis uzlu či toku do [D2 jazyka](https://d2lang.
 Ukázka vygenerované vizualizace ([@fig:d2describer_output_example]) se nachází v přílohách.
 
 ```{.rust .linenos}
-#[derive(Debug)]
 pub struct D2Describer {
     pub simple_type_name: bool,
     pub show_context_in_node: bool,
@@ -235,17 +198,8 @@ pub struct D2Describer {
 }
 
 impl D2Describer {
-    #[must_use]
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    pub fn modify(&mut self, func: impl FnOnce(&mut Self)) -> &mut Self {
-        func(self);
-        self
-    }
-
-    #[must_use]
+    pub fn new() -> Self { .. }
+    pub fn modify(&mut self, func: impl FnOnce(&mut Self)) -> &mut Self { .. }
     pub fn format(&self, desc: &Description) -> String { .. }
 }
 ```

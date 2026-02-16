@@ -11,7 +11,6 @@ a práce s ní neovlivňuje ostatní instance.
 ## Enum MergeResult
 
 ```{.rust .linenos}
-#[derive(Debug)]
 pub enum MergeResult<T> {
     KeepParent,
     ReplaceOrInsert(T),
@@ -83,7 +82,6 @@ Instance které mají být vloženy do tohoto úložiště musí implementovat t
 ## Implementace lokálního úložiště
 
 ```{.rust .linenos}
-#[derive(Default)]
 pub struct LocalStorageImpl {
     inner: HashMap<TypeId, Box<dyn StorageItem>>,
     changed: HashSet<TypeId>,
@@ -126,37 +124,6 @@ aby bylo možno tento trait považovat za ekvivalentní ve funkčnosti jako trai
 Dále do originální funkce `merge` byla přidána reference na sama sebe,
 která je nutná aby trait `StorageItem` mohl být dyn kompatibilní ([@lst:not_dyn_compatible_trait_example] - funkce `ziskej_typ`).
 
-```{.rust .linenos}
-impl<T> StorageItem for T
-where
-    T: Merge + Any + Send + Clone,
-{
-    fn duplicate(&self) -> Box<dyn StorageItem> {
-        Box::new(self.clone())
-    }
-
-    // SAFETY: self can never be used otherwise it can lead to UB
-    fn merge(
-        &self,
-        parent: Option<&dyn StorageItem>,
-        others: Box<[Box<dyn StorageItem>]>,
-    ) -> MergeResult<Box<dyn StorageItem>> {
-        let others = others
-            .into_iter()
-            .map(|b| *(b as Box<dyn Any>).downcast::<T>().unwrap())
-            .collect::<Box<_>>();
-        let parent = parent.map(|v| (v as &dyn Any).downcast_ref::<T>().unwrap());
-        match <T as Merge>::merge(parent, others) {
-            MergeResult::ReplaceOrInsert(val) => MergeResult::ReplaceOrInsert(Box::new(val)),
-            MergeResult::KeepParent => MergeResult::KeepParent,
-            MergeResult::Remove => MergeResult::Remove,
-        }
-    }
-}
-```
-
-: Implementace lokálního úložiště - výchozí implementace traitu `StorageItem` {#lst:local_storage_impl_trait_storage_item_default_impl}
-
 Trait `StorageItem` je implementován pro jakýkoli typ `T`,
 který implementuje `Merge + Any + Send + Clone`.
 Metoda `duplicate` pouze volá metodu `clone` z traitu `Clone`
@@ -169,47 +136,13 @@ aby koerce mohla převést konkrétní datový typ `T` na trait objekt `dyn Stor
 
 ### Implementace základních traitů {.unlisted .unnumbered}
 
-```{.rust .linenos}
-impl Fork for LocalStorageImpl {
-    fn fork(&self) -> Self {
-        Self {
-            inner: self.inner.clone(),
-            changed: HashSet::new(),
-        }
-    }
-}
-```
-
-: Implementace lokálního úložiště - implementace traitu `Fork` {#lst:local_storage_impl_trait_fork_impl}
-
 Trait `Fork` je implementován, tak že type mapa obsahující data je naklonována
 a pro atribut `changed` je vytvořen nový hashset.
 Tímto se docílí toho, že instance lokálního úložiště jsou na sobě nezávislé
 a při slučování kontextů proběhne sloučení pouze změněných hodnot.
 
-```{.rust .linenos}
-impl Clone for Box<dyn StorageItem> {
-    fn clone(&self) -> Self {
-        self.duplicate()
-    }
-}
-```
-
-: Implementace lokálního úložiště - implementace traitu `Clone` pro `Box<dyn StorageItem>` {#lst:local_storage_impl_trait_clone_for_storage_item}
-
 K naklonování type mapy je nutno aby hodnoty implementovaly trait `Clone` pro `Box<dyn StorageItem>`
 a z tohoto důvodu byla přidána implementace, která volá metodu `duplicate` a vrací její výsledek.
-
-```{.rust .linenos}
-impl Update for LocalStorageImpl {
-    fn update_from(&mut self, other: Self) {
-        self.inner = other.inner;
-        self.changed.extend(other.changed.iter());
-    }
-}
-```
-
-: Implementace lokálního úložiště - implementace traitu `Update` {#lst:local_storage_impl_trait_update_impl}
 
 Trait `Update` má velmi jednoduchou implementaci,
 protože stačí jen originální type mapu nahradit type mapou z instance,
@@ -225,38 +158,16 @@ ale samotná implementace je velmi zdlouhavá a řeší se v ní plno krajních 
 ### Implementace traitu LocalStorage {.unlisted .unnumbered}
 
 ```{.rust .linenos}
-impl LocalStorage for LocalStorageImpl {
-    fn get<T>(&self) -> Option<&T> where T: 'static {
-        self.inner.get(&TypeId::of::<T>()).map(|val| {
-            let any_ref: &dyn Any = &**val;
-            any_ref.downcast_ref::<T>().unwrap()
-        })
-    }
-
-    fn get_mut<T>(&mut self) -> Option<&mut T> where T: 'static {
-        self.inner.get_mut(&TypeId::of::<T>()).map(|val| {
-            self.changed.insert(TypeId::of::<T>());
-            let any_debug_ref: &mut dyn Any = &mut **val;
-            any_debug_ref.downcast_mut::<T>().unwrap()
-        })
-    }
-
-    fn insert<T>(&mut self, val: T) -> Option<T> where T: Merge + Clone + Send + 'static {
+fn get_mut<T>(&mut self) -> Option<&mut T> where T: 'static {
+    self.inner.get_mut(&TypeId::of::<T>()).map(|val| {
         self.changed.insert(TypeId::of::<T>());
-        self.inner.insert(TypeId::of::<T>(), Box::new(val))
-            .map(|val| *(val as Box<dyn Any>).downcast::<T>().unwrap())
-    }
-
-    fn remove<T>(&mut self) -> Option<T> where T: 'static {
-        self.inner.remove(&TypeId::of::<T>()).map(|val| {
-            self.changed.insert(TypeId::of::<T>());
-            *(val as Box<dyn Any>).downcast::<T>().unwrap()
-        })
-    }
+        let any_debug_ref: &mut dyn Any = &mut **val;
+        any_debug_ref.downcast_mut::<T>().unwrap()
+    })
 }
 ```
 
-: Implementace lokálního úložiště - implementace traitu `LocalStorage` {#lst:local_storage_impl_trait_local_storage_impl}
+: Implementace lokálního úložiště - implementace traitu `LocalStorage` - metoda `get_mut` {#lst:local_storage_impl_trait_local_storage_get_mut_impl}
 
 Implementace traitu `LocalStorage` je oproti implementaci traitu `Merge` pro datové typy,
 které mohou byt uloženy v úložišti, a traitu `Join` pro toto úložiště velmi triviální.

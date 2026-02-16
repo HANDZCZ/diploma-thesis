@@ -10,17 +10,7 @@ pub trait ChainDebug {
 }
 
 pub struct ChainDebugAsList<T>(T);
-
-impl<T> Debug for ChainDebugAsList<&T>
-where
-    T: ChainDebug,
-{
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let mut debug_list = f.debug_list();
-        self.0.fmt_as_list(&mut debug_list);
-        debug_list.finish()
-    }
-}
+impl<T> Debug for ChainDebugAsList<&T> where T: ChainDebug { .. }
 ```
 
 : Implementace traitu `ChainDebug` {#lst:trait_chain_debug_impl}

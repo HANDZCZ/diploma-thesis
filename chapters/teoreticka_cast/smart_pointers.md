@@ -37,27 +37,10 @@ který říká, že s hodnotou můžeme bezpečně hýbat.
 [@rust_docs_pin_module]
 
 ```{.rust .linenos}
-#[derive(Default)]
-struct AddrTracker {
-    prev_addr: Option<usize>,
-    // odstranění automaticky implementovaného Unpin traitu
-    _pin: PhantomPinned,
-}
+struct AddrTracker { .. }
 
 impl AddrTracker {
-    fn check_for_move(self: Pin<&mut Self>) {
-        // získání aktuální adresy v paměti
-        let current_addr = &*self as *const Self as usize;
-        match self.prev_addr {
-            // pokud předchozí adresa neexistuje, tak se nastaví na aktuální
-            None => {
-                let self_data_mut = unsafe { self.get_unchecked_mut() };
-                self_data_mut.prev_addr = Some(current_addr);
-            },
-            // pokud předchozí adresa existuje, tak se zkontroluje, že je stejná jako aktuální
-            Some(prev_addr) => assert_eq!(prev_addr, current_addr),
-        }
-    }
+    fn check_for_move(self: Pin<&mut Self>) { .. }
 }
 
 // vytvoření instance se kterou, ještě můžeme bezpečně hýbat

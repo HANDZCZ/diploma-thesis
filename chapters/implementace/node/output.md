@@ -2,7 +2,6 @@
 # Enum NodeOutput {#sec:enum_node_output}
 
 ```{.rust .linenos}
-#[derive(Debug, PartialEq, Eq)]
 pub enum NodeOutput<T> {
     SoftFail,
     Ok(T),

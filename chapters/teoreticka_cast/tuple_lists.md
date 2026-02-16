@@ -6,7 +6,7 @@ Tato technika se používá, protože v Rustu zatím nelze iterovat přes hodnot
 které mají libovolný počet elementů.
 Jejich definice je velmi jednoduchá, ale práce s nimi může být matoucí.
 
-Obvykle ve používají tuply o velikosti 2, kde prvnímu elementu se říká hlava (head) a druhému se říká osac (tail).
+Obvykle ve používají tuply o velikosti 2, kde prvnímu elementu se říká hlava (head) a druhému se říká ocas (tail).
 Tyto tuply se poté dají skládat tak, že vzniknou 4 hlavní variace tuple listů.
 Typy těchto tuple listů vznikají podle toho zda má být první element jako první v tuple listu,
 nebo zda má být první element na první vrstvě tuple listu.

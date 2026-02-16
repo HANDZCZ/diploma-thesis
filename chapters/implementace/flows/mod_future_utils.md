@@ -24,7 +24,6 @@ a možnost nesprávné definice snížena.
 # Privátní pomocná struktura enum SoftFailPoll
 
 ```{.rust .linenos}
-#[derive(Debug)]
 pub enum SoftFailPoll<T> {
     Pending,
     Ready(T),
