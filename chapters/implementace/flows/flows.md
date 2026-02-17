@@ -21,5 +21,6 @@ mod_future_utils.md
 chain_traits.md
 generic_defs/generic_defs.md
 sequential_flow/sequential_flow.md
+one_of_sequential_flow/one_of_sequential_flow.md
 ```
 
