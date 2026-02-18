@@ -6,7 +6,7 @@ které by měly být implementovány pro jakýkoliv datový typ,
 který lze použít jako kontext v uzlu.
 Tyto traity slouží jako základ pro vytváření komplexnějších toků.
 
-## Trait Fork
+## Trait Fork {#sec:trait_fork}
 
 ```{.rust .linenos}
 pub trait Fork {
@@ -27,7 +27,7 @@ tak tok může pokračovat další větví vytvořením nové instance kontextu 
 Tímto se zajistí, že větev co selhala nezpůsobí selhání dalších větví tím,
 že nějakým nevratným způsobem upravila kontext.
 
-## Trait Update
+## Trait Update {#sec:trait_update}
 
 ```{.rust .linenos}
 pub trait Update {
@@ -43,7 +43,7 @@ Díky tomuto traitu je možno v tocích,
 které například vrací výsledek první úspěšné větve,
 aktualizovat originální kontext z kontextu vytvořeného pomocí `Fork` traitu. 
 
-## Trait Join
+## Trait Join {#sec:trait_join}
 
 ```{.rust .linenos}
 pub trait Join: Sized {
@@ -95,7 +95,7 @@ Metoda `cancel` konzumuje instanci úlohy a signalizuje úloze,
 že byla zrušena.
 V případě signalizace zrušení úlohy by úloha měla přerušit jakékoli právě běžící úkony a zastavit se.
 
-## Trait SpawnAsync
+## Trait SpawnAsync {#sec:trait_spawn_async}
 
 ```{.rust .linenos}
 pub trait SpawnAsync {
