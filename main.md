@@ -270,3 +270,51 @@ impl<..> Builder<
 
 : Implementace toku `SequentialFlow` - definice builderu - metoda `add_node`, pro ostatní uzly, a metoda `build` {#lst:sequential_flow_builder_oadd_node_build_def_impl}
 
+```{.rust .linenos}
+impl<..> Builder<
+    Input, Output, Error, Context, NodeTypes,
+    ChainLink<OtherNodeIOETypes, LastNodeIOETypes>,
+> where .. {
+    pub fn build<J, ChainRunOutput>(self, joiner: J) -> Flow<
+        Input, Output, Error, Context, ChainRunOutput, J, NodeTypes,
+        ChainLink<OtherNodeIOETypes, LastNodeIOETypes>,
+    > where
+        for<'a> J: Joiner<'a, ChainRunOutput, Output, Error, Context>,
+        NodeTypes: ChainRunParallel<
+            Input,
+            Result<ChainRunOutput, Error>,
+            Context,
+            ChainLink<OtherNodeIOETypes, LastNodeIOETypes>,
+       >,
+    {
+        Flow { .., nodes: Arc::new(self.nodes), joiner }
+    }
+}
+```
+
+: Implementace toku `ParallelFlow` - definice builderu - metoda `build` {#lst:parallel_flow_builder_build_def_impl}
+
+```{.rust .linenos}
+pub trait ChainSpawn<Input, Error, Context, HeadOut, T> {
+    type ChainOut;
+    const NUM_FUTURES: usize;
+
+    fn spawn(
+        &self,
+        input: Input,
+        context: Context,
+    ) -> impl ChainPollParallel<Self::ChainOut, Context>;
+}
+
+pub trait ChainPollParallel<Output, NodeContext>: Send {
+    fn poll(
+        self: Pin<&mut Self>,
+        cx: &mut Context<'_>,
+        tail_ready: bool,
+        context_acc: &mut Vec<NodeContext>,
+    ) -> Poll<Output>;
+}
+```
+
+: Implementace toku `ParallelFlow` - definice traitů `ChainSpawnParallel` a `ChainPollParallel` {#lst:parallel_flow_chain_run_sub_impl}
+
