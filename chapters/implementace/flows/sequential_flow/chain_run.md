@@ -16,7 +16,7 @@ a chybových datových typů uzlů.
 
 Implementace traitu `ChainRunSequential` pro tuple list
 definuje sekvenční vykonávání jednotlivých uzlů toku.
-Běh je implementován rekurzivní dekompozicí seznamu tuple na hlavu a ocas,
+Běh je implementován rekurzivní dekompozicí tuple listu na hlavu a ocas,
 kde metoda `run`, z `Node` traitu, je vyvolána nejprve na prvním uzlu v toku.
 Výstup uzlu je poté použit jako vstup do dalšího uzlu a v případě chyby
 je běh toku ukončen a chyba je vrácena jako výsledek toku.

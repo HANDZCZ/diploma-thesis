@@ -1,10 +1,6 @@
 
 ## Definice builderu
 
-V uvedených kódech lze vidět jak jsou definovány požadavky na vkládané uzly
-a jak se změní datový typ builderu po zavolání metod `add_node`.
-V kódu metody `build` je poté vidět jak je konečný tok sestaven z builderu.
-
 ```{.rust .linenos}
 pub struct Builder<Input, Output, Error, Context, NodeTypes = (), NodeIOETypes = ()>
 where
