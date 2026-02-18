@@ -128,9 +128,16 @@ fn func2() -> impl Future<Output = f32> {
     }
 }
 
+// vytvoření anonymní asynchronní funkce přiřazené do proměnné func3
+let func3 = async || {
+    /*nějaká asynchronní úloha*/.await;
+    return 0.1;
+};
+
 // spuštění a čekání na dokončení asynchronních úloh postupně
 func1().await;
 func2().await;
+func3().await;
 ```
 
 : Příklad definice asynchronní funkce {#lst:async_function_example}
