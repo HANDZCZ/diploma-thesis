@@ -19,7 +19,7 @@ je také velmi podobná v tom, že definuje sekvenční vykonávání jednotliv�
 Běh je implementován rekurzivní dekompozicí tuple listu na hlavu a ocas,
 kde metoda `run`, z `Node` traitu, je vyvolána nejprve na prvním uzlu v toku.
 Ale liší se funkcionalitou od `ChainRunSequential` traitu tím,
-že úspěšný výstup uzlu je použit jako vstup toku
+že úspěšný výstup uzlu je použit jako výstup toku
 a v případě chyby je běh toku ukončen a chyba je vrácena jako výsledek toku.
 Dále se liší tím, že využívá traity `Fork` ([@sec:trait_fork]) a `Update` ([@sec:trait_update]) ke správě kontextu.
 

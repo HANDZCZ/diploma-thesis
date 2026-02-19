@@ -17,11 +17,11 @@ a chybových datových typů uzlů.
 Implementace traitu `ChainRunParallel` pro tuple list
 definuje souběžné vykonávání uzlů toku.
 Běh je implementován za pomocí rekurzivní dekompozice tuple listu na hlavu a ocas.
-Dále jsou definovány a použity traity `ChainSpawnParallel`,
+Dále jsou definovány a použity traity `ChainSpawn`,
 sloužící k vytvoření asynchronních úloh za pomocí `SpawnAsync` traitu ([@sec:trait_spawn_async]),
 a `ChainPollParallel`,
 sloužící k čekání na dokončení asynchronních úloh, zpracování a správu jejich výstupů.
-Definice traitů `ChainSpawnParallel` a `ChainRunParallel` se nachází v přílohách ([@lst:parallel_flow_chain_run_sub_impl]).
+Definice traitů `ChainSpawn` a `ChainRunParallel` se nachází v přílohách ([@lst:parallel_flow_chain_run_sub_impl]).
 
 Tok končí úspěšně, jen když všechny uzly a "joiner" skončí úspěšně.
 Při jakékoli chybě, buď z uzlů či "joineru" je tok ukončen a chyba je vrácena.
