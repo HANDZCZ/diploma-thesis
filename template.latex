@@ -504,7 +504,7 @@ $endif$
 \makeatother
 
 % include the minted package
-\usepackage[outputdir=/tmp/thesis]{minted}
+\usepackage[outputdir=/tmp/thesis,newfloat]{minted}
 % customize minted
 \setminted{
     breaklines,
@@ -516,17 +516,14 @@ $endif$
 }
 
 % set names for Tables, Figures, Listings and their lists
-$if(listingTitle)$
-\renewcommand{\listingscaption}{$listingTitle$}
-$endif$
-$if(lolTitle)$
-\renewcommand{\listoflistingscaption}{$lolTitle$}
-$endif$
 $if(tableTitle)$
 \captionsetup[table]{name=$tableTitle$}
 $endif$
 $if(figureTitle)$
 \captionsetup[figure]{name=$figureTitle$}
+$endif$
+$if(listingTitle)$
+\captionsetup[listing]{name=$listingTitle$}
 $endif$
 $if(listings)$
 % fix listings caption formating
@@ -646,6 +643,9 @@ $endif$
     {
         $if(colorlinks)$
             \hypersetup{linkcolor=$if(lofcolor)$$toccolor$$else$$endif$}
+        $endif$
+        $if(lolTitle)$
+            \renewcommand{\listlistingname}{$lolTitle$}
         $endif$
         \listoflistings
     }
