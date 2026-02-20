@@ -611,6 +611,7 @@ $endif$
     {
         $if(colorlinks)$
             $if(lotcolor)$\hypersetup{linkcolor=$lotcolor$}$endif$
+            $if(locolorlinks)$\pretocmd{\hyperlink}{\hypersetup{linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$}}{}{}$endif$
         $endif$
         $if(lotTitle)$
             \renewcommand{\listtablename}{$lotTitle$}
@@ -627,6 +628,7 @@ $endif$
     {
         $if(colorlinks)$
             $if(lofcolor)$\hypersetup{linkcolor=$lofcolor$}$endif$
+            $if(locolorlinks)$\pretocmd{\hyperlink}{\hypersetup{linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$}}{}{}$endif$
         $endif$
         $if(lofTitle)$
             \renewcommand{\listfigurename}{$lofTitle$}
@@ -643,6 +645,7 @@ $endif$
     {
         $if(colorlinks)$
             $if(lolcolor)$\hypersetup{linkcolor=$lolcolor$}$endif$
+            $if(locolorlinks)$\pretocmd{\hyperlink}{\hypersetup{linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$}}{}{}$endif$
         $endif$
         $if(lolTitle)$
             \renewcommand{\listlistingname}{$lolTitle$}

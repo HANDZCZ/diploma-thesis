@@ -185,6 +185,8 @@ lotcolor: Black
 lofcolor: Black
 # Defaults to linkcolor
 lolcolor: Black
+# enables coloring \hyperlink (citation) links in list of ...
+locolorlinks: true
 linestretch: 1.5
 ---
 \hyphenpenalty=10000
