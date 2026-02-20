@@ -595,7 +595,7 @@ $endfor$
     $else$
     {
         $if(colorlinks)$
-            \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+            $if(toccolor)$\hypersetup{linkcolor=$toccolor$}$endif$
         $endif$
         \setcounter{tocdepth}{$toc-depth$}
         \tableofcontents
@@ -610,7 +610,7 @@ $endif$
 \newcommand{\lot}{
     {
         $if(colorlinks)$
-            \hypersetup{linkcolor=$if(lotcolor)$$toccolor$$else$$endif$}
+            $if(lotcolor)$\hypersetup{linkcolor=$lotcolor$}$endif$
         $endif$
         $if(lotTitle)$
             \renewcommand{\listtablename}{$lotTitle$}
@@ -626,7 +626,7 @@ $endif$
 \newcommand{\lof}{
     {
         $if(colorlinks)$
-            \hypersetup{linkcolor=$if(lofcolor)$$toccolor$$else$$endif$}
+            $if(lofcolor)$\hypersetup{linkcolor=$lofcolor$}$endif$
         $endif$
         $if(lofTitle)$
             \renewcommand{\listfigurename}{$lofTitle$}
@@ -642,7 +642,7 @@ $endif$
 \newcommand{\lol}{
     {
         $if(colorlinks)$
-            \hypersetup{linkcolor=$if(lofcolor)$$toccolor$$else$$endif$}
+            $if(lolcolor)$\hypersetup{linkcolor=$lolcolor$}$endif$
         $endif$
         $if(lolTitle)$
             \renewcommand{\listlistingname}{$lolTitle$}
