@@ -92,7 +92,13 @@ local List = require('pandoc.List')
 --------------------------------------------------------------------------------
 -- Potential metadata elements to override.                                   --
 --------------------------------------------------------------------------------
-local minted_no_mintinline           = false
+local minted_no_mintinline           = {
+  enable = true,
+  hyphenation = {
+    length_threshold = 18,
+    after = {"_", "<", "{"}
+  }
+}
 local minted_default_block_language  = "text"
 local minted_default_inline_language = "text"
 local minted_block_attributes        = {}
@@ -307,6 +313,16 @@ function Meta(m)
     -- Parse and set the global bypass to turn off all \mintinline calls.
     local no_mintinline = minted["no_mintinline"]
     if no_mintinline ~= nil then
+      no_mintinline.enable = no_mintinline.enable or minted_no_mintinline.enable
+
+      local hyphenation = no_mintinline.hyphenation
+      hyphenation.length_threshold = tonumber(hyphenation.length_threshold) or minted_no_mintinline.hyphenation.length_threshold
+      hyphenation.after = hyphenation.after or minted_no_mintinline.hyphenation.after
+      -- convert pandoc.MetaString to regular string
+      for k, v in ipairs(hyphenation.after) do
+          hyphenation.after[k] = hyphenation.after[k][1].text
+      end
+
       minted_no_mintinline = no_mintinline
     end
 
@@ -365,18 +381,36 @@ end
 -- Other writers have all minted attributes removed.
 function Code(elem)
   if FORMAT == "beamer" or FORMAT == "latex" then
-    -- Allow a bypass to turn off \mintinline via adding .no_minted class.
-    local found_no_minted_class = false
+    -- Allow a override to turn off/on \mintinline via .no_minted or .minted class.
+    local no_minted = minted_no_mintinline.enable
     for _, cls in ipairs(elem.classes) do
       if cls == "no_minted" then
-        found_no_minted_class = true
+        no_minted = true
+        break
+      elseif cls == "minted" then
+        no_minted = false
         break
       end
     end
 
     -- Check for local or global bypass to turn off \mintinline
-    if minted_no_mintinline or found_no_minted_class then
-      return nil -- Return `nil` signals to `pandoc` that elem is not changed.
+    if no_minted then
+      local elem_text = elem.text
+      local escape = {"_", "#"}
+      for _, seq in ipairs(escape) do
+        elem_text = string.gsub(elem_text, seq, "\\" .. seq)
+      end
+
+      if (#elem.text >= minted_no_mintinline.hyphenation.length_threshold) then
+        for _, seq in ipairs(minted_no_mintinline.hyphenation.after) do
+          elem_text = string.gsub(elem_text, seq, seq .. "\\-")
+        end
+      end
+      local raw_minted = string.format(
+        "\\nomintinline{%s}",
+        elem_text
+      )
+      return pandoc.RawInline("latex", raw_minted)
     end
 
     local start_delim, end_delim = minted_inline_delims(elem.text)

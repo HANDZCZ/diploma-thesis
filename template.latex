@@ -515,6 +515,8 @@ $endif$
     fontsize=\small,
 }
 
+\newcommand{\nomintinline}[1]{{\ttfamily\small #1}}
+
 % set names for Tables, Figures, Listings and their lists
 $if(tableTitle)$
 \captionsetup[table]{name=$tableTitle$}
