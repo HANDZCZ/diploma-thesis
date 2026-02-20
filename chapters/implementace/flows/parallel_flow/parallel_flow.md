@@ -32,7 +32,7 @@ a tělo `describe` metody vytváří acyklický orientovaný graf,
 kde každý uzel má jednu hranu vycházející z toku mířící do uzlu a jednu hranu vycházející z uzlu mířící do "joineru."
 Tento graf má ještě jednu hranu vycházející z "joineru" a mířící do toku.
 
-```{.d2 #fig:parallel_flow_visualization caption="Vizializace toku ParallelFlow" height=22%}
+```{.d2 #fig:parallel_flow_visualization caption="Vizializace toku `ParallelFlow`" height=22%}
 vars: {
   d2-config: {
     layout-engine: tala

@@ -33,7 +33,7 @@ Tělo `describe` metody vytváří acyklický orientovaný graf,
 kde každý uzel má jednu hranu mířící do uzlu a jednu hranu vycházející z uzlu.
 Vycházející hrana je vždy, až na poslední uzel, spojena s následujícím uzlem v toku.
 
-```{.d2 #fig:sequential_flow_visualization caption="Vizializace toku SequentialFlow"}
+```{.d2 #fig:sequential_flow_visualization caption="Vizializace toku `SequentialFlow`"}
 vars: {
   d2-config: {
     layout-engine: elk

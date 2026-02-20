@@ -35,7 +35,7 @@ a běh toku je obstaráván `ChainRunOneOfSequential` traitem.
 Tělo `describe` metody vytváří acyklický orientovaný graf,
 kde každý uzel má jednu hranu z toku mířící do uzlu a jednu hranu vycházející z uzlu a mířící do toku.
 
-```{.d2 #fig:one_of_sequential_flow_visualization caption="Vizializace toku OneOfSequentialFlow" height=22%}
+```{.d2 #fig:one_of_sequential_flow_visualization caption="Vizializace toku `OneOfSequentialFlow`" height=22%}
 vars: {
   d2-config: {
     layout-engine: tala
