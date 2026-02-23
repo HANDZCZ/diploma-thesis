@@ -330,3 +330,34 @@ pub trait ChainPollParallel<Output, NodeContext>: Send {
 
 : Implementace toku `ParallelFlow` - definice traitů `ChainSpawnParallel` a `ChainPollParallel` {#lst:parallel_flow_chain_run_sub_impl}
 
+```{.text .linenos escapeinside=||}
+┌─« node-flow on  main is |\emoji{📦}| v0.2.0 via |\emoji{🦀}| v1.93.1
+└─» cargo test --all-features
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s
+     Running unittests src/lib.rs (target/debug/deps/node_flow-200139d2573f6e74)
+
+running 22 tests
+test flows::parallel_flow::flow::test::test_flow_storage ... ok
+..
+test flows::one_of_sequential_flow::test::test_flow ... ok
+test flows::sequential_flow::test::test_chain ... ok
+
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.46s
+.
+.
+.
+   Doc-tests node_flow
+
+running 45 tests
+test src/context/traits.rs - context::traits::SpawnSync (line 194) ... ok
+test src/context/traits.rs - context::traits::Join (line 71) ... ok
+..
+test src/describe/d2.rs - describe::d2::D2Describer (line 9) ... ok
+
+test result: ok. 45 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+all doctests ran in 0.83s; merged doctests compilation took 0.82s
+```
+
+: Zkrácený výstup běhu testů {#lst:shortened_tests_run}
+
