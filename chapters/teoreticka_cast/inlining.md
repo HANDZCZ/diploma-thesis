@@ -1,5 +1,5 @@
 
-## Inlining
+## Inlining {#sec:inlining}
 
 Inlining je optimalizace prováděná ručně nebo kompilátorem,
 při níž se volání funkce nahradí tělem volané funkce.
