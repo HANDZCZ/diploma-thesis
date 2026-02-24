@@ -190,12 +190,12 @@ locolorlinks: true
 linestretch: 1.5
 # don't use mintinline, because it fails to break long words properly
 # these are the default settings, uncomment for changing
-#minted:
-#  no_mintinline:
-#    enable: true
-#    hyphenation:
-#      length_threshold: 18
-#      after: ["_", "<", "{"]
+minted:
+  no_mintinline:
+    enable: true
+    hyphenation:
+      length_threshold: 18
+      after: ["_"]
 ---
 \hyphenpenalty=10000
 \widowpenalties 1 10000
