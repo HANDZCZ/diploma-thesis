@@ -18,7 +18,7 @@ V ostatních případech výstup tohoto toku záleží na výstupu uzlů a zní 
 ```{.rust .linenos}
 pub struct ParallelFlow<Input, Output, Error, Context, ChainOutput = (), Joiner = (), NodeTypes = (), NodeIOETypes = ()> {
     ..
-    pub(super) nodes: std::sync::Arc<NodeTypes>,
+    pub(super) nodes: NodeTypes,
     pub(super) joiner: Joiner,
 }
 ```

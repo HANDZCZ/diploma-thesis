@@ -4,8 +4,8 @@
 ```{.rust .linenos}
 pub struct FnFlow<Input, Output, Error, Context, InnerData = (), R = ()> {
     ..
-    inner_data: std::sync::Arc<InnerData>,
-    runner_description: Option<std::sync::Arc<Description>>,
+    inner_data: InnerData,
+    runner_description: Option<Description>,
     runner: R,
 }
 ```
@@ -17,8 +17,6 @@ Tok `FnFlow` je obal, který vytváří z nějaké synchronní funkce uzel imple
 Tento obal přijímá asynchronní funkci či strukturu implementující trait `Runner`,
 dodatečná data, která mají být funkci poskytnuta spolu se vstupem
 a nepovinný popis pro vytvořený uzel.
-Dodatečná data jsou obalena do atomické reference ([@sec:arc]),
-aby nedocházelo k drahému klonování.
 
 Implementace tohoto obalu je velice jednoduchá, protože jen volá poskytnutou funkci se stupem
 a poskytnutými dodatečnými daty.

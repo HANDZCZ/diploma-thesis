@@ -14,7 +14,7 @@ pub enum Description {
     },
     Flow {
         base: DescriptionBase,
-        nodes: Vec<Description>,
+        nodes: Vec<Self>,
         edges: Vec<Edge>,
     },
 }

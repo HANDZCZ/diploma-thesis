@@ -4,7 +4,7 @@
 ```{.rust .linenos}
 pub struct Detached<Input, Error, Context, NodeType = (), NodeOutput = (), NodeError = ()> {
     ..
-    node: std::sync::Arc<NodeType>,
+    node: NodeType,
 }
 ```
 

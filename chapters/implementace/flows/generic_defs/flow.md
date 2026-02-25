@@ -19,8 +19,7 @@ dodatečné nepovinné omezení typů pomocí traitů při definici `builder` me
 a nepovinnou dokumentaci pro definovaný tok.
 
 Toky definované tímto makrem mají implementovány traity `Debug`,
-pomocí pomocného makra, a `Clone`, jehož implementace je triviální,
-protože dochází jen k naklonování atomické reference ([@sec:arc]).
+pomocí pomocného makra, a `Clone`.
 Dále je také vytvořena funkce `builder`,
 která vrací instanci builderu vytvořenou funkcí `new` implementovanou v builderu.
 Implementace této funkce může být omezena pomocí dodatečných traitů,
