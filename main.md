@@ -361,3 +361,67 @@ all doctests ran in 0.83s; merged doctests compilation took 0.82s
 
 : Zkrácený výstup běhu testů {#lst:shortened_tests_run}
 
+```{.d2 #fig:flow_composition_experiment_visualization caption="Vizializace toku pro experimentu kompozice toků"}
+vars: {
+  d2-config: {
+    layout-engine: tala
+    pad: 0
+  }
+}
+classes: {
+  uzel: {
+    style.border-radius: 8
+  }
+  tok: {
+    style.border-radius: 8
+  }
+}
+
+direction: down
+
+Start: {
+  shape: oval
+  style.stroke-dash: 3
+}
+Konec: {
+  shape: oval
+  style.stroke-dash: 3
+}
+
+Tok1: {
+  class: tok
+
+  Uzel*.class: uzel
+
+  Uzel1 -> Tok2 -> Uzel8
+
+  Tok2: {
+    class: tok
+
+    Uzel*.class: uzel
+
+    Uzel2 -> Uzel3 -> Tok3
+
+    Tok3: {
+      class: tok
+
+      Uzel*.class: uzel
+
+      Uzel4 -> Uzel5
+    }
+
+    Tok3 -> Tok4
+
+    Tok4: {
+      class: tok
+
+      Uzel*.class: uzel
+
+      Uzel6 -> Uzel7
+    }
+  }
+}
+
+Start -> Tok1 -> Konec
+```
+
