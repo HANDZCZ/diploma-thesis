@@ -1,5 +1,5 @@
 
-# Implementace toků
+# Implementace toků {#sec:flows_implementation}
 
 Tato kapitola obsahuje nejen implementace všech toků poskytovaných touto knihovnou,
 ale i implementace pomocných maker typových aliasů a struktur díky,
