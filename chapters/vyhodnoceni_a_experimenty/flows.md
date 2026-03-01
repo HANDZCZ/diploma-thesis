@@ -22,7 +22,16 @@ a u toku `ParallelFlow` jsou generovány dodatečné instrukce vždy, protože a
 Bez tohoto omezení by tok `ParallelFlow` dokázal odoptimalizovat aspoň 1 uzel,
 což bylo možno vidět ve vygenerovaném assembly kódu.
 
-Tyto limity jsou také nižší, díky tomu, že tato knihovna je asynchronní,
+Tok `OneOfSequentialFlow` si vedl velmi dobře, protože kompilátoru jen stačilo dokázat,
+že první uzel vrátí jakýkoli výsledek kromě `NodeOutput::Softfail` ([@sec:enum_node_output]).
+Pro tok ostatní toky, ale kompilátor musel projít všechny uzly.
+Optimalizace u toku `OneOfParallelFlow` je velmi překvapivá a autor očekával,
+že počet odoptimalizováných uzlů bude nižší než pro tok `SequentialFlow`.
+Protože pro odoptimalizování toku `OneOfParallelFlow` musí kompilátor dokázat,
+že všechny uzly v toku vrací stejnou hodnotu,
+nebo zjistit který uzel skončí jako první a nevrací `NodeOutput::Softfail` ([@sec:enum_node_output]).
+
+Limity pro tyto toky jsou také nižší, díky tomu, že tato knihovna je asynchronní,
 což způsobuje, že existují dodatečné hranice a přidaná komplexita způsobena asynchronním zpracováním.
 Když jsou tyto hranice překročeny, tak se kompilátor dále nesnaží,
 nebo již nedokáže odoptimalizovat asynchronní kód.
@@ -30,13 +39,11 @@ nebo již nedokáže odoptimalizovat asynchronní kód.
 Překročení těchto hranic způsobuje, že je vytvářen dodatečný kód pro asynchronní zpracování.
 Bohužel bez dalších nových funkcí jazyka, jako jsou variadické argumenty či funkce,
 specializace a nebo explicitní "tail call" (koncové rekurze/volání) optimalizace,
-tato knihovna už naráží na limitace jazyka.
+nebo lépe optimalizovaného kompilátoru tato knihovna už naráží na limitace jazyka.
 
-Výsledek tohoto experimentu se může zdát, jako selhání této knihovny.
-Ale tato knihovna nikdy neměla zamezit kompilátoru vytvářet asynchronní kód,
+Právě díky těmto limitacím a různým heuristikám kompilátoru
+je nejspíše prakticky nemožné zamezit kompilátoru vytvářet asynchronní kód,
 při plně synchronních tělech uzlů.
-Toto nikdy nebyl účel této knihovny a dosažení tohoto cíle je prakticky nemožné,
-kvůli různým limitacím a heuristikám kompilátoru.
 To, že je tato knihovna schopna poskytnout tuto možnost v nějaké kapacitě,
 akorát potvrzuje, že návrh a implementace umožňuje tohoto jevu dosáhnout,
 a že kompilátor je schopen odoptimalizovat části kódu napříč uzly a await body.
@@ -49,9 +56,10 @@ nebo i odstranit nějaké await body napříč skládanými toky.
 Tím tak docílit, že výsledný kód bude rychlejší, více optimalizován
 a nemusí se zabývat zbytečnou dereferencí na konkrétní datové typy.
 
-Pro otestování zda se toto povedlo byl vytvořen experiment,
-který skládá 3 `SequentialFlow` toky do sebe,
-kde každý tok obsahuje aspoň 2 jednoduché uzly.
+Pro otestování zda je kompilátor schopen odoptimalizovat toky
+složené z dalších toků, byl vytvořen experiment,
+který skládá 3 `SequentialFlow` toky do sebe.
+Každý tok obsahuje aspoň dva další jednoduché uzly, kromě jednoho vnitřního toku.
 Vizualizaci tohoto toku lze nalézt v ukázkách ([@fig:flow_composition_experiment_visualization]).
 
 ```{.asm .linenos}
@@ -91,7 +99,6 @@ node_flow_testing::poller:
 ```
 
 : Vygenerovaný assembly kód pro kompozici uzelů s `black_boxem` {#lst:flow_composition_bbox_experiment_assembly}
-
 
 Podobně jako u experimentu s jedním uzlem byl použit `black_box`,
 aby kompilátor vygeneroval kód, jako kdyby hodnoty operandů byly neznámé.
