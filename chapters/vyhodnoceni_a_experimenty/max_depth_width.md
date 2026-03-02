@@ -6,7 +6,7 @@ bylo vzneseno tvrzení
 "teoreticky lze vytvářet vnořené toky s nekonečnou hloubkou, avšak v realitě by uživatel jistě narazil na nějaký limit."
 Pro zjištění právě tohoto limitu byl vytvořen experiment,
 který skládá `SequentialFlow` toky do sebe.
-Tok `SequentialFlow` byl vybrán, protože v reálném použití je tento tok nejvíce využíván.
+Tok `SequentialFlow` byl vybrán, protože při reálném použití je tento tok nejvíce využíván.
 
 Při výchozím nastavení "recursion_limit," což je 128, bylo dosaženo hloubky 25
 a i při této hloubce byl kompilátor schopen odoptimalizovat celý složený tok na jednu `add` instrukci.
@@ -14,12 +14,6 @@ Po překročení této hloubky již bylo nutno navýšit "recursion_limit."
 
 Tento limit byl poté navyšován až na hodnotu 8191 a bylo dosaženo aspoň hloubky 1296.
 Při této hloubce byl ještě kompilátor schopný program zkompilovat.
-Kompilace trvala 1 minutu 3 sekundy a využila \approx5.2 GiB paměti RAM na autorově systému.
-Bohužel kvůly této dlouhé kompilaci a vysokém vytížení systému,
-nebylo možno nalézt přesné hodnoty pro daný "recursion_limit,"
-ale bylo ověřeno, že tok již nebyl odoptimalizován
-a byl pro něj generován dodatečný kód pro asynchronní zpracování.
-
 Při dalším navýšení hloubky o 128, již přeteče stack kompilátoru.
 Tento test proběhl na Linux systému a kompilátor měl k dispozici
 výchozí velikost stacku, což je 8 MiB.
@@ -43,11 +37,14 @@ Tento test také proběhl na Linux systému a kompilátor měl k dispozici 8 MiB
 ## Maximální kombinovaná hloubka a šířka toku
 
 Experimenty pro maximální hloubkou a šířku probíhaly pouze s jedním uzlem,
-nebo jedním tokem, ale v reálném použití této knihovny by toky měly různé hloubky a šířky.
+nebo jedním tokem, ale při reálném použití této knihovny by toky měly různé hloubky a šířky.
 V tomto experimentu bylo testováno jaký je limit pro toky složené z dalších toků,
 které obsahují nějaké uzly či další toky.
 
 Poměry toků, uzlů a hloubky byly odhadnuty tak, aby nejvíce odpovídaly reálné práci s touto knihovnou.
-Aplikovaním těchto poměrů vznikl tok, který obsahoval 4673 toků, 23008 uzlů a dosáhl hloubky 358.
-Kompilace trvala 1 minutu 4 sekundy a využila 12.4 GiB paměti RAM na autorově systému.
+Aplikovaním těchto poměrů vznikl tok, který obsahoval 4673 toků, 23008 uzlů,
+dosáhl hloubky 358 a potřeboval "recursion_limit" nastavený na 2112.
+Při přidání dalších 13 toků, 64 uzlů a navýšeni hloubky na 359 kompilace selže při linkovací fázi,
+protože velikost debug symbolů přesahuje velikost sekce.
+Po vypnutí generace debug symbolů kompilace skončí úspěšně.
 
