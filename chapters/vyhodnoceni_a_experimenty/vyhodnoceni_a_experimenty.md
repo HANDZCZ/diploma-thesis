@@ -1,5 +1,5 @@
 
-# Vyhodnocení a experimenty
+# Experimenty
 
 Pro generování kódů je použit nástroj [cargo-show-asm](https://github.com/pacak/cargo-show-asm).
 Tento nástroj je využit pro získání assembly, LLVM a MIR (**M**id-level **I**ntermediate **R**epresentation) kódů.
@@ -22,6 +22,16 @@ Díky této funkci je možno zabránit, aby kompilátor odoptimalizoval části 
 single_node.md
 flows.md
 max_depth_width.md
+```
+
+\newpage
+
+# Vyhodnocení
+
+V této kapitole je probírán budoucí vývoj knihovny, porovnání se stávájícími řešeními
+a konečné vyhodnocení aktuální verze knihovny.
+
+```{.include}
 ```
 
 \newpage
