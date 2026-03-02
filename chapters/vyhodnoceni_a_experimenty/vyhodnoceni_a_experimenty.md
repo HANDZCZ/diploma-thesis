@@ -32,6 +32,7 @@ V této kapitole je probírán budoucí vývoj knihovny, porovnání se stáváj
 a konečné vyhodnocení aktuální verze knihovny.
 
 ```{.include}
+similar_libs.md
 ```
 
 \newpage
