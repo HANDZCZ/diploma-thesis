@@ -43,13 +43,13 @@ tak budou řešeny budoucími verzemi této knihovny.
 
 \newpage
 
-# Vyhodnocení
-
-V této kapitole je probírán budoucí vývoj knihovny, porovnání se stávájícími řešeními
-a konečné vyhodnocení aktuální verze knihovny.
-
-```{.include}
+```{.include shift-heading-level-by=-1}
 similar_libs.md
+```
+
+\newpage
+
+```{.include shift-heading-level-by=-1}
 budouci_vyvoj.md
 ```
 
