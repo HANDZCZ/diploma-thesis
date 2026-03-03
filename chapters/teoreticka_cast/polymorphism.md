@@ -12,7 +12,7 @@ a oba mají své výhody a nevýhody,
 které je třeba zvážit z hlediska výkonu a velikosti souboru.
 [@rust_for_c_programmers_trait_features; @polymorphism_in_rust_oswalt; @polymorphism_in_rust_brandon]
 
-### Static dispatch
+### Static dispatch {#sec:static_dispatch}
 
 První způsob je tzv. "statický výběr", který využívá generické typy (tzv. parametrický polymorfismus),
 monomorfizaci ([@sec:monomorfizace]) a omezení datového typu (pomocí "traitů", v jiných jazycích označovaných jako "rozhraní"),

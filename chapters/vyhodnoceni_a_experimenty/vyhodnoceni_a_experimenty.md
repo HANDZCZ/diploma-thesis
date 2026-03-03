@@ -50,6 +50,7 @@ a konečné vyhodnocení aktuální verze knihovny.
 
 ```{.include}
 similar_libs.md
+budouci_vyvoj.md
 ```
 
 \newpage

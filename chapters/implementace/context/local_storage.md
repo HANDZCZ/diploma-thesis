@@ -27,7 +27,7 @@ jak by mělo sloučení ovlivnit originální hodnotu.
 Rozhodnutí zda originální hodnota bude ponechána,
 nahrazena nebo vložena či odstraněna záleží na implementaci uživatele této knihovny.
 
-## Trait Merge
+## Trait Merge {#sec:local_storage_trait_merge}
 
 ```{.rust .linenos}
 pub trait Merge: Sized {
