@@ -24,6 +24,23 @@ flows.md
 max_depth_width.md
 ```
 
+## Shrnutí výsledků
+
+Z experimentů lze zjistit, že implementace statických toků byla úspěšná
+a kompilátor je schopen odoptimalizovat await body nejen napříč uzly toku,
+ale i napříč sloučenými toky a jejich uzly.
+
+Bohužel bylo také zjištěno, že tento jev není nekonečný a existují limity,
+a při jejich překročení je generován kód pro asynchronní zpracování.
+Tomuto jevu se však nedá vyhnout při práci s asynchronními úlohami
+a nikdy to nebyl cíl této knihovny.
+
+Dále také byly zjištěny praktické limity pro tyto statické toky,
+při kterých je program úspěšné zkompilován a běží tak jak má.
+Tyto limity by měly být dostačující pro jakékoli použití těchto statických toků.
+Pokud tyto limity, ale nejsou dostačující,
+tak budou řešeny budoucími verzemi této knihovny.
+
 \newpage
 
 # Vyhodnocení
