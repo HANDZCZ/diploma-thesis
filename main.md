@@ -13,10 +13,12 @@ keywords:
   - tok
   - toky
   - flow
+  - data flow
   - composition
   - composable
   - inspectable
   - visualizable
+  - visualization
   - asynchronous
   - async
   - node
@@ -27,6 +29,7 @@ keywords:
   - crate
   - library
   - type-safe
+  - type safety
 subject: Diplomová práce na téma Návrh a implementace asynchronní knihovny pro tvorbu toků dat
 colorlinks: true
 # default: Maroon
