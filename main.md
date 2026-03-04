@@ -117,6 +117,8 @@ includes-before-document: |
     %\xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
     % set line numbers size
     \renewcommand{\theFancyVerbLine}{\sffamily \textcolor[rgb]{0.0,0.0,0.0}{\tiny \oldstylenums{\arabic{FancyVerbLine}}}}
+    % set code block font size
+    \setminted{fontsize=\footnotesize}
     ```
 
 lang: cs-CZ
