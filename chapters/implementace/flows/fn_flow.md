@@ -23,7 +23,7 @@ a poskytnutými dodatečnými daty.
 Tělo `describe` metody vytváří acyklický orientovaný graf,
 kde dvě hrany míří do funkce, jedna z toku a druhá z dodatečných dat, a jedna hrana míří z funkce do toku.
 
-```{.d2 #fig:fn_flow_visualization caption="Vizializace toku `FnFlow`" height=15%}
+```{.d2 #fig:fn_flow_visualization caption="Vizualizace toku `FnFlow`" height=15%}
 vars: {
   d2-config: {
     layout-engine: tala

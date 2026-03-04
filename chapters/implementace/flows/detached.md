@@ -21,7 +21,7 @@ protože obalený uzel je spuštěn nezávisle na toku ve kterém byl definován
 Tělo `describe` metody vytváří acyklický orientovaný graf,
 kde jedna hrana míří z toku do uzlu a další hrana míří ze začátku toku na konec toku.
 
-```{.d2 #fig:detached_flow_visualization caption="Vizializace toku `Detached`" height=15%}
+```{.d2 #fig:detached_flow_visualization caption="Vizualizace toku `Detached`" height=15%}
 vars: {
   d2-config: {
     layout-engine: tala
