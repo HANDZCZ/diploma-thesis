@@ -15,7 +15,7 @@ pub trait Joiner<'a, Input, Output, Error, Context>: Send + Sync {
 
 Trait `Joiner` obsahuje pouze jednu metodu `join`
 a jeho účel je definovat, jak má být sloučen výstup ze všech uzlů `ParallelFlow` toku.
-Díky tomuto traitu je uživatel schopen definovat jak mají být výstupy uzlů sloučeny.
+Díky tomuto traitu je uživatel schopen definovat, jak mají být výstupy uzlů sloučeny.
 Je také možno s výstupy provést nějakou další operaci díky tomu,
 že metoda `join` je asynchronní a má velice podobnou definici jako trait `Node`.
 

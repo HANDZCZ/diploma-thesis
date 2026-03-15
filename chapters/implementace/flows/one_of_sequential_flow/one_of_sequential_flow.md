@@ -3,7 +3,7 @@
 
 Tok `OneOfSequentialFlow` spouští uzly postupně ve stejném pořadí,
 jako při vkládání uzlů do builderu.
-Funguje jako "fallback vodopád," kde stačí jen aby jeden uzel úspěšně zpracoval vstup.
+Funguje jako "fallback vodopád", kde stačí jen, aby jeden uzel úspěšně zpracoval vstup.
 
 Tok vrací zpracovanou vstupní hodnotu, pouze když nějaký z uzlů úspěšně skončí.
 V tomto případě je výstup z prvního úspěšného uzlu vrácen jako výstup toku.

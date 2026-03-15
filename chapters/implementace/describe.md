@@ -1,8 +1,8 @@
 
 # Implementace popisu uzlů a toků {#sec:node_describe_chapter}
 
-Pro účely vizualizace a introspekce byly vytvořeny strukturu k popisu uzlů a toků.
-Tyto struktury plně popisují vstupy a výstupy uzlů, u toků také plně popisují jak jsou uzly propojeny,
+Pro účely vizualizace a introspekce byly vytvořeny struktury k popisu uzlů a toků.
+Tyto struktury plně popisují vstupy a výstupy uzlů, u toků také plně popisují, jak jsou uzly propojeny,
 včetně typu kontextu, popisu poskytnutého uživatelem a externích zdrojů použitých při běhu uzlu.
 
 ## Enum Description
@@ -126,8 +126,8 @@ pub enum EdgeEnding {
 Struct `Edge` a enum `EdgeEnding` slouží k reprezentaci hran v orientovaném grafu,
 pro vizualizaci struktury toku a propojení uzlů.
 
-Enum `EdgeEnding` vyjadřuje k čemu má být jeden z konců hrany připojen.
-Hodnota `ToFlow` znamená, že je konec hrany připojen k toku
+Enum `EdgeEnding` vyjadřuje, k čemu má být jeden z konců hrany připojen.
+Hodnota `ToFlow` znamená, že konec hrany je připojen k toku
 a hodnota `ToNode` připojí konec hrany k uzlu,
 který se nachází na indexu `node_index`.
 Tento index také slouží pro vybrání popisu uzlu v enumu `Description`.
@@ -162,7 +162,7 @@ a jméno datového typu externího zdroje.
 Pro tuto strukturu je také implementovaná funkce `new`,
 která z přijatých generických typů vytváří struct `ExternalResource`.
 Dále je také implementována pomocná metoda `with_description`,
-které nastavuje atribut `description`.
+která nastavuje atribut `description`.
 
 ## Privátní funkce remove_generics_from_name
 
@@ -177,7 +177,7 @@ pub(crate) fn remove_generics_from_name(orig_name: &mut String) {
 
 Funkce `remove_generics_from_name` je pomocná privátní funkce,
 která odstraňuje vše za a včetně generických parametrů v řetězci.
-Tohoto je docíleno, tak že se najde první lokace znaku otevírací špičaté závorky (`<`)
+Tohoto je docíleno tak, že se najde první lokace znaku otevírací špičaté závorky (`<`)
 v řetězci a originální řetězec je zkrácen na tento nalezený index.
 Tato funkce je použita při vytváření popisů pro toky.
 Díky této pomocné funkci a pomocné funkci `Description::modify_name`
@@ -208,11 +208,11 @@ impl D2Describer {
 
 Struct `D2Describer` definuje vše potřebné pro převod popisů uzlů
 a toků do D2 jazyka a obsahuje přepínače pro konfiguraci formátovače.
-Atribut `simple_type_name` rozhoduje zda mají mít datové typy zjednodušený název pomocí metody `Type::get_name_simple`
+Atribut `simple_type_name` rozhoduje, zda mají mít datové typy zjednodušený název pomocí metody `Type::get_name_simple`
 a atributy `show_context_in_node`, `show_description` a `show_externals` rozhodují o tom,
 jestli výsledný graf má obsahovat datový typ kontextu, textový popis a externí zdroje.
 
 Pro tento struct je implementována funkce `new`, pro vytvoření tohoto structu s výchozím nastavením.
-Dále je implementována metoda `modify`, pro jednoduchou úpravu nastavení,
+Dále je implementována metoda `modify` pro jednoduchou úpravu nastavení
 a metoda `format`, která převádí popis uzlu či toku do D2 jazyka a vrací výsledný řetězec.
 

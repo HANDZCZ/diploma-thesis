@@ -1,12 +1,12 @@
 
 ## Konstrukce toku {#sec:flow_construction_design}
 
-Při konstrukci toku je nutno zajistit aby uzly na sebe mohly navazovat, bez jakýchkoliv potíží.
+Při konstrukci toku je nutno zajistit, aby uzly na sebe mohly navazovat, bez jakýchkoliv potíží.
 Dále je nutno zajistit, že vstup do toku lze poslat do prvního uzlu
 a výstup z posledního uzlu lze vrátit jako výstup z posledního uzlu.
 
-Kvůli těmto požadavkům je nutné měnit datové typy co tyto toky definují při konstrukci.
-Za běhu, ale už tyto typy nejsou tak důležité a proto by konstrukce měla být provedena přes tzv. "builder".
+Kvůli těmto požadavkům je nutné měnit datové typy, které tyto toky definují při konstrukci.
+Za běhu, ale už tyto typy nejsou tak důležité, a proto by konstrukce měla být provedena přes tzv. "builder".
 Tento styl konstrukce zajistí, že lze měnit datové typy definice toku a na konci je ukončen metodou,
 která může vracet úplně jiný typ a tak se například zbavit nadbytečných datových typů v definici,
 nebo i polí v objektu.
@@ -46,7 +46,7 @@ protože není dyn kompatibilní ([@sec:dyn_compatibility]).
 
 Použití trait objektu `dyn Any` přidá režii díky tomu,
 že se musí každý trait objekt převést na konkrétní typ ([@sec:any_chapter]).
-Typy na které je potřeba trait objekty převést, je nutno znát předem,
+Typy, na které je potřeba trait objekty převést, je nutno znát předem,
 což znamená, že musí být v definici toku.
 Dále při tomto procesu také probíhá kontrola typu
 a trait objekt `dyn Any` musí být obalen např. v boxu ([@sec:box]), což přidává indirekci a režii.
@@ -71,8 +71,8 @@ struct NazevToku<Vstup, Vystup, TupleListTyp> {
 
 Běh toku lze zhruba rozdělit do čtyř částí.
 První část je vytvoření asynchronních úloh.
-Druhá část je spuštění asynchronní úloh.
-Třetí část je čekání na dokončení asynchronní úloh.
+Druhá část je spuštění asynchronních úloh.
+Třetí část je čekání na dokončení asynchronních úloh.
 Poslední čtvrtá část je zpracování výstupů asynchronních úloh.
 
 Toto rozdělení běhu toků do částí s největší pravděpodobností není možno dodržet pro všechny toky.
@@ -83,13 +83,13 @@ Dále nad těmito částmi by už měla být jen samotná implementace traitu pr
 // pseudokód implementace běhu toku
 impl Node for ParallelFlow {
     async fn run(&mut self, input: Input) -> Output {
-        // vytvoření asynchronních úloh.
+        // vytvoření asynchronních úloh
         let futures: Vec<NodeFuture> = self.create_futures(input);
-        // spuštění asynchronní úloh.
+        // spuštění asynchronních úloh
         futures.iter().for_each(runtime::spawn);
-        // čekání na dokončení asynchronní úloh.
+        // čekání na dokončení asynchronních úloh
         let outputs: Vec<_> = futures.into_stream().map(NodeFuture::await).await;
-        // zpracování výstupů asynchronních úloh.
+        // zpracování výstupů asynchronních úloh
         let result = self.handle_outputs(outputs);
         return result;
     }

@@ -32,7 +32,7 @@ definicí základních traitů a jednotek.
 Tvorba nové knihovny a téma této diplomové práce bylo zvoleno,
 protože existující knihovny nevyužívají jednu z nejsilnějších vlastností jazyka Rust,
 což je jeho typový systém, a pro vytváření a kontrolu datových typů používají reflexi za běhu.
-Toto způsobuje, že chyby, které by mohly být řešeny při kompilaci jsou řešeny za běhu programu
+Toto způsobuje, že chyby, které by mohly být řešeny při kompilaci, jsou řešeny za běhu programu
 a bez rozsáhlých testů často nejsou zachyceny.
 Dále také tento přistup způsobuje, že kompilátor není schopen kód programu pořádně optimalizovat,
 protože nevidí konkrétní datové typy.

@@ -6,7 +6,7 @@ pro tisknutí uzlů v toku, definici toku a definici builderu pro tok.
 
 Tyto makra výrazně usnadňují vytváření toků se stejnou strukturou
 nebo se stejnými buildery.
-Umožňují měnit vnitřní definice toků či builderů,
+Umožňují měnit vnitřní definice toků či builderů
 pro všechny toky využívající tyto makra zároveň a na jednom místě.
 
 ```{.include}

@@ -69,5 +69,5 @@ fn main() {
 Po inliningu jsou v hlavní funkci volané funkce nahrazeny tělem těchto funkcí.
 Zde by samozřejmě kompilátor neskončil a odoptimalizoval i samotné počty,
 protože již zná všechny operandy (nakonec by v hlavní funkci zbylo jen `let res = 129415`).
-Toto kód je jen pro ilustraci, na které je vidět jak inlining funguje.
+Tento kód je jen pro ilustraci, na které je vidět, jak inlining funguje.
 

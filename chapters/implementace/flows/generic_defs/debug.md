@@ -15,7 +15,7 @@ macro_rules! impl_debug_for_flow {
 Makra `impl_debug_for_builder` a `impl_debug_for_flow`
 slouží pro jednoduchou implementaci `Debug` traitů
 pro builder a tok.
-Berou název toku, datový typ pro který má být `Debug` implementován
+Berou název toku, datový typ, pro který má být `Debug` implementován,
 a dodatečné nepovinné omezení typů pomocí traitů.
 
 Řetězec pro tisk je vytvořen pomocí metody `debug_struct`,

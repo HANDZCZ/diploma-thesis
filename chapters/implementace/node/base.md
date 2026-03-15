@@ -23,7 +23,7 @@ Dále se liší v definici metody `run` explicitní definicí výstupního typu,
 který musí implementovat trait `Future` ([@sec:future_trait])
 a tento typ také musí implementovat auto trait `Send`.
 Auto trait `Send` je vyžadován proto, aby bylo možno vzniklou asynchronní úlohu odeslat do jiného vlákna
-a docílit, tak mnohem větší konkurence.
+a docílit tak mnohem větší konkurence.
 
 Bylo také nutno do tohoto traitu přidat metodu `describe`, která slouží k popisu uzlu.
 Vrací informace jak o vstupních a výstupních typech, tak i dodatečné informace jako je popis uzlu.

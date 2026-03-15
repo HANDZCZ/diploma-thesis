@@ -43,8 +43,8 @@ fn main() {
 
 : Příklad statického výběru {#lst:static_dispatch_example}
 
-V ukázce výše je vidět jak lze využít statického výběru.
-Trait `Update` definuje co musí konkrétní typy umět.
+V ukázce výše je vidět, jak lze využít statického výběru.
+Trait `Update` definuje, co musí konkrétní typy umět.
 Dále existuje funkce `update_val`, která bere jako parametr měnitelnou referenci na nějaký generický typ `T`, který implementuje trait `Update`.
 Hlavní metoda poté volá funkci `update_val` na dvou hodnotách s různými typy (konkrétně `TypeA` a `TypeB`),
 které musí implementovat `Update` trait.
@@ -89,9 +89,9 @@ fn main() {
 
 : Příklad dynamického výběru {#lst:dynamic_dispatch_example}
 
-V ukázce výše je vidět jak lze využít dynamického výběru.
+V ukázce výše je vidět, jak lze využít dynamického výběru.
 Tato ukázka je velice podobná statickému výběru.
-Jediné co se liší je implementace funkce `update_val`, která nyní bere jako parametr měnitelnou referenci na trait objekt `dyn Update`.
+Jediné, co se liší je implementace funkce `update_val`, která nyní bere jako parametr měnitelnou referenci na trait objekt `dyn Update`.
 V tomto případě by byla vygenerována pouze jedna funkce `update_val` pro každý konkrétní typ implementující `Update` trait.
 Funkce `update_val` poté obsahuje dodatečné vyhledání lokace `update` metody na konkrétním trait objektu za použití vtablu.
 

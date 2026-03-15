@@ -40,7 +40,7 @@ pub trait Merge: Sized {
 Trait `Merge` slouží k definici, jak mají být instance stejného typu sloučeny.
 Obsahuje pouze jednu funkci `merge`, která bere neměnnou referenci na originální instanci,
 pokud existuje, a pole ostatních instancí stejného typu.
-Implementace této funkce definuje co se má stát s instancí,
+Implementace této funkce definuje, co se má stát s instancí,
 která se momentálně nachází v úložišti.
 Toto rozhodnutí je ponecháno na uživateli knihovny.
 
@@ -91,10 +91,10 @@ pub struct LocalStorageImpl {
 : Implementace lokálního úložiště - struct `LocalStorageImpl` {#lst:local_storage_impl_struct_locals_torage_impl}
 
 Implementace lokálního úložiště vychází z návrhu pro úložiště typu klíč-hodnota ([@fig:kv_storage_design_for_node_trait]).
-Tento návrh je rozšířen o atribut `changed`, který značí jaké hodnoty byly změněny, vloženy či odstraněny
+Tento návrh je rozšířen o atribut `changed`, který značí, jaké hodnoty byly změněny, vloženy či odstraněny
 a je využit při slučování kontextů.
 Dále je namísto trait objektu `dyn Any` využit privátní trait objekt `dyn StorageItem`,
-který není dostupny uživateli knihovny, ale pouze této implementaci lokálního úložiště.
+který není dostupný uživateli knihovny, ale pouze této implementaci lokálního úložiště.
 
 ### Trait StorageItem {.unlisted .unnumbered}
 
@@ -127,12 +127,12 @@ která je nutná aby trait `StorageItem` mohl být dyn kompatibilní ([@lst:not_
 Trait `StorageItem` je implementován pro jakýkoli typ `T`,
 který implementuje `Merge + Any + Send + Clone`.
 Metoda `duplicate` pouze volá metodu `clone` z traitu `Clone`
-a výslednou hodnotu obalí do boxu a vrátí ji,
-koerce na trait objekt `dyn StorageItem` probíhá automaticky.
+a výslednou hodnotu obalí do boxu a vrátí ji.
+Přetypování na trait objekt `dyn StorageItem` probíhá automaticky.
 Metoda `merge` nejprve převádí všechny vstupní hodnoty trait objektů `dyn StorageItem`
 na konkrétní datový typ `T` ([@sec:downcast_methods]) a poté volá funkci `merge` z `Merge` traitu s těmito hodnotami.
 Výsledná hodnota je vrácena nepozměněná, akorát u `MergeResult::ReplaceOrInsert` je potřeba tuto hodnotu obalit do boxu,
-aby koerce mohla převést konkrétní datový typ `T` na trait objekt `dyn StorageItem`.
+aby přetypování mohlo převést konkrétní datový typ `T` na trait objekt `dyn StorageItem`.
 
 ### Implementace základních traitů {.unlisted .unnumbered}
 
@@ -141,7 +141,7 @@ a pro atribut `changed` je vytvořen nový hashset.
 Tímto se docílí toho, že instance lokálního úložiště jsou na sobě nezávislé
 a při slučování kontextů proběhne sloučení pouze změněných hodnot.
 
-K naklonování type mapy je nutno aby hodnoty implementovaly trait `Clone` pro `Box<dyn StorageItem>`
+K naklonování type mapy je nutno, aby hodnoty implementovaly trait `Clone` pro `Box<dyn StorageItem>`
 a z tohoto důvodu byla přidána implementace, která volá metodu `duplicate` a vrací její výsledek.
 
 Trait `Update` má velmi jednoduchou implementaci,
@@ -150,7 +150,7 @@ která má aktualizovat originální,
 a rozšířit originální hashset změněných hodnot.
 
 Trait `Join` je implementován, tak že nejprve získá všechny typy (klíče type mapy) změněných hodnot
-a pak pro každý změněný typ získá hodnoty tohoto typu ze všech úložišť, včetně originálního.
+a pak pro každý změněný typ získá hodnoty tohoto typu ze všech úložišť včetně originálního.
 Poté pro každý typ zavolá metodu `merge` a podle vrácené hodnoty upraví hodnotu v originálním úložišti.
 Implementace traitu `Join` má jednoduchou myšlenku,
 ale samotná implementace je velmi zdlouhavá a řeší se v ní plno krajních případů.

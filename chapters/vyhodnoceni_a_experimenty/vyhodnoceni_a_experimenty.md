@@ -14,9 +14,9 @@ Funkce `poller` také umožňuje izolovat generovaný kód, pouze na ten,
 který se vztahuje k testovanému případu.
 
 Dále byl využit takzvaný [`black_box`](https://doc.rust-lang.org/beta/std/hint/fn.black_box.html),
-který značí kompilátoru, že má být co nejpesimističtější o tom co `black_box`
+který značí kompilátoru, že má být co nejpesimističtější o tom, co `black_box`
 je a umí.
-Díky této funkci je možno zabránit, aby kompilátor odoptimalizoval části kódu.
+Díky této funkci je možné zabránit, aby kompilátor odoptimalizoval části kódu.
 
 ```{.include}
 single_node.md
@@ -33,10 +33,10 @@ ale i napříč sloučenými toky a jejich uzly.
 Bohužel bylo také zjištěno, že tento jev není nekonečný a existují limity,
 a při jejich překročení je generován kód pro asynchronní zpracování.
 Tomuto jevu se však nedá vyhnout při práci s asynchronními úlohami
-a nikdy to nebyl cíl této knihovny.
+a nikdy to nebyl ani cíl této knihovny.
 
 Dále také byly zjištěny praktické limity pro tyto statické toky,
-při kterých je program úspěšné zkompilován a běží tak jak má.
+při kterých je program úspěšné zkompilován a běží, tak jak má.
 Tyto limity by měly být dostačující pro jakékoli použití těchto statických toků.
 Pokud tyto limity, ale nejsou dostačující,
 tak budou řešeny budoucími verzemi této knihovny.

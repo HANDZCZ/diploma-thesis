@@ -21,9 +21,9 @@ Požadavky, které jsou kladeny na uzly vkládané do builderu vytvořeného tí
 1. Datový typ výstupu vkládaného uzlu musí být převoditelný na výstupní datový typ toku.
 1. Datový typ chyby vkládaného uzlu musí být převoditelný na chybový datový typ toku.
 
-Pro buildery definovány tímto makrem je implementován trait `Debug` pomoci pomocného makra.
+Pro buildery definovány tímto makrem je implementován trait `Debug` s využitím pomocného makra.
 Dále je také implementován pro builder trait `Default`, který jen volá funkci `new` a vrací její hodnotu.
-Funkce `new` je také definována pro builder a jediné co dělá je,
+Funkce `new` je také definována pro builder a jediné, co dělá, je,
 že vrací novou instanci builderu, kde hodnota atributu `nodes` je unit typ.
 
 Definovány jsou také metody pro přidání uzlu a sestavení konečného toku.
@@ -63,7 +63,7 @@ impl<..> Builder<
 
 : Implementace makra `define_builder` - implementace metody `add_node` {#lst:macro_define_builder_add_node_impl}
 
-Kód výše ukazuje jak probíhá práce s typový systémem,
+Kód výše ukazuje, jak probíhá práce s typový systémem,
 kde builder s uzly `NodeTypes` a jejich vstupními, výstupními a chybovými datovými typy
 je po volání metody `add_node` převeden na builder s přidaným uzlem `NodeType`
 a jeho vstupním, výstupním a chybovým datovým typem.

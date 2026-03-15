@@ -62,7 +62,7 @@ ptr_to_pinned_tracker.as_mut().check_for_move();
 Arc je ukazatel s atomicky počítanými referencemi,
 což umožňuje, že alokovaná paměť může mít více vlastníků.
 Podobně jako Box se paměť alokuje na heap,
-ale oproti Boxu tato paměť může být bezpečné sdílena mezi vlákny programu.
+ale oproti Boxu tato paměť může být bezpečně sdílena mezi vlákny programu.
 [@smart_pointers_devto; @smart_pointers_codecamp; @smart_pointers_medium]
 
 ```{.rust .linenos}
@@ -94,7 +94,7 @@ fn main() {
 Mutex se používá pro sdílená data,
 která je třeba bezpečně upravovat ve více vláknech.
 Každé vlákno může zamknout tuto sdílenou hodnotu.
-Zamknutím sdílené hodnoty a držením zámku vlákno zabraňuje
+Zamknutím sdílené hodnoty a držením zámku, vlákno zabraňuje
 ostatním vláknům v zamknutí a upravě sdílené hodnoty.
 [@smart_pointers_devto; @smart_pointers_codecamp; @smart_pointers_medium]
 

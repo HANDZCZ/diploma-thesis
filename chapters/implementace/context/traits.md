@@ -63,7 +63,7 @@ Zde by samozřejmě šlo použít trait `Update` vícekrát, ale tento přístup
 že sloučení kontextů by bylo závislé na pořadí.
 Pokud by tento přístup byl použit, tak by jistě nastal případ,
 kdy by několik větví vkládalo nějaká data se stejným klíčem do úložiště
-a při slučování by v tomto případě v úložišti s největší pravděpodobností zůstaly ty data,
+a při slučování by v tomto případě v úložišti s největší pravděpodobností zůstaly ta data,
 která byla sloučena jako poslední.
 Mnohem lepší přístup je rozlišit tyto případy
 a řešení jak bude slučování probíhat v těchto případech ponechat na uživatele.
@@ -89,8 +89,8 @@ Trait `Task` je nástavba nad traitem `Future` ([@sec:future_trait]),
 která přidává dvě velmi důležité metody a slouží k reprezentaci vzniklé asynchronní úlohy.
 Tento trait hlavně slouží jako abstrakce nad konkrétními implementacemi asynchronních úloh
 v různých asynchronní runtimech ([@sec:async_runtime]).
-Metoda `is_finished` vrací zda úloha byla dokončena,
-bez ohledu na to jestli úspěšně či neúspěšně.
+Metoda `is_finished` vrací, zda úloha byla dokončena,
+bez ohledu na to, jestli úspěšně či neúspěšně.
 Metoda `cancel` konzumuje instanci úlohy a signalizuje úloze,
 že byla zrušena.
 V případě signalizace zrušení úlohy by úloha měla přerušit jakékoli právě běžící úkony a zastavit se.
@@ -131,7 +131,7 @@ pub trait SpawnSync {
 
 Trait `SpawnSync` poskytuje rozhraní pro vytváření synchronních úloh.
 Tento trait je synchronní verze `SpawnAsync` traitu
-a poskytuje možnost vytváření potenciálně časově či výpočetně náročných úloh,
+a poskytuje možnost vytváření potenciálně časově či výpočetně náročných úloh
 bez blokování asynchronních runtimu ([@sec:async_runtime]).
 Stejně jako trait `SpawnAsync` obsahuje pouze jednu metodu se jménem `spawn_blocking`,
 která bere synchronní úlohu a vrací nějaký datový typ implementující trait `Task`.

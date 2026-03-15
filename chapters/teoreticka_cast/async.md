@@ -25,7 +25,7 @@ Hlavním rozdílem je, že standardní knihovna neposkytuje žádný runtime pro
 a asynchronní úlohy nejsou okamžitě spuštěny po vytvoření, ale pouze po zavolání `await`.
 Standardní knihovna poskytuje pouze základní traity
 a struktury pro vytvoření runtimů a asynchronních úloh.
-Díky tomuto přístupu si uživatel může vybrat jaký runtime bude používat
+Díky tomuto přístupu si uživatel může vybrat, jaký runtime bude používat
 a kdy budou asynchronní úlohy spuštěny.
 
 ### Enum Poll {#sec:enum_poll}
@@ -39,7 +39,7 @@ pub enum Poll<T> {
 
 : Definice enumu `Poll` ve standardní knihovně [@rust_docs_poll_enum] {#lst:poll_enum_def}
 
-Enum `Poll` vyjadřuje zda asynchronní úloha skončila s nějakým výsledkem
+Enum `Poll` vyjadřuje, zda asynchronní úloha skončila s nějakým výsledkem,
 nebo zda je potřeba na tuto úlohu ještě čekat a vzbudit ji později.
 [@rust_docs_poll_enum; @async_in_rust_book]
 
@@ -157,7 +157,7 @@ impl Future for MojeAsynchronniUloha {
     type Output = u8;
 
     fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
-        // zde je poté definováno co má asynchronní úloha dělat
+        // zde je poté definováno, co má asynchronní úloha dělat
         // v tomto případě jen vrací uloženou hodnotu
         return Poll::Ready(self.hodnota);
     }

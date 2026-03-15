@@ -70,16 +70,16 @@ trait Node<Input, Output> {
 : Návrh traitu `Node` s úložištěm {#lst:node_trait_with_storage_design}
 
 Zde ale už nastává problém - Jak má být toto úložiště tedy implementováno a co musí umět?
-Pokud by se použila jakákoli implementace, která limituje co může být do úložiště vloženo,
+Pokud by se použila jakákoli implementace, která limituje, co může být do úložiště vloženo,
 tak uživatel knihovny na tuto limitaci určitě narazí a díky tomu, že definice traitu `Node` je neměnná,
 tak není schopen tuto limitaci jednoduše obejít.
-Jednou z možností jak by tuto limitaci mohl obejít je brát data, která chce sdílet mezi uzly,
+Jednou z možností, jak by tuto limitaci mohl obejít, je brát data, která chce sdílet mezi uzly,
 při konstrukci uzlu.
 Tato možnost je ale nepraktická, zbytečně komplikovaná a znamenalo by to,
 že úložiště je tomuto uživateli spíše na potíž než k užitku.
 
 Jednoduchý příklad je implementace pomocí hašovací tabulky, která má klíč `String` a hodnotu `String`.
-Vše co do tohoto úložiště bude vloženo musí být převeditelné na řetězec a získatelné z řetězce.
+Vše, co do tohoto úložiště bude vloženo, musí být převeditelné na řetězec a získatelné z řetězce.
 Poté uživatel narazí na problém, že do tohoto úložiště nejde snadno vložit například `Mutex` ([@sec:mutex]),
 protože ho nelze převést na řetězec.
 
@@ -127,7 +127,7 @@ Přihlašovací údaje by mohl tento uzel brát v konstruktoru, ale to by znamen
 tak pro každý přihlašovací údaj je potřeba vytvořit nová instance uzlu,
 která je poté použita k sestavení nového toku.
 
-Řešením je přidáni stupně volnosti na kontext tím způsobem,
+Řešením je přidání stupně volnosti na kontext tím způsobem,
 že místo konkrétního typu pro kontext se použije generický parametr,
 který může být libovolně omezen.
 Tímto způsobem se docílí toho, že uzly mohou definovat traity, které kontext musí implementovat.

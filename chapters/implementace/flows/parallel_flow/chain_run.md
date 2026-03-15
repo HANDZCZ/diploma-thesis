@@ -22,8 +22,8 @@ a `ChainPollParallel`, sloužící k čekání na dokončení asynchronních úl
 zpracování a správu jejich výstupů.
 Definice traitů `ChainSpawn` a `ChainRunParallel` se nachází v přílohách ([@lst:parallel_flow_chain_run_sub_impl]).
 
-Tok končí úspěšně, jen když všechny uzly a "joiner" skončí úspěšně.
-Při jakékoli chybě, buď z uzlů či "joineru" je tok ukončen a chyba je vrácena.
+Tok končí úspěšně, jen když všechny uzly a joiner skončí úspěšně.
+Při jakékoli chybě, buď z uzlů nebo joineru je tok ukončen a chyba je vrácena.
 
 Tato implementace zajišťuje, že uzly jsou prováděny souběžně a nezávisle na sobě.
 K docílení této implementace jsou také použity traity `Fork` ([@sec:trait_fork]) a `Join` ([@sec:trait_join]),

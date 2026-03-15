@@ -18,7 +18,7 @@ impl<T> Debug for ChainDebugAsList<&T> where T: ChainDebug { .. }
 Trait `ChainDebug` slouží k vytištění všech uzlů v toku.
 Tohoto cíle je samozřejmě možno dosáhnout pomocí výchozí implementace traitu `Debug` pro tuply,
 ale vyprodukovaný výsledek není intuitivní a záleží na vnitřní reprezentaci uzlů v toku.
-Díky tomuto traitu jsou tuple listy tištěny jako heterogenní pole i když jsou vnitřně reprezentovány jinak.
+Díky tomuto traitu jsou tuple listy tištěny jako heterogenní pole, i když jsou vnitřně reprezentovány jinak.
 
 Například pro heterogenní pole obsahující hodnoty `A` až `C`
 by výchozí implementace mohla mít výstup `((((), A), B), C)`,
@@ -41,7 +41,7 @@ pub trait ChainDescribe<Context, T> {
 : Implementace traitu `ChainDescribe` {#lst:trait_chain_describe_impl}
 
 Trait `ChainDescribe` slouží k získání popisů uzlů obsažených v toku.
-Obsahuje metodu describe, která bere referenci na tuple list
+Obsahuje metodu `describe`, která bere referenci na tuple list
 a měnitelnou referenci na vektor popisů uzlů, do kterého jsou všechny popisy uzlů vloženy.
 Dále také obsahuje konstantu `COUNT`, která vyjadřuje počet elementů v tuple listu.
 Pomocí této konstanty lze vektor pre-alokovat a vyhnout se tak zbytečným re-alokacím.

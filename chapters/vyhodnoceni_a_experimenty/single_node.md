@@ -3,7 +3,7 @@
 
 V kapitole "Kontext za pomocí generického typu" ([@sec:generic_type_for_kontext])
 je uveden kód "Příklad použití traitu `Node` s generickým kontextem" ([@lst:node_trait_with_storage_design]).
-Tento kód lze využít skoro beze změny a poslouží k testu zda inlining ([@sec:inlining])
+Tento kód lze využít skoro beze změny a poslouží k testu, zda inlining ([@sec:inlining])
 a monomorfizace ([@sec:monomorfizace]) fungují pro tento velmi jednoduchý příklad.
 
 ```{.asm .linenos}
@@ -38,7 +38,7 @@ Pokud jsou hodnoty `5` a `12` obaleny do `black_boxu`, tak je vidět,
 díky tomu, že definovaný uzel neobsahuje žádný await bod.
 
 Práce se stackem je vedlejší účinek `black_boxu`
-a při použití argumentů do funkce `poller` místo `black_boxu`,
+a při použití argumentů do funkce `poller` místo `black_boxu`
 je generována pouze jedna instrukce sčítající argumenty.
 
 ```{.rust .linenos}

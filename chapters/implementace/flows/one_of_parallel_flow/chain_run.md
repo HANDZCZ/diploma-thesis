@@ -16,8 +16,8 @@ Generický typ `T` v definici traitu je použit pro uložení vstupních, výstu
 a chybových datových typů uzlů.
 
 Implementace traitu `ChainRunOneOfParallel` pro tuple list je také velmi podobná traitu `ChainRunParallel`
-v tom, že běh je implementován za pomocí rekurzivní dekompozice tuple listu na hlavu a ocas,
-používají se traity `ChainSpawn`, sloužící k vytvoření asynchronních úloh,
+v tom, že běh je implementován za pomocí rekurzivní dekompozice tuple listu na hlavu a ocas.
+Používají se traity `ChainSpawn`, sloužící k vytvoření asynchronních úloh,
 a `ChainPollOneOfParallel`, sloužící k čekání na dokončení asynchronních úloh,
 zpracování a správu jejich výstupů.
 Definice podobných traitů pro `ChainRunParallel` se nachází v přílohách ([@lst:parallel_flow_chain_run_sub_impl]).

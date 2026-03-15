@@ -23,16 +23,16 @@ a v konečném sestavení toku.
 Implementace metody `add_node` je rozdělena do dvou případů,
 metoda pro první uzel a metoda pro ostatní uzly,
 ale oba tyto případy dělají funkcionálně to samé.
-Toto rozdělení je nutno pro kompatibilitu s traity `ChainDebug` a `ChainDescribe`,
+Toto rozdělení je nutné pro kompatibilitu s traity `ChainDebug` a `ChainDescribe`,
 které očekávají specifickou strukturu tuple listu.
 Dále bylo toto rozdělení ponecháno proto,
 aby bylo možno implementovat nové traity jen pro jeden typ tuple listu.
 
 Implementace metody `add_node` zajišťuje,
 že vstup do toku lze převést na vstup vkládaného uzlu
-a chyba z vkládaného uzlu lze převést na chybu toku.
+a chybu z vkládaného uzlu lze převést na chybu toku.
 
-Implementace metody `build`, bere nějakou strukturu implementující trait `Joiner` a zajišťuje,
+Implementace metody `build` bere nějakou strukturu implementující trait `Joiner` a zajišťuje,
 že vstup "joineru" je stejný s výstupem všech uzlů, a že výstup "joineru" je stejný jako výstup toku.
 
 Implementace metody `build` se nachází v přílohách ([@lst:parallel_flow_builder_build_def_impl]).

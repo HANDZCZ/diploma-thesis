@@ -7,11 +7,11 @@ Mezi tyto nevýhody hlavně patří větší velikost výsledného binárního s
 Z tohoto důvodu by se další verze knihovny měly soustředit na implementaci dalších toků,
 které mají stejnou funkcionalitu, ale používají dynamic dispatch ([@sec:dynamic_dispatch]).
 
-Implementací těchto dynamic dispatch toků se uživateli poskytne možnost,
-vybrat si zda chce používat dynamic či static dispatch.
+Implementací těchto dynamic dispatch toků se uživateli poskytne možnost
+vybrat si, zda chce používat dynamic či static dispatch.
 Pro tvorbu dynamic dispatch uzlů by měl být implementován nějaký obal,
 který by dovolil použít trait objekty uzlů jako konkrétní uzly.
-Za pomocí těchto dodatečných implementací,
+Za pomocí těchto dodatečných implementací
 by poté bylo možno libovolně míchat static a dynamic dispatch
 ve stejném toku i při skládání toků.
 
@@ -23,7 +23,7 @@ který slouží k získání elementu za pomocí nějakého indexu.
 Použitím generického typu si uživatel knihovny poté může vybrat,
 zda chce paměť alokovat na heap, nebo na stack a jaká struktura má být použita.
 
-Budoucí verze knihovny by také mohla obsahovat,
+Budoucí verze knihovny by také mohla obsahovat
 vytváření toků dynamicky za běhu programu, například za pomocí json dokumentu.
 Toto by ale znamenalo přidat tok, který kontroluje veškeré datové typy za běhu programu.
 Což jde proti ideálům této knihovny, přenesení co nejvíce kontrol

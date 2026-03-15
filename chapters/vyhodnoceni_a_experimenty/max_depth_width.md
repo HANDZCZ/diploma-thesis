@@ -8,9 +8,9 @@ Pro zjištění právě tohoto limitu byl vytvořen experiment,
 který skládá `SequentialFlow` toky do sebe.
 Tok `SequentialFlow` byl vybrán, protože při reálném použití je tento tok nejvíce využíván.
 
-Při výchozím nastavení "recursion_limit," což je 128, bylo dosaženo hloubky 25
+Při výchozím nastavení "recursion_limit", což je 128, bylo dosaženo hloubky 25
 a i při této hloubce byl kompilátor schopen odoptimalizovat celý složený tok na jednu `add` instrukci.
-Po překročení této hloubky již bylo nutno navýšit "recursion_limit."
+Po překročení této hloubky již bylo nutno navýšit "recursion_limit".
 
 Tento limit byl poté navyšován až na hodnotu 8191 a bylo dosaženo aspoň hloubky 1296.
 Při této hloubce byl ještě kompilátor schopný program zkompilovat.
@@ -22,12 +22,12 @@ výchozí velikost stacku, což je 8 MiB.
 
 Podobně jako proběhl experiment pro zjištění maximální hloubky toku,
 tak proběhl experiment pro zjištění maximální "šířky" toku.
-Šířkou toku je myšleno kolik uzlů je možno do jednoho toku vložit,
+Šířkou toku je myšleno kolik uzlů je možné do jednoho toku vložit,
 než je dosaženo nějakého limitu.
 Pro tento experiment byl také použit tok `SequentialFlow` ze stejných důvodů.
 
-Při výchozím nastavení "recursion_limit," bylo dosaženo šířky 23.
-Po překročení této šířky již bylo nutno navýšit "recursion_limit."
+Při výchozím nastavení "recursion_limit", bylo dosaženo šířky 23.
+Po překročení této šířky již bylo nutno navýšit "recursion_limit".
 
 Tento limit byl poté navyšován až na hodnotu 1644 a bylo dosaženo šířky 327.
 Při této šířce byl ještě kompilátor schopný program zkompilovat.
@@ -36,9 +36,9 @@ Tento test také proběhl na Linux systému a kompilátor měl k dispozici 8 MiB
 
 ## Maximální kombinovaná hloubka a šířka toku
 
-Experimenty pro maximální hloubkou a šířku probíhaly pouze s jedním uzlem,
-nebo jedním tokem, ale při reálném použití této knihovny by toky měly různé hloubky a šířky.
-V tomto experimentu bylo testováno jaký je limit pro toky složené z dalších toků,
+Experimenty pro maximální hloubku a šířku probíhaly pouze s jedním uzlem,
+nebo s jedním tokem, ale při reálném použití této knihovny by toky měly různé hloubky a šířky.
+V tomto experimentu bylo testováno, jaký je limit pro toky složené z dalších toků,
 které obsahují nějaké uzly či další toky.
 
 Poměry toků, uzlů a hloubky byly odhadnuty tak, aby nejvíce odpovídaly reálné práci s touto knihovnou.

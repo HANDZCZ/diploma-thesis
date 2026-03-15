@@ -15,10 +15,10 @@ pub struct FnFlow<Input, Output, Error, Context, InnerData = (), R = ()> {
 Tok `FnFlow` je obal, který vytváří z nějaké synchronní funkce uzel implementující trait `Node`.
 
 Tento obal přijímá asynchronní funkci či strukturu implementující trait `Runner`,
-dodatečná data, která mají být funkci poskytnuta spolu se vstupem
+dodatečná data, která mají být funkci poskytnuta spolu se vstupem,
 a nepovinný popis pro vytvořený uzel.
 
-Implementace tohoto obalu je velice jednoduchá, protože jen volá poskytnutou funkci se stupem
+Implementace tohoto obalu je velice jednoduchá, protože jen volá poskytnutou funkci se vstupem
 a poskytnutými dodatečnými daty.
 Tělo `describe` metody vytváří acyklický orientovaný graf,
 kde dvě hrany míří do funkce, jedna z toku a druhá z dodatečných dat, a jedna hrana míří z funkce do toku.
@@ -78,5 +78,5 @@ zda implementace je zamýšlena pro definici uzlu,
 nebo pro použití v `FnNode` toku.
 
 Pro trait `Runner` byla také vytvořena výchozí implementace pro jakýkoli datový typ implementující trait `Fn`.
-Díky této implementaci je možno použít jakoukoli asynchronní funkci ([@sec:async_await_syntax; @lst:async_function_example]).
+Díky této implementaci je možné použít jakoukoli asynchronní funkci ([@sec:async_await_syntax; @lst:async_function_example]).
 

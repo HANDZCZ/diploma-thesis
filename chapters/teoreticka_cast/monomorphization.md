@@ -54,5 +54,5 @@ Datové typy pro vytvoření kopií byly získány z hlavní metody, kde datový
 Pro datový typ `i32` byla vytvořena kopie `Option_i32`
 a pro datový typ `f64` byla vytvořena kopie `Option_f64`.
 Tyto dvě kopie jsou poté použity v hlavní metodě místo generického datového typu `Option`.
-Toto kód je samozřejmě jen pro ilustraci, ale na této ukázce je nádherně vidět jak monomorfizace funguje.
+Tento kód je samozřejmě jen pro ilustraci, ale na této ukázce je nádherně vidět, jak monomorfizace funguje.
 

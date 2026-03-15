@@ -11,7 +11,7 @@ jako je výkon, spolehlivost a použitelnost.
 
 Režie knihovnou definovaných toku by měla být co nejmenší.
 Toky by měly efektivně využívat systémové zdroje.
-Neměly by alokovat paměť, která nemusí být využita
+Neměly by alokovat paměť, která nemusí být využita,
 a neměly by zbytečně blokovat vlákno a tak zabraňovat dalším úlohám v běhu.
 
 ### Dokumentace

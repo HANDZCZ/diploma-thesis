@@ -6,7 +6,7 @@ které kombinuje makra `define_flow` a `define_builder`
 za účelem vytvoření toku se stejnou strukturou a builderem,
 ale s jinou funkcí.
 Na vstupu bere všechny parametry obou maker
-a vnitřně pomocí těchto parametrů volá tyto makra,
+a vnitřně pomocí těchto parametrů volá tato makra,
 která vygenerují definici toku a builderu.
 Díky tomuto makru je velice jednoduché definovat nový tok,
 který se liší pouze ve funkcionalitě či dodatečných požadavcích.

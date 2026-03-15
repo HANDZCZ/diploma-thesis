@@ -18,18 +18,18 @@ definici těla funkce pro metodu `describe` z traitu `Node` ([@sec:trait_node]),
 dodatečné nepovinné omezení typů pomocí traitů při definici `builder` metody
 a nepovinnou dokumentaci pro definovaný tok.
 
-Toky definované tímto makrem mají implementovány traity `Debug`,
-pomocí pomocného makra, a `Clone`.
+Toky definované tímto makrem mají implementovány trait `Debug`,
+s využitím pomocného makra, a `Clone`.
 Dále je také vytvořena funkce `builder`,
 která vrací instanci builderu vytvořenou funkcí `new` implementovanou v builderu.
 Implementace této funkce může být omezena pomocí dodatečných traitů,
 tyto traity většinou pochází ze samotné implementace builderu.
 Pro funkci `builder` je také automaticky vygenerována dokumentace s ukázkou použití.
 
-Toto makro také implementuje trait `Node` ([@sec:trait_node]) pro každý tok co definuje.
-Implementace metody `run` jen volá takzvaný "chainrun,"
+Toto makro také implementuje trait `Node` ([@sec:trait_node]) pro každý tok, který definuje.
+Implementace metody `run` jen volá takzvaný "chainrun",
 který musí být implementován pro tuple list uzlů v toku,
-s parametry, které jsou do funkce poslány a vrací výstupní asynchronní úlohu.
-Implementace metody `describe` je velice triviální, protože jediné co dělá je,
+s parametry, které jsou do funkce poslány, a vrací výstupní asynchronní úlohu.
+Implementace metody `describe` je velice triviální, protože jediné, co dělá je,
 že do těla této funkce vloží kód, který byl poskytnut tomuto makru pro přesně tento účel.
 

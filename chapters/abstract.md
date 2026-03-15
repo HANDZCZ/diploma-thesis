@@ -9,8 +9,8 @@ Na základě analýzy principů programování datových toků,
 asynchronního modelu jazyka Rust a souvisejících technik,
 jako je polymorfismus, monomorfismus a práce s generickými typy,
 je navržená architektura knihovny,
-včetně kontextového systému pro sdílení dat mezi uzly,
-a následně je implementována a otestována.
+včetně kontextového systému pro sdílení dat mezi uzly.
+Následně je implementována a otestována.
 Součástí práce je testování funkčnosti knihovny a experimenty
 pro vyhodnocení ovlivnění výkonu a škálovatelnosti toků.
 

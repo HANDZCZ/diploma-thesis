@@ -1,7 +1,7 @@
 
 ## Dyn kompatibilita {#sec:dyn_compatibility}
 
-Dyn kompatibilita se používá u traitů a značí zda lze trait použít při definici trait objektu.
+Dyn kompatibilita se používá u traitů a značí, zda lze trait použít při definici trait objektu.
 Pokud je trait dyn kompatibilní, tak je možné vytvořit vtable a lze tento trait použít jako trait objekt,
 ale pokud trait není dyn kompatibilní, tak to znamená,
 že nelze vytvořit vtable a nelze tento trait použít jako trait objekt.

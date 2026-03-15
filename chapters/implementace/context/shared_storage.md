@@ -45,8 +45,8 @@ pub trait SharedStorage {
 Trait `SharedStorage` definuje typové sdílené úložiště,
 které je sdíleno napříč všemi větvemi v toku
 a vychází z návrhu pro úložiště typu klíč-hodnota ([@sec:key-val_storage; @fig:kv_storage_design_for_node_trait]).
-Tento trait je velmi podobný traitu `LocalStorage` ve funkcích co nabízí
-a stejně jako trait `LocalStorage` umožňuje ukládání a získávání hodnot podle jejich datového typu.
+Tento trait je velmi podobný traitu `LocalStorage` ve funkcích, co nabízí.
+Stejně jako trait `LocalStorage` umožňuje ukládání a získávání hodnot podle jejich datového typu.
 Tato implementace také umožňuje mít pro každý datový typ `T` uloženou pouze jednu instanci v úložišti.
 
 Stejně jako trait `LocalStorage`, tento trait obsahuje metody pro získání reference na instanci datového typu,
@@ -121,7 +121,7 @@ která je poté vrácena.
 
 Implementace základních traitů `Update` a `Join` je velmi jednoduchá,
 protože data jsou sdílena mezi instancemi,
-tak není nutno nijak řešit aktualizaci a slučování kontextů.
+a tak není nutno nijak řešit aktualizaci a slučování kontextů.
 Trait `Fork` je také velmi jednoduchý,
 protože jen klonuje celou strukturu a vrací ji.
 Při tomto klonování dochází jen k naklonování atomické reference (`Arc` - [@sec:arc]),
@@ -159,9 +159,9 @@ where
 
 Trait `SharedStorage` je implementován, tak že v každé metodě se nejprve zamkne type mapa
 a získá se hodnota uložená v type mapě pro daný datový typ, tato hodnota se naklonuje
-a poté je type mapa odemknuta, aby ostatní vlákna k ní měli přístup co nejdříve.
+a poté je type mapa odemknuta, aby ostatní vlákna k ní měla přístup co nejdříve.
 Klonování zde je velmi levné, protože se klonuje jen atomická reference (`Arc` - [@sec:arc]).
-Z metod je poté vrácena asynchronní úloha, která obsahuje tuto naklonovanou hodnotu
+Z metod je poté vrácena asynchronní úloha, která obsahuje tuto naklonovanou hodnotu,
 a pokud v type mapě tato hodnota neexistuje, tak asynchronní úloha vrací `None`,
 ale pokud tato hodnota existuje, tak se získá zámek pro tuto hodnotu
 a ten je poté obalen do dočasného zámku, který implementuje `Deref` nebo `DerefMut`

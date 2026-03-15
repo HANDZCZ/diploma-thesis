@@ -366,7 +366,7 @@ all doctests ran in 0.83s; merged doctests compilation took 0.82s
 
 : Zkrácený výstup běhu testů {#lst:shortened_tests_run}
 
-```{.d2 #fig:flow_composition_experiment_visualization caption="Vizualizace toku pro experimentu kompozice toků"}
+```{.d2 #fig:flow_composition_experiment_visualization caption="Vizualizace toku pro experiment kompozice toků"}
 vars: {
   d2-config: {
     layout-engine: tala

@@ -2,7 +2,7 @@
 # Teoretická část
 
 Tato část práce se zabývá různými tématy, která tvoří teoretické a kontextové zázemí pro tuto práci.
-Jsou v ní popsány základní pojmy, obecné či specifické k jazyku Rust, které je nutné znát pro následující kapitoly.
+Jsou v ní popsány základní pojmy jazyka Rust, obecné či specifické, které je nutné znát pro následující kapitoly.
 
 ```{.include}
 toky.md

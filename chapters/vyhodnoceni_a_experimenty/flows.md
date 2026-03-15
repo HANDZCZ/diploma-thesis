@@ -3,7 +3,7 @@
 
 Pro experimenty s toky byl použit stejný uzel a kontext jako při experimentech s jedním uzlem.
 V této kapitole je hlavně testováno kolik uzlů, pouze se synchronním tělem metody `Node::run`,
-je schopen kompilátor odoptimalizovat, bez vytváření struktur pro asynchronní úlohy
+je schopen kompilátor odoptimalizovat bez vytváření struktur pro asynchronní úlohy
 nebo jiných nadbytečných instrukcí.
 
 | Tok | Počet uzlů |
@@ -19,17 +19,17 @@ V tabulce výše je vidět, že pro každý tok existuje různý limit počtu uz
 které kompilátor dokáže odoptimalizovat.
 U toku `OneOfSequentialFlow` bylo potřeba navýšit tzv. "recursion_limit" na 301
 a u toku `ParallelFlow` jsou generovány dodatečné instrukce vždy, protože alokuje paměť na heap.
-Bez tohoto omezení by tok `ParallelFlow` dokázal odoptimalizovat aspoň 1 uzel,
-což bylo možno vidět ve vygenerovaném assembly kódu.
+Bez tohoto omezení by tok `ParallelFlow` dokázal odoptimalizovat aspoň jeden uzel,
+což bylo možné vidět ve vygenerovaném assembly kódu.
 
 Tok `OneOfSequentialFlow` si vedl velmi dobře, protože kompilátoru jen stačilo dokázat,
 že první uzel vrátí jakýkoli výsledek kromě `NodeOutput::Softfail` ([@sec:enum_node_output]).
-Pro tok ostatní toky, ale kompilátor musel projít všechny uzly.
+Pro ostatní toky, ale kompilátor musel projít všechny uzly.
 Optimalizace u toku `OneOfParallelFlow` je velmi překvapivá a autor očekával,
 že počet odoptimalizováných uzlů bude nižší než pro tok `SequentialFlow`.
 Protože pro odoptimalizování toku `OneOfParallelFlow` musí kompilátor dokázat,
 že všechny uzly v toku vrací stejnou hodnotu,
-nebo zjistit který uzel skončí jako první a nevrací `NodeOutput::Softfail` ([@sec:enum_node_output]).
+nebo zjistit, který uzel skončí jako první a nevrací `NodeOutput::Softfail` ([@sec:enum_node_output]).
 
 Limity pro tyto toky jsou také nižší, díky tomu, že tato knihovna je asynchronní,
 což způsobuje, že existují dodatečné hranice a přidaná komplexita způsobena asynchronním zpracováním.
@@ -38,25 +38,25 @@ nebo již nedokáže odoptimalizovat asynchronní kód.
 
 Překročení těchto hranic způsobuje, že je vytvářen dodatečný kód pro asynchronní zpracování.
 Bohužel bez dalších nových funkcí jazyka, jako jsou variadické argumenty či funkce,
-specializace a nebo explicitní "tail call" (koncové rekurze/volání) optimalizace,
+specializace, explicitní "tail call" (koncové rekurze/volání) optimalizace,
 nebo lépe optimalizovaného kompilátoru tato knihovna už naráží na limitace jazyka.
 
 Právě díky těmto limitacím a různým heuristikám kompilátoru
-je nejspíše prakticky nemožné zamezit kompilátoru vytvářet asynchronní kód,
+je nejspíše prakticky nemožné zamezit kompilátoru vytvářet asynchronní kód
 při plně synchronních tělech uzlů.
-To, že je tato knihovna schopna poskytnout tuto možnost v nějaké kapacitě,
+To, že je tato knihovna schopna poskytnout tuto možnost v nějaké kapacitě
 akorát potvrzuje, že návrh a implementace umožňuje tohoto jevu dosáhnout,
 a že kompilátor je schopen odoptimalizovat části kódu napříč uzly a await body.
 
 ### Vliv na skládání toků
 
-Jedním z důvodů proč tato knihovna nepoužívá trait objekty je,
+Jedním z důvodů, proč tato knihovna nepoužívá trait objekty je,
 že bez jejich použití by měl být kompilátor schopen sloučit,
 nebo i odstranit nějaké await body napříč skládanými toky.
 Tím tak docílit, že výsledný kód bude rychlejší, více optimalizován
 a nemusí se zabývat zbytečnou dereferencí na konkrétní datové typy.
 
-Pro otestování zda je kompilátor schopen odoptimalizovat toky
+Pro otestování, zda je kompilátor schopen odoptimalizovat toky
 složené z dalších toků, byl vytvořen experiment,
 který skládá 3 `SequentialFlow` toky do sebe.
 Každý tok obsahuje aspoň dva další jednoduché uzly, kromě jednoho vnitřního toku.
@@ -70,7 +70,7 @@ node_flow_testing::poller:
 
 : Vygenerovaný assembly kód pro kompozici uzlů {#lst:flow_composition_experiment_assembly}
 
-Jak je možno vidět z kódu výše, tak kompilátor dokázal odoptimalizovat celý složený tok.
+Jak je možné vidět z kódu výše, tak kompilátor dokázal odoptimalizovat celý složený tok.
 Tohoto výsledku byl kompilátor schopen docílit, jen díky tomu,
 že znal všechny konkrétní datové typy obsažené v toku a operandy použité při výpočtech.
 
@@ -98,7 +98,7 @@ node_flow_testing::poller:
     ret
 ```
 
-: Vygenerovaný assembly kód pro kompozici uzelů s `black_boxem` {#lst:flow_composition_bbox_experiment_assembly}
+: Vygenerovaný assembly kód pro kompozici uzlů s `black_boxem` {#lst:flow_composition_bbox_experiment_assembly}
 
 Podobně jako u experimentu s jedním uzlem byl použit `black_box`,
 aby kompilátor vygeneroval kód, jako kdyby hodnoty operandů byly neznámé.
