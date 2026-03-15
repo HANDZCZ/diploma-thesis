@@ -5,7 +5,7 @@ Všechny zdrojové kódy implementace, testů a dokumentace knihovny
 je možné nalézt v jednom repozitáři na autorově GitHubu.
 Tento repozitář se na nachází na adrese <https://github.com/HANDZCZ/node-flow/>.
 
-V této práci je popsána verze knihovny `v0.2.1` s MSRV (**M**inimum **S**upported **R**ust **V**ersion) `1.90.0`.
+V této práci je popsána verze knihovny `0.2.1` s MSRV (**M**inimum **S**upported **R**ust **V**ersion) `1.90.0`.
 Tato knihovna je také dostupná na oficiálním registru balíčků pro programovací jazyk Rust [`crates.io`](https://crates.io/crates/node-flow).
 Na tomto registru je také možno najít dokumentaci pro jednotlivé verze knihovny
 a v repozitáři je odkaz na [GitHub Pages](https://handzcz.github.io/node-flow/),

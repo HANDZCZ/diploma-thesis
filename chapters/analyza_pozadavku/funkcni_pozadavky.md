@@ -10,7 +10,7 @@ a jaké operace by měla být schopna provádět.
 ### Definice uzlů a toků
 
 Knihovna musí umožnit definici uzlů a toků, které berou nějaký vstup a vrací nějaký výstup.
-Definice uzlu a toku by měla obsahovat nějakou funkci (např. `run()`),
+Definice uzlu a toku by měla obsahovat nějakou funkci (např.\ `run()`),
 která umožní uživateli volně pracovat se vstupními daty a transformovat je na výstupní data.
 Tato funkce musí být asynchronní, aby uživatel mohl pracovat s I/O operacemi efektivně.
 
@@ -24,7 +24,7 @@ a jak uzly budou spouštěny.
 
 ### Spouštění toků
 
-Spouštění toků by mělo být realizováno pomocí nějaké vhodně nazvané metody, jako je např. `run`.
+Spouštění toků by mělo být realizováno pomocí nějaké vhodně nazvané metody, jako je např.\ `run`.
 Tato metoda by měla brát vstupní data a vracet asynchronní úlohu,
 na kterou je možno čekat a získat výsledek, což by měly být výstupní data.
 
@@ -39,7 +39,7 @@ aby si jich uživatel byl vědom a řešil jejich možné nastání.
 Knihovna by měla umožnit uživateli definovat vlastní logiku konfigurace uzlu,
 jako je maximální počet instancí pro tok nebo i pro uzel, nebo sdílení dat mezi uzly.
 Knihovna nemusí tuto logiku poskytovat, ale měla by jí umožnit.
-Dále by také knihovna měla umožnit inicializační a domoliční logiku pro uzly.
+Dále by také knihovna měla umožnit inicializační a demoliční logiku pro uzly.
 
 ### Typová bezpečnost a generika
 

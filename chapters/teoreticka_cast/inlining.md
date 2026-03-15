@@ -13,7 +13,7 @@ a umožňuje kompilátoru provést další optimalizace.
 Výslednou změnu rychlosti programu lze v nejlepším případě považovat za zanedbatelnou,
 avšak každé zrychlení se počítá.
 Nejhorší možný případ by pak byl takový, že je voláno mnoho malých
-a jednoduchých funkcí (např. `return (a + c) * b` by bylo tělo funkce),
+a jednoduchých funkcí (např.\ `return (a + c) * b` by bylo tělo funkce),
 kde většina času by byla strávena na vstupech a výstupech těchto funkcí.
 [@inlining_rust_perf_book; @inlining_in_rust_medium]
 

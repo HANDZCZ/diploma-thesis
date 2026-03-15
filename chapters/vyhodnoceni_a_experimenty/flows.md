@@ -17,7 +17,7 @@ nebo jiných nadbytečných instrukcí.
 
 V tabulce výše je vidět, že pro každý tok existuje různý limit počtu uzlů,
 které kompilátor dokáže odoptimalizovat.
-U toku `OneOfSequentialFlow` bylo potřeba navýšit tzv. "recursion_limit" na 301
+U toku `OneOfSequentialFlow` bylo potřeba navýšit tzv.\ "recursion_limit" na 301
 a u toku `ParallelFlow` jsou generovány dodatečné instrukce vždy, protože alokuje paměť na heap.
 Bez tohoto omezení by tok `ParallelFlow` dokázal odoptimalizovat aspoň jeden uzel,
 což bylo možné vidět ve vygenerovaném assembly kódu.
@@ -58,7 +58,7 @@ a nemusí se zabývat zbytečnou dereferencí na konkrétní datové typy.
 
 Pro otestování, zda je kompilátor schopen odoptimalizovat toky
 složené z dalších toků, byl vytvořen experiment,
-který skládá 3 `SequentialFlow` toky do sebe.
+který skládá 3\ `SequentialFlow` toky do sebe.
 Každý tok obsahuje aspoň dva další jednoduché uzly, kromě jednoho vnitřního toku.
 Vizualizaci tohoto toku lze nalézt v ukázkách ([@fig:flow_composition_experiment_visualization]).
 
@@ -75,11 +75,11 @@ Tohoto výsledku byl kompilátor schopen docílit, jen díky tomu,
 že znal všechny konkrétní datové typy obsažené v toku a operandy použité při výpočtech.
 
 V tomto experimentu si lze povšimnout toho,
-že i když se tok skládá z 8 uzlů a 4 toků,
+že i když se tok skládá z 8\ uzlů a 4\ toků,
 tak je tento celý tok odoptimalizován.
 Zajímavé na tomto jevu je, že kdyby se použil jen jeden tok `SequentialFlow`,
 tak by k odoptimalizování nedošlo.
-Jak je vidět v tabulce [-@tbl:max_node_collapsed_by_compiler_for_flow], tak limit pro tento tok je 6 uzlů.
+Jak je vidět v tabulce [-@tbl:max_node_collapsed_by_compiler_for_flow], tak limit pro tento tok je 6\ uzlů.
 Dále je potřeba zmínit, že pro tento experiment
 i experiment pro maximální počet uzlu bylo použito úplně stejné prostředí -
 stejný uzel, kontext, verze jazyka a nastavení optimalizací kompilátoru.

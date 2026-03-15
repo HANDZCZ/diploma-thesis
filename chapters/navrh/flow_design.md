@@ -6,7 +6,7 @@ Dále je nutno zajistit, že vstup do toku lze poslat do prvního uzlu
 a výstup z posledního uzlu lze vrátit jako výstup z posledního uzlu.
 
 Kvůli těmto požadavkům je nutné měnit datové typy, které tyto toky definují při konstrukci.
-Za běhu, ale už tyto typy nejsou tak důležité, a proto by konstrukce měla být provedena přes tzv. "builder".
+Za běhu, ale už tyto typy nejsou tak důležité, a proto by konstrukce měla být provedena přes tzv.\ "builder".
 Tento styl konstrukce zajistí, že lze měnit datové typy definice toku a na konci je ukončen metodou,
 která může vracet úplně jiný typ a tak se například zbavit nadbytečných datových typů v definici,
 nebo i polí v objektu.
@@ -49,8 +49,8 @@ Použití trait objektu `dyn Any` přidá režii díky tomu,
 Typy, na které je potřeba trait objekty převést, je nutno znát předem,
 což znamená, že musí být v definici toku.
 Dále při tomto procesu také probíhá kontrola typu
-a trait objekt `dyn Any` musí být obalen např. v boxu ([@sec:box]), což přidává indirekci a režii.
-Mohly by se použít tzv. "unchecked downcast" metody ([@sec:downcast_methods]),
+a trait objekt `dyn Any` musí být obalen např.\ v\ boxu ([@sec:box]), což přidává indirekci a režii.
+Mohly by se použít tzv.\ "unchecked downcast" metody ([@sec:downcast_methods]),
 ale ty jsou bohužel nedostupné na stabilním kanálu a neřeší problém režie boxu.
 
 Metodou eliminace už zbývají jen tuple listy.

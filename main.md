@@ -104,6 +104,9 @@ header-includes: |
         {\thesubparagraph}
         {1em}
         {\phantomsection}
+
+    % small non-breaking space (\, gets escaped to comma in pandoc)
+    \newcommand{\smallnbs}{\,}
     ```
 
 includes-before-document: |

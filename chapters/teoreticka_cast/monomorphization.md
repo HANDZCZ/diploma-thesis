@@ -6,7 +6,7 @@ Během tohoto procesu kompilátor hledá všechna místa, kde je generický kód
 a generuje kopii kódu pro konkrétní datové typy, se kterými je generický kód volán.
 [@rust_compiler_book_monomorphization; @rust_book_monomorphization; @what_is_monomorphization]
 
-Použití monomorfizace je výhodné, protože výsledkem je tzv. "mezijazyk" (intermediate representation (IR))
+Použití monomorfizace je výhodné, protože výsledkem je tzv.\ "mezijazyk" (intermediate representation (IR))
 se specifickými typy, což umožňuje účinnější optimalizaci.
 Výsledný kód je většinou rychlejší než dynamický výběr ([@sec:dynamic_dispatch]), ale za cenu delšího času kompilace
 a větší velikosti binárního souboru.

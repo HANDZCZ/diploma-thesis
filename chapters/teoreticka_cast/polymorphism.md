@@ -14,7 +14,7 @@ které je třeba zvážit z hlediska výkonu a velikosti souboru.
 
 ### Static dispatch {#sec:static_dispatch}
 
-První způsob je tzv. "statický výběr", který využívá generické typy (tzv. parametrický polymorfismus),
+První způsob je tzv.\ "statický výběr", který využívá generické typy (tzv.\ parametrický polymorfismus),
 monomorfizaci ([@sec:monomorfizace]) a omezení datového typu (pomocí "traitů", v jiných jazycích označovaných jako "rozhraní"),
 které poskytují nezbytnou úroveň flexibility a zachovávají typovou bezpečnost,
 bez nutnosti vytvářet velké množství duplicitního kódu.
@@ -53,7 +53,7 @@ V tomto případě by za pomocí monomorfizace ([@sec:monomorfizace]) byla vygen
 
 ### Dynamic dispatch {#sec:dynamic_dispatch}
 
-Druhý způsob je tzv. "dynamický výběr", který používá "trait objekty" k tomu,
+Druhý způsob je tzv.\ "dynamický výběr", který používá "trait objekty" k tomu,
 aby odložil rozhodnutí o tom, který typ je potřebný k vyhovění nějakého polymorfního rozhraní na běh samotného programu.
 Díky tomuto přístupu se zmenší velikost binárního souboru, protože není použita monomorfizace ([@sec:monomorfizace]),
 ale způsobuje snížení výkonu kvůli dodatečnému vyhledávání během běhu programu.

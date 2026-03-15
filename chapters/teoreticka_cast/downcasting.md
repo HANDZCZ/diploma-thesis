@@ -35,7 +35,7 @@ Trait `Any` je jedním z hlavních stavebních bloků pro dynamické typování 
 Obsahuje pouze jednu metodu `type_id`, která vrací `TypeId`, konkrétního datového typu.
 Tato metoda je hlavně využita při použití trait objektu `dyn Any`.
 Existuje také obecná implementace, která implementuje tento trait pro všechny datové typy,
-které splňují tzv. `'static` lifetime.
+které splňují tzv.\ `'static` lifetime.
 [@rust_docs_any_trait]
 
 ```{.rust .linenos}

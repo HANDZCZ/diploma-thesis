@@ -83,7 +83,7 @@ Vše, co do tohoto úložiště bude vloženo, musí být převeditelné na řet
 Poté uživatel narazí na problém, že do tohoto úložiště nejde snadno vložit například `Mutex` ([@sec:mutex]),
 protože ho nelze převést na řetězec.
 
-Tento problém řeší tzv. type mapa, která může být implementována pomocí hašovací tabulky,
+Tento problém řeší tzv.\ type mapa, která může být implementována pomocí hašovací tabulky,
 kde klíčem je `TypeId` ([@sec:typeid]) a hodnotou je `Box<dyn Any>` ([@sec:trait_any]).
 Type mapa řeší tento problém tak, že všechny objekty, které jsou do ní vloženy,
 převádí na trait objekt `Box<dyn Any>` a když uživatel chce tyto data získat zpět z type mapy,
