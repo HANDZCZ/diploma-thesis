@@ -24,7 +24,7 @@ Použitím generického typu si uživatel knihovny poté může vybrat,
 zda chce paměť alokovat na heap, nebo na stack a jaká struktura má být použita.
 
 Budoucí verze knihovny by také mohla obsahovat
-vytváření toků dynamicky za běhu programu, například za pomocí json dokumentu.
+vytváření toků dynamicky za běhu programu, například za pomocí JSON dokumentu.
 Toto by ale znamenalo přidat tok, který kontroluje veškeré datové typy za běhu programu.
 Což jde proti ideálům této knihovny, přenesení co nejvíce kontrol
 a možných chyb na krok kompilace.

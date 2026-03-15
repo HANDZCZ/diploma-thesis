@@ -10,7 +10,7 @@ Jednou z těchto knihoven je knihovna [`freactor`](https://crates.io/crates/frea
 která reprezentuje základní asynchronní jednotku práce asynchronní funkcí,
 která má jediný vstup, což je kontext.
 Všechna práce s daty probíhá přes kontext, což je jednoduché úložiště s klíčem `String`
-a nějakou hodnotou typu json.
+a nějakou hodnotou typu JSON.
 Typ toho úložiště je pevně daný, uživatel nemůže použít jiný typ úložiště,
 a nemůže na toto úložiště klást žádné požadavky.
 Uzly v tocích jsou uloženy za pomocí trait objektů a dynamic dispatch probíhá vždy.
@@ -18,7 +18,7 @@ Uzly v tocích jsou uloženy za pomocí trait objektů a dynamic dispatch probí
 Díky tomu, že knihovna `freactor` výhradně využívá trait objekty oproti této knihovně,
 tak může nabízet dynamické vytváření toků za běhu programu.
 Tohoto rozdílu knihovna využívá velmi dobře, protože nabízí definici celého toku
-jen za pomocí jednoho json dokumentu, který obsahuje název asynchronních funkcí
+jen za pomocí jednoho JSON dokumentu, který obsahuje název asynchronních funkcí
 a jak jsou mezi sebou propojeny.
 Bohužel oproti této knihovně, knihovna `freactor` nemá žádnou dokumentaci,
 kromě úvodní stránky na repozitáři, a nebylo ji možno dále porovnat s autorovou knihovnou
@@ -36,7 +36,7 @@ Kontext v knihovně `graph-flow` je implementován úplně stejně jako v předc
 a se stejnými limitacemi.
 Dále díky tomu, že také výhradně využívá trait objekty, tak je možné vytvářet toky dynamicky.
 Oproti předchozí knihovně si liší v tom, že umožňuje používat `if/else` logiku pro hrany mezi uzly,
-toky se vytvářejí přes metody, nemá jednoduché vytváření toků přes json, a má dokumentaci.
+toky se vytvářejí přes metody, nemá jednoduché vytváření toků přes JSON, a má dokumentaci.
 
 Autorem vytvořená knihovna v porovnání s knihovnami `freactor` a `graph-flow`
 nepodporuje vytváření toků dynamicky a za běhu programu,
