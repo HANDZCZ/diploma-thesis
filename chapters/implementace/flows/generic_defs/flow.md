@@ -13,7 +13,7 @@ Makro `define_flow` slouží k usnadnění definice toků,
 které mají stejnou strukturu.
 Toto makro bere název datového typu toku, který se má definovat,
 datový typ builderu pro tento tok,
-datový typ takzvaného "chainrunu," který definuje běh toku,
+datový typ takzvaného "chainrunu", který definuje běh toku,
 definici těla funkce pro metodu `describe` z traitu `Node` ([@sec:trait_node]),
 dodatečné nepovinné omezení typů pomocí traitů při definici `builder` metody
 a nepovinnou dokumentaci pro definovaný tok.

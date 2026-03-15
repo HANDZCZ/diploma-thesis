@@ -22,6 +22,6 @@ a dodatečné nepovinné omezení typů pomocí traitů.
 která je definována standardní knihovnou,
 jejíž parametr je název datového typu struktury.
 Do této struktury jsou přidány atributy pomocí metody `field`.
-Hodnota pro atribut "nodes," který obsahuje uzly toku či builderu,
+Hodnota pro atribut "nodes", který obsahuje uzly toku či builderu,
 je získána pomocí traitu `ChainDebug` ([@sec:chain_debug]).
 

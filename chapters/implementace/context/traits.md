@@ -21,8 +21,8 @@ Trait `Fork` slouží k vytvoření nové instance kontextu z již existující 
 která byla uzlu předána.
 Hlavní využití tohoto traitu je vytvoření na sobě nezávislých instancí kontextu, které
 poté mohou být použity ve větvích toků.
-Tento trait umožňuje například "fallback vodopády,"
-kde pokud by nějaká větev toku selhala "soft chybou,"
+Tento trait umožňuje například "fallback vodopády",
+kde pokud by nějaká větev toku selhala "soft chybou",
 tak tok může pokračovat další větví vytvořením nové instance kontextu z originálu.
 Tímto se zajistí, že větev co selhala nezpůsobí selhání dalších větví tím,
 že nějakým nevratným způsobem upravila kontext.

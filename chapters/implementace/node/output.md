@@ -16,14 +16,14 @@ impl<T> NodeOutput<T> {
 
 : Implementace enumu `NodeOutput` {#lst:node_output_impl}
 
-Enum `NodeOutput` slouží k signalizaci takzvané "soft chyby."
+Enum `NodeOutput` slouží k signalizaci takzvané "soft chyby".
 Tato chyba vyjadřuje, že operace selhala, ale ne katastrofálně.
 Když nějaký uzel signalizuje tuto chybu, znamená to,
 že tok může pokračovat dále (pokud je jak), jako kdyby se nic nedělo.
 Uzel může signalizovat tuto chybu například při nesplnění vstupních požadavků,
 kde vstup neodpovídá přesně požadavkům tohoto uzlu, ale může existovat nějaký další uzel,
 který s těmito vstupními daty bude spokojen a dokáže je zpracovat.
-Díky tomuto enumu lze definovat takzvané "fallback vodopády."
+Díky tomuto enumu lze definovat takzvané "fallback vodopády".
 Tyto vodopády umožňují pokračovat další větví toku, když předchozí větev vrátí `SoftFail`.
 
 Pro tento enum jsou také implementovány pomocné metody `ok`, `ok_or`
