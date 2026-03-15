@@ -33,7 +33,7 @@ Implementace metody `add_node` zajišťuje,
 a chybu z vkládaného uzlu lze převést na chybu toku.
 
 Implementace metody `build` bere nějakou strukturu implementující trait `Joiner` a zajišťuje,
-že vstup "joineru" je stejný s výstupem všech uzlů, a že výstup "joineru" je stejný jako výstup toku.
+že vstup joineru je stejný s výstupem všech uzlů, a že výstup joineru je stejný jako výstup toku.
 
 Implementace metody `build` se nachází v přílohách ([@lst:parallel_flow_builder_build_def_impl]).
 Metodu `build` lze volat pouze po vložení prvního uzlu do builderu.

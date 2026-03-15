@@ -6,7 +6,7 @@ a vrací výsledek sloučení všech výstupů uzlů takzvaným "joinerem".
 
 Tok vrací zpracovanou vstupní hodnotu, pouze když všechny uzly úspěšně skončí.
 V tomto případě je výstup ze všech uzlů zpracován uživatelem definovanou strukturou či funkcí,
-která se nazývá "Joiner", a výsledek z této struktury je použit jako výsledek toku.
+která se nazývá `Joiner`, a výsledek z této struktury je použit jako výsledek toku.
 V ostatních případech výstup tohoto toku záleží na výstupu uzlů a zní takto:
 
 1. Pokud uzel vrátí `NodeOutput::Ok` nebo `NodeOutput::SoftFail`,
@@ -26,11 +26,11 @@ pub struct ParallelFlow<Input, Output, Error, Context, ChainOutput = (), Joiner 
 : Implementace toku `ParallelFlow` - definice toku {#lst:parallel_flow_def_impl}
 
 Pro definici toku nemohlo být použito makro `define_flow`,
-protože tento tok navíc obsahuje takzvaný "Joiner".
+protože tento tok navíc obsahuje takzvaný `Joiner`.
 Běh toku je obstaráván `ChainRunParallel` traitem
 a tělo `describe` metody vytváří acyklický orientovaný graf,
-kde každý uzel má jednu hranu vycházející z toku mířící do uzlu a jednu hranu vycházející z uzlu mířící do "joineru".
-Tento graf má ještě jednu hranu vycházející z "joineru" a mířící do toku.
+kde každý uzel má jednu hranu vycházející z toku mířící do uzlu a jednu hranu vycházející z uzlu mířící do joineru.
+Tento graf má ještě jednu hranu vycházející z joineru a mířící do toku.
 
 ```{.d2 #fig:parallel_flow_visualization caption="Vizualizace toku `ParallelFlow`" height=22%}
 vars: {
