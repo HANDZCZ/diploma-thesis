@@ -6,7 +6,7 @@ pro získání hodnot potřebných pro běh uzlů.
 
 ### Úložiště typu klíč-hodnota {#sec:key-val_storage}
 
-Prvním návrhem pro kontext bylo úložiště typu klíč-hodnota.
+Prvním návrhem pro kontext bylo úložiště typu klíč\nobreakdash-hodnota.
 Toto úložiště by sloužilo ke sdílení dat mezi uzly
 nebo k zachování dat ze vstupu pro následující uzly.
 
@@ -54,7 +54,7 @@ storage -> Uzel4: získej(klíč="id")\nzískej(klíč="jmeno") {
 ```
 
 Tento přístup by byl velmi jednoduchý na implementaci,
-protože by stačilo jen implementovat úložiště typu klíč-hodnota,
+protože by stačilo jen implementovat úložiště typu klíč\nobreakdash-hodnota,
 což může být provedeno pomocí hašovací tabulky,
 použitím nějaké existující knihovny,
 nebo i napojením na externí databázi jako je například redis.

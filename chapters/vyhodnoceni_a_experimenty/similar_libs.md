@@ -24,7 +24,7 @@ Bohužel oproti této knihovně, knihovna `freactor` nemá žádnou dokumentaci,
 kromě úvodní stránky na repozitáři, a nebylo ji možno dále porovnat s autorovou knihovnou
 a zjistit, zda podporuje skládání toků.
 
-Další podobnou knihovnou je knihovna [`graph-flow`](https://crates.io/crates/graph-flow),
+Další podobnou knihovnou je knihovna [`graph\nobreakdash-flow`](https://crates.io/crates/graph-flow),
 která reprezentuje základní jednotku strukturou implementující trait `Task`,
 podobně jako tato knihovna reprezentuje základní jednotku traitem `Node`,
 obsahuje trait `Task` metodu `run` pro definici běhu.
@@ -32,13 +32,13 @@ Tato funkce, ale podobně jako předchozí knihovna bere pouze kontext.
 Dále také trait `Task` obsahuje metodu `id`,
 která vrací unikátní identifikátor pro uzel v toku.
 
-Kontext v knihovně `graph-flow` je implementován úplně stejně jako v předchozí knihovně
+Kontext v knihovně `graph\nobreakdash-flow` je implementován úplně stejně jako v předchozí knihovně
 a se stejnými limitacemi.
 Dále díky tomu, že také výhradně využívá trait objekty, tak je možné vytvářet toky dynamicky.
 Oproti předchozí knihovně si liší v tom, že umožňuje používat `if/else` logiku pro hrany mezi uzly,
 toky se vytvářejí přes metody, nemá jednoduché vytváření toků přes JSON, a má dokumentaci.
 
-Autorem vytvořená knihovna v porovnání s knihovnami `freactor` a `graph-flow`
+Autorem vytvořená knihovna v porovnání s knihovnami `freactor` a `graph\nobreakdash-flow`
 nepodporuje vytváření toků dynamicky a za běhu programu,
 kvůli tomu, že tato verze knihovny se soustředí na implementaci statických toků.
 Díky tomu je ale schopna, na rozdíl od porovnávaných knihoven,

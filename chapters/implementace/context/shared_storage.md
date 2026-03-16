@@ -44,7 +44,7 @@ pub trait SharedStorage {
 
 Trait `SharedStorage` definuje typové sdílené úložiště,
 které je sdíleno napříč všemi větvemi v toku
-a vychází z návrhu pro úložiště typu klíč-hodnota ([@sec:key-val_storage; @fig:kv_storage_design_for_node_trait]).
+a vychází z návrhu pro úložiště typu klíč\nobreakdash-hodnota ([@sec:key-val_storage; @fig:kv_storage_design_for_node_trait]).
 Tento trait je velmi podobný traitu `LocalStorage` ve funkcích, co nabízí.
 Stejně jako trait `LocalStorage` umožňuje ukládání a získávání hodnot podle jejich datového typu.
 Tato implementace také umožňuje mít pro každý datový typ `T` uloženou pouze jednu instanci v úložišti.
@@ -78,7 +78,7 @@ pub struct SharedStorageImpl {
 : Implementace sdíleného úložiště - struct `SharedStorageImpl` {#lst:shared_storage_impl_struct_shared_storage_impl}
 
 Implementace sdíleného úložiště, stejně jako implementace lokálního úložiště,
-vychází z návrhu pro úložiště typu klíč-hodnota ([@fig:kv_storage_design_for_node_trait]),
+vychází z návrhu pro úložiště typu klíč\nobreakdash-hodnota ([@fig:kv_storage_design_for_node_trait]),
 ale oproti návrhu k trait objektu `dyn Any` jsou přidány auto traity `Send + Sync`
 a tento trait objekt je ještě obalen v atomické referenci (`Arc` - [@sec:arc]) na zámek (`Rwlock` - [@sec:rwlock]) obsahující možná data
 (`Arc<RwLock<Option<Box<dyn Any + Send + Sync>>>>`).

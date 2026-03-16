@@ -70,7 +70,7 @@ pub trait LocalStorage {
 
 Trait `LocalStorage` definuje typové lokální úložiště,
 které není sdíleno s žádnou jinou větví v toku
-a vychází z návrhu pro úložiště typu klíč-hodnota ([@sec:key-val_storage; @fig:kv_storage_design_for_node_trait]).
+a vychází z návrhu pro úložiště typu klíč\nobreakdash-hodnota ([@sec:key-val_storage; @fig:kv_storage_design_for_node_trait]).
 Umožňuje ukládání a získávání hodnot podle jejich datového typu.
 Tato implementace umožňuje mít pro každý datový typ `T` uloženou pouze jednu instanci v úložišti.
 
@@ -90,7 +90,7 @@ pub struct LocalStorageImpl {
 
 : Implementace lokálního úložiště - struct `LocalStorageImpl` {#lst:local_storage_impl_struct_locals_torage_impl}
 
-Implementace lokálního úložiště vychází z návrhu pro úložiště typu klíč-hodnota ([@fig:kv_storage_design_for_node_trait]).
+Implementace lokálního úložiště vychází z návrhu pro úložiště typu klíč\nobreakdash-hodnota ([@fig:kv_storage_design_for_node_trait]).
 Tento návrh je rozšířen o atribut `changed`, který značí, jaké hodnoty byly změněny, vloženy či odstraněny
 a je využit při slučování kontextů.
 Dále je namísto trait objektu `dyn Any` využit privátní trait objekt `dyn StorageItem`,
