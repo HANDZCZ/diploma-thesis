@@ -58,7 +58,7 @@ jen pokud se v úložišti pro daný datový typ nenachází žádná hodnota.
 Dalším rozdílem je, že trait `SharedStorage` vrací asynchronní úlohy pro práci s úložištěm,
 což je nutno, aby nebyl blokován asynchronní runtime ([@sec:async_runtime])
 při přístupu k úložišti z vícero větví současně.
-Instance datového typu, které mají být vloženy do tohoto úložiště musí implementovat trait `Send + Sync`,
+Instance datového typu, které mají být vloženy do tohoto úložiště musí implementovat trait `Send~+~Sync`,
 aby je bylo možno sdílet mezi vlákny.
 
 Od implementací tohoto traitu se očekává, že budou správně pracovat s paralelismem,
