@@ -204,6 +204,10 @@ minted:
     hyphenation:
       length_threshold: 18
       after: ["_"]
+# replace regular space with non-breaking space automatically after specified words
+# no need to specify sinle letter words, they are handled by `impnattypo` package
+# defaults can be found in `./filters/non-breaking-spaces.lua`
+# non-breaking_space_after: ["na", "se", "ke"]
 ---
 \hyphenpenalty=10000
 \widowpenalties 1 10000
