@@ -257,9 +257,25 @@ chapters/zaver.md
 
 # Seznam obrázků, tabulek a kódů
 
+\begingroup
+\makeatletter
+<!--
+black magic numbers, that can make or break formatting
+fixes really long gaps between words
+-->
+\pretolerance 800
+\tolerance 1200
+\emergencystretch 1.5em
+<!-- right margin, causes raggedright -->
+\renewcommand{\@tocrmarg}{2em plus 1.5em}
+<!-- number width -->
+\renewcommand{\@pnumwidth}{1.8em}
+\makeatother
+
 \lof
 \lot
 \lol
+\endgroup
 
 \newpage
 
