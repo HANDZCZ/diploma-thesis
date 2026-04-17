@@ -209,9 +209,18 @@ minted:
 # defaults can be found in `./filters/non-breaking-spaces.lua`
 # non-breaking_space_after: ["na", "se", "ke"]
 ---
+<!-- Don't ever hyphenate words (I just think it looks ugly) -->
 \hyphenpenalty=10000
-\widowpenalties 1 10000
-\raggedbottom
+<!--
+Penalties for breaking paragraph across pages
+\PENALTY NUMBER_OF_PENALTIES_SPECIFIED PENALTY_FOR_LINE_1 PENALTY_FOR_LINE_2 ...
+-->
+<!-- Penalties for top lines of paragraph -->
+\clubpenalties 4 10000 5000 5000 0
+<!-- Penalties for bottom lines of paragraph -->
+\widowpenalties 4 10000 5000 5000 0
+<!-- Penalty for other lines of paragraph -->
+\interlinepenalty=5
 
 <!--\includepdf[pages=-]{titlepage.pdf}-->
 
