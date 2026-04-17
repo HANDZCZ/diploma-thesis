@@ -32,7 +32,7 @@ když nebudou splněny podmínky toků.
 
 Knihovna by měla být kompatibilní s různými operačními systémy, na který Rust běží.
 Hlavně musí být kompatibilní s operačními systémy Windows a Linux.
-Knihovna by také měla být kompatibilita pokud možno se všemi asynchronními runtimy v Rustu.
+Knihovna by také měla být kompatibilní pokud možno se všemi asynchronními runtimy v Rustu.
 Hlavně by měla být kompatibilní s [tokio](https://docs.rs/tokio/latest/tokio/)
 a [smol](https://docs.rs/smol/latest/smol/) runtimy.
 Kvůli těmto důvodům by knihovna měla obsahovat co nejméně závislostí,

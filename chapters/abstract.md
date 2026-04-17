@@ -8,7 +8,7 @@ která umožňuje typově bezpečnou tvorbu a kompozici toků.
 Na základě analýzy principů programování datových toků,
 asynchronního modelu jazyka Rust a souvisejících technik,
 jako je polymorfismus, monomorfismus a práce s generickými typy,
-je navržená architektura knihovny,
+je navržena architektura knihovny,
 včetně kontextového systému pro sdílení dat mezi uzly.
 Následně je implementována a otestována.
 Součástí práce je testování funkčnosti knihovny a experimenty
@@ -33,7 +33,7 @@ and working with generic types.
 Based on the results of the analysis, a library architecture is proposed,
 including a context system for sharing data between nodes,
 and subsequently implemented and tested.
-As a part of the thesis, the functionality of the library is tested
+As a part of the thesis, the functionality of the library is tested,
 and experiments are conducted to evaluate the impact on the performance
 and scalability of data flows.
 
