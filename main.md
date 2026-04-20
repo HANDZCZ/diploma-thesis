@@ -222,7 +222,7 @@ Penalties for breaking paragraph across pages
 <!-- Penalty for other lines of paragraph -->
 \interlinepenalty=5
 
-<!--\includepdf[pages=-]{titlepage.pdf}-->
+\includepdf[pages=-]{titlepage.pdf}
 
 ```{.include}
 chapters/abstract.md
@@ -461,4 +461,6 @@ Tok1: {
 
 Start -> Tok1 -> Konec
 ```
+
+\includepdf[pages=-]{vskp_-_zadani_vskp.pdf}
 
